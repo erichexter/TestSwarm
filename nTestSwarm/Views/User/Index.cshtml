@@ -1,0 +1,11 @@
+﻿@model nTestSwarm.Controllers.NewUserInput
+
+    @Html.ValidationSummary()
+
+    @{ Html.EnableClientValidation(); }
+
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <input type="submit" value="Register"/>
+    }
