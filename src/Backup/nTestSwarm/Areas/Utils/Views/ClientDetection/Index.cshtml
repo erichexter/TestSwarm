@@ -1,0 +1,56 @@
+﻿<style type="text/css">
+table.clientDetection {
+	border-width: 0px;
+	border-spacing: 0px;
+	border-style: solid;
+	border-color: gray;
+	border-collapse: collapse;
+	background-color: white;
+}
+table.clientDetection th {
+	border-width: 1px;
+	padding: 4px;
+	border-style: dotted;
+	border-color: gray;
+	background-color: rgb(255, 250, 250);
+	-moz-border-radius: ;
+	text-align: right;
+}
+table.clientDetection td {
+	border-width: 1px;
+	padding: 4px;
+	border-style: dotted;
+	border-color: gray;
+	background-color: rgb(255, 250, 250);
+	-moz-border-radius: ;
+}
+</style>
+
+
+
+<table class="clientDetection">
+
+    <tr>
+
+        <th>Browser</th>
+        <td>@Request.Browser.Browser</td>
+
+    </tr>
+    <tr>
+        <th>Major Version</th>
+        <td>@Request.Browser.MajorVersion</td>
+    </tr>
+    <tr>
+        <th>Minor Version</th>
+        <td>@Request.Browser.MinorVersion</td>
+    </tr>
+    <tr>
+        <th>Platform</th>
+        <td>@Request.Browser.Platform</td>
+    </tr>
+        <tr>
+        <th>Mobile?</th>
+        <td>@Request.Browser.IsMobileDevice</td>
+    </tr>
+
+</table>

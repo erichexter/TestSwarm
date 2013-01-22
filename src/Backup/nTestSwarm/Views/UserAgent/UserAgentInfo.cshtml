@@ -1,0 +1,23 @@
+﻿@using nTestSwarm.Application.Queries.UserAgentInfo
+@model UserAgentInfoResult
+<div class="userAgentInfo">
+@if (!Model.Clients.Any())
+{
+    @:No clients
+}
+else
+{
+    <span>Clients: @Model.ConnectedClientCount</span>
+    <ul>
+        @foreach (var client in @Model.Clients)
+        {
+            <li>
+                <p>First Seen: @client.FirstSeen</p>
+                <p>Seen: @client.LastSeen</p>
+                <p>IP: @client.IpAddress</p>
+                <p>OS: @client.OperatingSystem</p>
+            </li>
+        }
+    </ul>
+}
+</div>

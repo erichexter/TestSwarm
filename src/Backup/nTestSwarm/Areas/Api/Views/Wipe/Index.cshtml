@@ -1,0 +1,22 @@
+﻿<a href="javascript:;" id="elButton">Do Wipe</a>
+
+<p>Results appear here:</p>
+<p id="status"></p>
+<div id="results"></div>
+
+<script>
+    $(function () {
+        $('#elButton').click(function () {
+            jQuery.ajax({
+                url: '@Url.Action("DoWipe")',
+                type: 'POST',
+                cache: false,
+                complete: function (xhr, status) {
+                    $('#status').html(status);
+                    $('#results').html(xhr.responseText);
+                }
+            });
+          
+        });
+    });
+</script>

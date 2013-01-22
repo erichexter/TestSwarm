@@ -1,0 +1,77 @@
+﻿@using nTestSwarm.Areas.Api.Models
+@model CreateJobInput
+@section head
+{
+    <script>
+        $(function () {
+
+            var html = $('#runTemplate').html();
+            var template = Handlebars.compile(html);
+
+            var count = 1;
+
+            $('#addAnother').live('click', function () {
+                var contents = template({ id: count++ });
+                $('#editor').append(contents);
+            });
+            $('.delete').live('click', function () {
+              var fieldset = $(this).parent().parent();
+              fieldset.remove();
+            });
+        });
+    </script>
+}
+@{Layout = "~/Views/Shared/_Layout.cshtml";}
+
+@{ Html.BeginForm("Create", "Job", new {area = "Api"}, FormMethod.Post, null); }
+
+<h3>Add Job</h3>
+<p>
+@Html.LabelFor(x => x.Name)
+@Html.TextBoxFor(x => x.Name)
+</p>
+<p>
+@Html.LabelFor(x => x.SuiteId)
+@Html.TextBoxFor(x => x.SuiteId)
+</p>
+<h3>Runs for Job</h3>
+<div id="editor">
+
+<fieldset id="runlist">
+<legend>Run</legend>
+<p>
+    <input type="hidden" name="Runs.Index" value="0" />
+    @Html.LabelFor(x => x.Runs[0].Name)
+    @Html.TextBoxFor(x => x.Runs[0].Name)
+</p>
+<p>
+    @Html.LabelFor(x => x.Runs[0].Url)
+    @Html.TextBoxFor(x => x.Runs[0].Url)
+</p>
+
+</fieldset>
+
+  </div>  
+    <p><a id="addAnother" href="javascript:;">Add another Run</a></p>
+
+
+<input type="submit" value="submit" />
+
+<script id="runTemplate" type="text/x-handlebars-template">
+<fieldset>
+<legend>Run</legend>
+<p>
+<input type="hidden" name="Runs.Index" value="{{id}}" />
+    <label for="Runs_{{id}}__Name">Name</label>
+    <input id="Runs_{{id}}__Name" name="Runs[{{id}}].Name" type="text" value="" />
+</p>
+<p>
+    <label for="Runs_{{id}}__Url">Url</label>
+    <input id="Runs_{{id}}__Url" name="Runs[{{id}}].Url" type="text" value="" />
+</p>
+<p><a class="delete" href="javascript:;">Remove Run</a></p>
+</fieldset>
+</script>
+
+@{Html.EndForm();}
+

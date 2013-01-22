@@ -1,0 +1,22 @@
+@using nTestSwarm.Application.Domain
+@model Job
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+@Html.EditorFor(model=>model.Created)
+@Html.EditorFor(model=>model.Updated)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.SuiteID)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.SuiteID)
+    @Html.ValidationMessageFor(model => model.SuiteID)
+</div>
+
