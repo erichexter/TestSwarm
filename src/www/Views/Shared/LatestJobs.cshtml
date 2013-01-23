@@ -1,0 +1,38 @@
+﻿<script type="text/javascript">
+    $(function () {
+        var source = $("#latestJobsTemplate").html();
+        var template = Handlebars.compile(source);
+
+        var templatize = function (context) {
+            var html = template(context);
+            $("#latest-jobs").html(html);
+        };
+        var refreshJobs = function () {
+            $.get('@Url.Action("Latest", "JobList")', {}, function (data) {
+                var context = $.map(data, function (item) {
+                    return {
+                        id: item.JobId,
+                        name: item.JobName,
+                        status: item.Status
+                    };
+                });
+                templatize({ jobs: context });
+            });
+        };
+        refreshJobs();
+        setInterval(refreshJobs, 1000 * 60 * 2);
+    });
+
+</script>
+<div id="latest-jobs">
+</div>
+<script id="latestJobsTemplate" type="text/x-handlebars-template">
+    <span>Recent Jobs</span>
+    <ul>
+    {{#each jobs}}
+    <li>
+        <a href="@Url.Action("Index", "Job", new { id = "" })/{{id}}">{{name}} ({{status}})</a>
+    </li>
+    {{/each}}
+    </ul>
+</script>

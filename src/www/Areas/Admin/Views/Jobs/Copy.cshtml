@@ -1,0 +1,55 @@
+@using nTestSwarm.Areas.Admin.Models
+@using System.Web.Mvc.Html
+@model JobCopyModel
+
+@{
+    ViewBag.Title = "Copy";
+}
+
+<h2>Copy</h2>
+
+<h3>Are you sure you want to copy this?  The runs below will be cloned to this new job.  You can customize the name format or accept the default.  You may also provide a correlation key - something external, like a deploy number, that applies to this job.</h3>
+<fieldset>
+    <legend>Job</legend>
+
+    <div class="display-label">Created</div>
+    <div class="display-field">@String.Format("{0:g}", Model.JobToCopy.Created)</div>
+
+    <div class="display-label">Updated</div>
+    <div class="display-field">@String.Format("{0:g}", Model.JobToCopy.Updated)</div>
+        
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.JobToCopy.Name</div>
+
+    <div class="display-label">Status</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.JobToCopy.Status).ToString()</div>
+
+    <div class="display-label">Runs</div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>URL</th>
+        </tr>
+    
+    @foreach (var run in Model.RunsForJob)
+    {
+
+        <tr>
+            <td>@run.Name</td>
+            <td>@run.Url</td>
+        </tr>
+    }
+    </table>
+</fieldset>
+@using (Html.BeginForm()) {
+    
+    @Html.HiddenFor(x => x.Defaults.JobId)
+
+    <p>@Html.LabelFor(x => x.Defaults.JobNameFormat) @Html.TextBoxFor(x => x.Defaults.JobNameFormat)</p>
+    <p>@Html.LabelFor(x => x.Defaults.Correlation) @Html.TextBoxFor(x => x.Defaults.Correlation)</p>
+        <p><input type="submit" value="Copy" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

@@ -2,3 +2,7 @@ C:\Users\eric_hexter\Downloads\eric.hexter-ntestswarm-6987d386fd02\eric.hexter-n
 C:\Users\eric_hexter\Downloads\eric.hexter-ntestswarm-6987d386fd02\eric.hexter-ntestswarm-6987d386fd02\nTestSwarm.Interface\bin\Debug\nTestSwarm.Interface.pdb
 C:\Users\eric_hexter\Downloads\eric.hexter-ntestswarm-6987d386fd02\eric.hexter-ntestswarm-6987d386fd02\nTestSwarm.Interface\obj\Debug\nTestSwarm.Interface.dll
 C:\Users\eric_hexter\Downloads\eric.hexter-ntestswarm-6987d386fd02\eric.hexter-ntestswarm-6987d386fd02\nTestSwarm.Interface\obj\Debug\nTestSwarm.Interface.pdb
+C:\code\TestSwarm\src\nTestSwarm.Interface\bin\Debug\nTestSwarm.Interface.dll
+C:\code\TestSwarm\src\nTestSwarm.Interface\bin\Debug\nTestSwarm.Interface.pdb
+C:\code\TestSwarm\src\nTestSwarm.Interface\obj\Debug\nTestSwarm.Interface.dll
+C:\code\TestSwarm\src\nTestSwarm.Interface\obj\Debug\nTestSwarm.Interface.pdb
