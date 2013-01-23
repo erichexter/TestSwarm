@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace nTestSwarmTests
 {
@@ -16,6 +18,11 @@ namespace nTestSwarmTests
         {
             _data = new HashSet<T>();
             _query = _data.AsQueryable();
+        }
+
+        public Task<T> FindAsync(CancellationToken cancellationToken, params object[] keyValues)
+        {
+            throw new NotImplementedException();
         }
 
         public T Add(T entity)
