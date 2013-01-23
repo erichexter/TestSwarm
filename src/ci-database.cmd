@@ -1,0 +1,1 @@
+packages\EntityFramework.6.0.0-alpha2\tools\migrate.exe /Verbose runtime /ConnectionString="Data Source=www-m1.oldev.preol.dell.com\sqlexpress;Initial Catalog=www-m1;Integrated Security=SSPI" /ConnectionProviderName="System.Data.SqlClient"  /startupdirectory=www\bin
