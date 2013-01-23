@@ -1,4 +1,6 @@
-﻿namespace nTestSwarm.Application.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace nTestSwarm.Application.Domain
 {
     public class RunUserAgent : Entity
     {
@@ -26,6 +28,8 @@
         public int RemainingRuns { get; protected set; }
         public long? ActiveClientId { get; protected set; }
         public int Status { get; protected set; }
+
+        
         public RunUserAgentResult Result { get; protected set; }
 
         public RunStatusType RunStatus

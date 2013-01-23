@@ -84,3 +84,4 @@ C:\code\TestSwarm\src\nTestSwarmTests\bin\Debug\www.pdb
 C:\code\TestSwarm\src\nTestSwarmTests\bin\Debug\System.Web.Http.xml
 C:\code\TestSwarm\src\nTestSwarmTests\bin\Debug\System.Web.Http.WebHost.xml
 C:\code\TestSwarm\src\nTestSwarmTests\bin\Debug\System.Net.Http.Formatting.xml
+C:\code\TestSwarm\src\nTestSwarmTests\bin\Debug\EntityFramework.xml
