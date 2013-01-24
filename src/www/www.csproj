@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="DataAnnotationsExtensions">
       <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
@@ -60,6 +63,13 @@
       <HintPath>..\packages\EntityFramework.6.0.0-alpha2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc">
+      <HintPath>..\packages\Mvc4Futures.4.0.20710.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -79,6 +89,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
@@ -127,6 +140,9 @@
     </Reference>
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +255,8 @@
     <Compile Include="Application\Services\OutputCacheInvalidator.cs" />
     <Compile Include="Application\Services\StringFormatter.cs" />
     <Compile Include="Application\Services\SystemTime.cs" />
+    <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -271,7 +289,10 @@
     <Compile Include="Areas\Utils\Controllers\ClientDetectionController.cs" />
     <Compile Include="Areas\Utils\Controllers\RunDiagnosticsController.cs" />
     <Compile Include="Areas\Utils\UtilsAreaRegistration.cs" />
+    <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
+    <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobDiffController.cs" />
@@ -312,12 +333,21 @@
     <Compile Include="Models\NewUserInput.cs" />
     <Compile Include="Models\RunInput.cs" />
     <Compile Include="Models\RunViewModel.cs" />
+    <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
+    <Compile Include="NavigationRoutes\NamedRoute.cs" />
+    <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
+    <Compile Include="NavigationRoutes\NavigationRouteConfigurationExtensions.cs" />
+    <Compile Include="NavigationRoutes\NavigationRouteFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\doc.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shCore.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shThemeDataTables.css" />
@@ -397,6 +427,8 @@
     <Content Include="Content\DataTables-1.9.4\media\images\sort_both.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc.png" />
     <Content Include="Content\DataTables-1.9.4\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -501,6 +533,8 @@
     <Content Include="images\winmo.png" />
     <Content Include="images\winmo.sm.png" />
     <Content Include="InstallationDummyFile.txt" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\jquery.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\shBrushJScript.js" />
@@ -610,13 +644,19 @@
     <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.js" />
     <Content Include="Scripts\handlebars.1.0.0.beta.6.js" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.js" />
     <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive-custom-for-bootstrap.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\ntestswarm.js" />
     <Content Include="Scripts\run.js" />
     <Content Include="Web.config" />
@@ -627,7 +667,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-1.9.0.min.map" />
     <Content Include="Views\Authentication\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
@@ -646,6 +685,14 @@
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\UserAgent\UserAgentInfo.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_html5shiv.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Shared\Details.cshtml" />
+    <Content Include="Views\Shared\Create.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.narrow.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.empty.cshtml" />
+    <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
+    <Content Include="Views\Shared\_alerts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
