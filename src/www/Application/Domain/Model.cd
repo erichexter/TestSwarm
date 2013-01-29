@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="NameAndType">
+  <Class Name="nTestSwarm.Application.Domain.Client">
+    <Position X="3.75" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAASAAAAAACAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Domain\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.ClientRun">
+    <Position X="6.75" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAEIDAADAAAoAAAAgAECAAEIAAAAAAAAAAAACY=</HashCode>
+      <FileName>Application\Domain\ClientRun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.ClientRunStatus">
+    <Position X="9" Y="12.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BQAQAAAQAAQAAQAAAAAAAggAAAAAEAIIAAAAABAAAAA=</HashCode>
+      <FileName>Application\Domain\ClientRunStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.Entity" Collapsed="true">
+    <Position X="17.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQEgAAAAAAEAAAAAIQAQAAAAAAIAiA=</HashCode>
+      <FileName>Application\Domain\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.Event">
+    <Position X="7.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>Application\Domain\Event.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.Job">
+    <Position X="12.25" Y="1.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAkAAAAFAIAAAQCAAQAAAIAAAAIAAAAAIAAAIA=</HashCode>
+      <FileName>Application\Domain\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.Run">
+    <Position X="13.75" Y="6.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>EAAQACaEQEQgBAAEIAAAAAwAAAACAIAADAAAAAABAAA=</HashCode>
+      <FileName>Application\Domain\Run.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.RunUserAgent">
+    <Position X="19" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAQQSBQAAIAAAAAwAAAAEAAAABAAAQIAAAAI=</HashCode>
+      <FileName>Application\Domain\RunUserAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.RunUserAgentCompareResult">
+    <Position X="7.25" Y="8.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAIAAAAAAAAAAgAAAABAAAAFEAAIAAIAAAACAAEA=</HashCode>
+      <FileName>Application\Domain\RunUserAgentCompareResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.RunStatusTransition">
+    <Position X="18.75" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAEAAAQAAAEAAAAAEQCAAFAAAACAAAAAQAAA=</HashCode>
+      <FileName>Application\Domain\RunUserAgentCompareResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.RunUserAgentResult">
+    <Position X="18.75" Y="13" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAgABAgAAAgAAAAAAAAAACAAAAABAAAEA=</HashCode>
+      <FileName>Application\Domain\RunUserAgentResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.User">
+    <Position X="4.5" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAAAAAAAAQAAgAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Application\Domain\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="nTestSwarm.Application.Domain.UserAgent">
+    <Position X="9.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Application\Domain\UserAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="nTestSwarm.Application.Domain.JobStatusType">
+    <Position X="13.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAQIAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Domain\JobStatusType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="nTestSwarm.Application.Domain.RunStatusType">
+    <Position X="15.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Application\Domain\RunStatusType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>
