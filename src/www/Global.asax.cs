@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using nTestSwarm.Application.Infrastructure.DomainEventing;
+using StructureMap;
+using System;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using StructureMap;
-using nTestSwarm.Application.Infrastructure.DomainEventing;
 
 namespace www
 {
@@ -16,11 +13,10 @@ namespace www
     {
         protected void Application_Start()
         {
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
             BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
         }

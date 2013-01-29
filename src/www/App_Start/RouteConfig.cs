@@ -11,6 +11,8 @@ namespace www
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapHubs();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("images/*");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
