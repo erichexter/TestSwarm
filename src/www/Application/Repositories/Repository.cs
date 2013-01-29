@@ -1,10 +1,9 @@
+using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Services;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using nTestSwarm.Application.Domain;
-using nTestSwarm.Application.Services;
-using nTestSwarm.Areas.Admin.Models;
 
 namespace nTestSwarm.Application.Repositories
 {

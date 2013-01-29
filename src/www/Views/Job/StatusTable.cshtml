@@ -21,3 +21,28 @@
 </tr>
 }
 </table>
+
+<table class="run-results table table-striped">
+    <tbody>
+        <tr>
+            <th></th>
+            <!-- ko foreach: browsers -->
+            <th>
+                <div class="browser">
+                    <img data-bind="attr: iconAttributes" class="browser-icon" />
+                    <span data-bind="text: name" class="broswer-name"></span>
+                </div>
+            </th>
+            <!-- /ko -->
+        </tr>
+        <!-- ko foreach: runResults -->
+        <tr>
+            <th><a data-bind="text: runName, attr: { href: runUrl }"></a></th>
+
+            <!-- ko foreach: browsers -->
+            <td data-bind="attr: { class: statusClass }"><a data-bind="text: statusText, attr: { href: statusUrl }"></a></td>
+            <!-- /ko -->
+        </tr>
+        <!-- /ko --> 
+    </tbody>
+</table>

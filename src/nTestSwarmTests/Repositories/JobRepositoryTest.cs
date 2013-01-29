@@ -1,12 +1,9 @@
-﻿using System.Diagnostics;
+﻿using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Repositories;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 using Should;
-using nTestSwarm;
-using nTestSwarm.Application.Domain;
-using nTestSwarm.Application.Repositories;
-using nTestSwarm.Areas.Admin.Models;
-using System.Linq;
+using System.Diagnostics;
 
 namespace nTestSwarmTests.Repositories
 {

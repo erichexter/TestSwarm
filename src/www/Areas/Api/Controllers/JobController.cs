@@ -5,8 +5,8 @@ using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Commands.JobCreation.Copy;
 using nTestSwarm.Application.Commands.JobCreation.Described;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Areas.Admin.Models;
 using nTestSwarm.Areas.Api.Models;
+using www.Areas.Api.Models;
 
 namespace nTestSwarm.Areas.Api.Controllers
 {
@@ -17,11 +17,6 @@ namespace nTestSwarm.Areas.Api.Controllers
         public JobController(IBus bus)
         {
             _bus = bus;
-        }
-
-        public ViewResult Index()
-        {
-            return View();
         }
 
         [HttpGet, ActionName("DescribeNew")]
@@ -51,23 +46,6 @@ namespace nTestSwarm.Areas.Api.Controllers
             return View(new CreateJobInput());
         }
 
-        [HttpPost]
-        public ApiStringResult<CreateJobResult> Create(CreateJobInput input)
-        {
-            Validate();
-
-            var createNewJob = new CreateJob
-                {
-                    Name = input.Name,
-                    Runs = input.Runs.Select(x => new CreateJob.CreateNewRun {Name = x.Name, Url = x.Url}),
-                    SuiteId = input.SuiteId
-                };
-
-            Result<CreateJobResult> result = _bus.Request(createNewJob);
-
-            return GetResultString(result);
-        }
-
         void Validate()
         {
             if (!ModelState.IsValid)
@@ -86,13 +64,15 @@ namespace nTestSwarm.Areas.Api.Controllers
         [HttpPost]
         public ApiStringResult<CreateJobResult> Copy(JobCopyInputModel input)
         {
-            Validate();
+            //TODO: determine the source of CopyJob
+            return null;
+            //Validate();
 
-            var copyJob = new CopyJob(input);
+            //var copyJob = new CopyJob(input);
 
-            Result<CreateJobResult> result = _bus.Request(copyJob);
+            //Result<CreateJobResult> result = _bus.Request(copyJob);
 
-            return GetResultString(result);
+            //return GetResultString(result);
         }
     }
 }

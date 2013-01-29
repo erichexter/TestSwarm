@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using BootstrapMvcSample.Controllers;
-using NavigationRoutes;
+﻿using NavigationRoutes;
+using nTestSwarm.Areas.Utils.Controllers;
 using nTestSwarm.Controllers;
+using System.Web.Routing;
+using ApiJobController = nTestSwarm.Areas.Api.Controllers.JobController;
 
 namespace BootstrapMvcSample
 {
@@ -16,8 +12,15 @@ namespace BootstrapMvcSample
         {
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
 
-            routes.MapNavigationRoute<RunController>("Run", c => c.Index());
-            routes.MapNavigationRoute<JobController>("Latest Job", c => c.Latest());
+            routes.MapNavigationRoute<JobController>("Jobs", c => c.Index(0))
+                .AddChildRoute<JobController>("Latest", c => c.Latest())
+                .AddChildRoute<ApiJobController>("Queue New", c => c.DescribeNew("", new string[] {}, null));
+
+            routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
+
+            routes.MapNavigationRoute<RunDiagnosticsController>("Diagnostics", c => c.Nullo())
+                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index())
+                .AddChildRoute<ClientDetectionController>("Client", c => c.Index());
         }
     }
 }

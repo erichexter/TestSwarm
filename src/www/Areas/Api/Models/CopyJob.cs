@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using nTestSwarm.Models;
 
-namespace nTestSwarm.Areas.Admin.Models
+namespace www.Areas.Api.Models
 {
     public class JobCopyModel
     {

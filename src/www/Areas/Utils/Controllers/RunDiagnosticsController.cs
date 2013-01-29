@@ -25,6 +25,11 @@ namespace nTestSwarm.Areas.Utils.Controllers
 
             return View(result);
         }
+
+        public ViewResult Nullo()
+        {
+            return View();
+        }
     }
 
     public class RunDiagnosticsQuery : IRequest<IEnumerable<RunDiagnosticsResult>>
