@@ -82,14 +82,5 @@
 </form>
 @* <-- should be authenticated *@
 
-    @{ Html.RenderPartial("StatusTable", Model); }
+@{ Html.RenderPartial("StatusTable", Model); }
 
-<div style="clear:both"></div>
-<div class="summary">
-<p id="totalTest"><span>Total Test Count: </span><span class="answer"></span></p>
-<p id="totalRuns"><span>Total Runs Count: </span><span class="answer"></span></p>
-<p id="passTest"><span>Passing Test Count: </span><span class="answer"></span></p>
-<p id="passPercent"><span>What percent of executed tests passed?: </span><span class="answer"></span></p>
-<p id="execRunsPercent"><span>What percent of runs successfully executed? (pass or fail): </span><span class="answer"></span></p>
-<p id="passRunsPercent"><span>What percent of runs passed?: </span><span class="answer"></span></p>
-</div>

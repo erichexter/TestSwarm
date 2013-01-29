@@ -1,0 +1,43 @@
+﻿table.results thead th {
+    text-align: center;
+}
+
+table.results thead .browser-name {
+    display: block;
+    margin-top: 5px;
+	background: #757575;
+    font-size: 12px;
+	color: white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+table.results td.pass {
+	background: lightgreen;
+}
+
+table.results td.fail {
+	background: red;
+}
+
+table.results td.progress {
+	background: yellow;
+}
+
+table.results td.timeout, table.results td.error {
+	background: black;
+	color: white;
+}
+
+/*table.results td.timeout a, table.results td.error a {
+	color: white;
+}*/
+
+table.results a {
+	color: #000;
+}
+
+
