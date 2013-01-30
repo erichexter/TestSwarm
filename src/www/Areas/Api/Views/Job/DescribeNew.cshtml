@@ -1,19 +1,28 @@
-﻿
-@{Layout = "~/Views/Shared/_Layout.cshtml";}
+﻿@{ using (Html.BeginForm("DescribeNew", "Job", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+   <div class="control-group">
+       <label for="url" class="control-label">URL</label> 
+       <div class="controls">
+           <intput type="text" id="url" name="url" />
+       </div>
+   </div>
+    
+    <div class="control-group">
+        <label for="correlation" class="control-label">Correlation</label>
+       <div class="controls">
+           <input type="text" id="correlation" name="correlation" />
+       </div>
+    </div>
 
-@{ Html.BeginForm("DescribeNew", "Job", new {area = "Api"}, FormMethod.Post, null); }
+    <div class="control-group">
+        <label for="maxruns" class="control-label">Max Runs</label>
+       <div class="controls">
+           <input type="text" id="maxruns" name="maxruns" />
+       </div>
+    </div>
 
-<p>@Html.Label("url", "URL: ")
-@Html.TextBox("url")</p>
-
-<p>@Html.Label("correlation", "Correlation: ")
-@Html.TextBox("correlation")</p>
-
-<p>@Html.Label("maxruns", "Max Runs: ")
-@Html.TextBox("maxruns")</p>
-<input type="submit" value="submit" />
-
-@{Html.EndForm();}
+    <input type="submit" value="submit" />
+}
 
 
 
