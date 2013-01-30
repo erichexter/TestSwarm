@@ -14,13 +14,13 @@ namespace BootstrapMvcSample
 
             routes.MapNavigationRoute<JobController>("Jobs", c => c.Index(0))
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
-                .AddChildRoute<ApiJobController>("Queue New", c => c.DescribeNew("", new string[] {}, null));
+                .AddChildRoute<ApiJobController>("Queue New", c => c.DescribeNew("", new string[] {}, null),"api");
 
             routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
 
             routes.MapNavigationRoute<RunDiagnosticsController>("Diagnostics", c => c.Nullo())
-                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index())
-                .AddChildRoute<ClientDetectionController>("Client", c => c.Index());
+                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index(),"utils")
+                .AddChildRoute<ClientDetectionController>("Client", c => c.Index(), "utils");
         }
     }
 }
