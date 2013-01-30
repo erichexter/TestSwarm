@@ -20,6 +20,7 @@ namespace nTestSwarm.Application.Data
         {
         }
 
+        public DbSet<Program> Programs { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserAgent> UserAgents { get; set; }
         public DbSet<Client> Clients { get; set; }

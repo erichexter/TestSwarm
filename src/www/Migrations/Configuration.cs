@@ -3,6 +3,8 @@ using System.Linq;
 using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Data;
 using nTestSwarm.Application.Repositories;
+using System.Data.Entity;
+using ProgramEntity = nTestSwarm.Application.Domain.Program;
 
 namespace nTestSwarm.Migrations
 {
@@ -50,7 +52,24 @@ namespace nTestSwarm.Migrations
 
                 context.SaveChanges();
             }
+
+            SeedPrograms(context);
 #endif
         }
+
+        private void SeedPrograms(nTestSwarmContext context)
+        {
+            const string seedProgramName = "Magnum UX";
+
+            var program = new ProgramEntity(seedProgramName, "http://www-m1/functionaltests/runner/list");
+            var userAgents = context.UserAgents
+                                .Where(x => x.Name.StartsWith("Chrome"))
+                                .ToList();
+
+            userAgents.ForEach(program.UserAgentsToTest.Add);
+            context.Programs.AddOrUpdate(p => p.Name, program);
+            context.SaveChanges();
+        }
+
     }
 }

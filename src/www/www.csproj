@@ -192,6 +192,7 @@
     <Compile Include="Application\Domain\Event.cs" />
     <Compile Include="Application\Domain\Job.cs" />
     <Compile Include="Application\Domain\JobStatusType.cs" />
+    <Compile Include="Application\Domain\Program.cs" />
     <Compile Include="Application\Domain\Run.cs" />
     <Compile Include="Application\Domain\RunStatusType.cs" />
     <Compile Include="Application\Domain\RunUserAgent.cs" />
@@ -330,6 +331,10 @@
     <Compile Include="Migrations\201301221544398_missingmigration.cs" />
     <Compile Include="Migrations\201301221544398_missingmigration.Designer.cs">
       <DependentUpon>201301221544398_missingmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301301601350_Program.cs" />
+    <Compile Include="Migrations\201301301601350_Program.Designer.cs">
+      <DependentUpon>201301301601350_Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
@@ -688,6 +693,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201301221544398_missingmigration.resx">
       <DependentUpon>201301221544398_missingmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301301601350_Program.resx">
+      <DependentUpon>201301301601350_Program.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
