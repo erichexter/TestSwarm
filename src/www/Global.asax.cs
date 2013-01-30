@@ -13,8 +13,8 @@ namespace www
     {
         protected void Application_Start()
         {
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
