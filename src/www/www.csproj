@@ -332,9 +332,9 @@
     <Compile Include="Migrations\201301221544398_missingmigration.Designer.cs">
       <DependentUpon>201301221544398_missingmigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201301301601350_Program.cs" />
-    <Compile Include="Migrations\201301301601350_Program.Designer.cs">
-      <DependentUpon>201301301601350_Program.cs</DependentUpon>
+    <Compile Include="Migrations\201301301838136_Program.cs" />
+    <Compile Include="Migrations\201301301838136_Program.Designer.cs">
+      <DependentUpon>201301301838136_Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
@@ -694,8 +694,8 @@
     <EmbeddedResource Include="Migrations\201301221544398_missingmigration.resx">
       <DependentUpon>201301221544398_missingmigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201301301601350_Program.resx">
-      <DependentUpon>201301301601350_Program.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201301301838136_Program.resx">
+      <DependentUpon>201301301838136_Program.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,7 +11,7 @@ namespace nTestSwarm.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201301301601350_Program"; }
+            get { return "201301301838136_Program"; }
         }
         
         string IMigrationMetadata.Source

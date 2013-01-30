@@ -1,5 +1,6 @@
 ﻿using nTestSwarm.Application.Domain;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace nTestSwarm.Application.Domain
 {
@@ -17,6 +18,8 @@ namespace nTestSwarm.Application.Domain
         {
         }
 
+        [Required]
+        [StringLength(50)]
         public string Name { get; protected set; }
         public int DefaultMaxRuns { get; protected set; }
         public string JobDescriptionUrl { get; protected set; }

@@ -20,6 +20,7 @@ namespace nTestSwarm.Migrations
         {
 #if DEBUG
             var jobCreator = new CreateJobHandler(context, new UserAgentCache(() => context));
+
             if (!context.Jobs.Any())
             {
                 jobCreator.Handle(new CreateJob

@@ -100,5 +100,19 @@ namespace nTestSwarm.Application.Data
 
             return base.SaveChanges();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Program
+            modelBuilder.Entity<Program>()
+                .HasMany(p => p.UserAgentsToTest)
+                .WithMany()
+                .Map(m =>
+                {
+                    m.ToTable("ProgramUserAgents");
+                    m.MapLeftKey("ProgramId");
+                    m.MapRightKey("UserAgentId");
+                });
+        }
     }
 }
