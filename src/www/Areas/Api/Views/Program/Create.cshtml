@@ -1,0 +1,18 @@
+﻿@model nTestSwarm.Areas.Api.Models.ProgramInputModel
+@{
+    ViewBag.Title = "Create Program";
+}
+
+<h2>Create Program</h2>
+
+<div class="errors">
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm("Create", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.EditorForModel()
+    
+    <div class="control-group">
+        <div class="controls"><input type="submit" value="Save" /></div>
+    </div>
+}

@@ -1,9 +1,10 @@
-﻿@{ using (Html.BeginForm("DescribeNew", "Job", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" }))
-{
+﻿<h2>Queue New Run</h2>
+
+@using (Html.BeginForm("DescribeNew", "Job", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
    <div class="control-group">
        <label for="url" class="control-label">URL</label> 
        <div class="controls">
-           <intput type="text" id="url" name="url" />
+           <input type="text" id="url" name="url" />
        </div>
    </div>
     
@@ -21,7 +22,9 @@
        </div>
     </div>
 
-    <input type="submit" value="submit" />
+    <div class="control-group">
+        <div class="controls"><input type="submit" value="Queue" /></div>
+    </div>
 }
 
 

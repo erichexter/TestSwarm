@@ -1,0 +1,25 @@
+﻿@model nTestSwarm.Areas.Api.Models.ProgramInputModel
+
+<div class="control-group">
+    @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+    <div class="controls">
+        @Html.EditorFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+</div>
+    
+<div class="control-group">
+    @Html.LabelFor(x => x.JobDescriptionUrl, new { @class = "control-label" })
+    <div class="controls">
+        @Html.EditorFor(x => x.JobDescriptionUrl)
+        @Html.ValidationMessageFor(x => x.JobDescriptionUrl)
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(x => x.DefaultMaxRuns, new { @class = "control-label" })
+    <div class="controls">
+        @Html.EditorFor(x => x.DefaultMaxRuns)
+        @Html.ValidationMessageFor(x => x.DefaultMaxRuns)
+    </div>
+</div>

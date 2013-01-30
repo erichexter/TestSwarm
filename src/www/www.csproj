@@ -246,6 +246,7 @@
     <Compile Include="Application\Queries\NextRun\NextRunQuery.cs" />
     <Compile Include="Application\Queries\NextRun\NextRunQueryHandler.cs" />
     <Compile Include="Application\Queries\NextRun\RunQueue.cs" />
+    <Compile Include="Application\Queries\ProgramList\ProgramListQuery.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusQuery.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusQueryHandler.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusResult.cs" />
@@ -286,9 +287,12 @@
     <Compile Include="Areas\Api\Controllers\JobController.cs" />
     <Compile Include="Areas\Api\Controllers\JobListController.cs" />
     <Compile Include="Areas\Api\Controllers\JobSummaryController.cs" />
+    <Compile Include="Areas\Api\Controllers\ProgramController.cs" />
     <Compile Include="Areas\Api\Controllers\WipeController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
+    <Compile Include="Areas\Api\Models\ProgramInputModel.cs" />
+    <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />
     <Compile Include="Areas\Tests\Controllers\ManualController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
@@ -603,6 +607,11 @@
     <Content Include="Areas\Utils\Views\RunDiagnostics\Index.cshtml" />
     <Content Include="Areas\Web.config" />
     <Content Include="Application\Domain\Model.cd" />
+    <Content Include="Areas\Api\Views\Program\Create.cshtml" />
+    <Content Include="Areas\Api\Views\Program\Index.cshtml" />
+    <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramInputModel.cshtml" />
+    <Content Include="Areas\Api\Views\Program\Edit.cshtml" />
+    <Content Include="Areas\Api\Views\Program\Show.cshtml" />
     <None Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\ZeroClipboard.js" />
     <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.js" />
@@ -675,7 +684,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Api\Views\Shared\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
     <Folder Include="Areas\Utils\Models\" />

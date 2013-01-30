@@ -1,0 +1,25 @@
+﻿@model nTestSwarm.Areas.Api.Models.ProgramsViewModel
+@{
+    ViewBag.Title = "Programs";
+}
+
+<h2>Programs</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Jobs</th>
+            <th>Most Recent Job</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var program in Model.Programs) {
+        <tr>
+            <td>@program.Name</td>
+            <td>@program.JobCount</td>
+            <td>@program.LastJobStatus</td>
+        </tr>            
+        }
+    </tbody>
+</table>
