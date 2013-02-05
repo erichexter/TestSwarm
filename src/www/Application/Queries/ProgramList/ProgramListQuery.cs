@@ -23,24 +23,26 @@ namespace nTestSwarm.Application.Queries.ProgramList
     public class ProgramListQueryHandler : IHandler<ProgramListQuery, IEnumerable<ProgramListResult>>
     {
 
-        private readonly IDataBase _db;
+        private readonly Database _db;
 
-        public ProgramListQueryHandler(IDataBase db)
+        public ProgramListQueryHandler(Database db)
         {
             _db = db;
         }
 
         public IEnumerable<ProgramListResult> Handle(ProgramListQuery request)
         {
-            return (from program in _db.All<Program>().AsNoTracking()
-                    orderby program.Name
-                    select new ProgramListResult
-                    {
-                        Id = program.Id,
-                        Name = program.Name,
-                        //TODO: optimize and figure out how to get status
-                        JobCount = program.Jobs.Count()
-                    }).ToArray();
+            const string sql = "SELECT " +
+                                    "p.Id, p.Name, Count(j.Id) JobCount " +
+                               "FROM " +
+                                    "Programs p " +
+                                    "LEFT JOIN Jobs j ON p.Id = j.Program_Id " +
+                               "GROUP BY " +
+                                    "p.Id, p.Name " +
+                               "ORDER BY  " +
+                                    "Name";
+
+            return _db.SqlQuery<ProgramListResult>(sql).ToArray();
         }
 
     }

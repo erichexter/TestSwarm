@@ -6,7 +6,7 @@ namespace nTestSwarm.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Program", new { area = "Api" });
         }
     }
 }

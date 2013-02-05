@@ -1,10 +1,10 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Web.UI;
-using nTestSwarm.Application.Commands.JobDeletion;
+﻿using nTestSwarm.Application.Commands.JobDeletion;
 using nTestSwarm.Application.Commands.JobResetting;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.JobStatus;
+using System;
+using System.Web.Mvc;
+using System.Web.UI;
 
 namespace nTestSwarm.Controllers
 {
@@ -70,5 +70,6 @@ namespace nTestSwarm.Controllers
             }
             throw new Exception("Invalid type for WipeJob");
         }
+
     }
 }

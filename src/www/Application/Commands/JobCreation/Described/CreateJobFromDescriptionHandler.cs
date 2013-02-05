@@ -20,11 +20,11 @@ namespace nTestSwarm.Application.Commands.JobCreation.Described
             var desc = _descriptionClient.GetFrom(request.Url, request.Correlation);
 
             var createJobMessage = new CreateJob
-                {
-                    Name = desc.Name,
-                    Runs = desc.Runs.Select(x => new CreateJob.CreateNewRun {Name = x.Name, Url = x.Url}),
-                    SuiteId = desc.SuiteId,
-                };
+            {
+                Name = desc.Name,
+                Runs = desc.Runs.Select(x => new CreateJob.CreateNewRun {Name = x.Name, Url = x.Url}),
+                SuiteId = desc.SuiteId,
+            };
 
             if(request.MaxRuns.HasValue)
             {

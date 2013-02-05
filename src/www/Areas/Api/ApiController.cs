@@ -1,5 +1,5 @@
-using System.Web.Mvc;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using System.Web.Mvc;
 
 namespace nTestSwarm.Areas.Api
 {

@@ -1,12 +1,10 @@
-﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+﻿using nTestSwarm.Application;
+using nTestSwarm.Application.Commands.ProgramCreation;
+using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.ProgramList;
-using nTestSwarm.Areas.Api;
 using nTestSwarm.Areas.Api.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using www.Application.Commands.JobQueueing;
 
 namespace nTestSwarm.Areas.Api.Controllers
 {
@@ -38,17 +36,38 @@ namespace nTestSwarm.Areas.Api.Controllers
         [HttpPost]
         public ActionResult Create(ProgramInputModel inputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                var message = new CreateProgram
+                {
+                    Name = inputModel.Name,
+                    JobDescriptionUrl = inputModel.JobDescriptionUrl,
+                    DefaultMaxRuns = inputModel.DefaultMaxRuns
+                };
 
-            return View(inputModel);
+                var result = _bus.Send(message);
+
+                if (result.HasException)
+                {
+                    //TODO: determine handling
+                }
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(inputModel);
+            }
         }
 
-        public ActionResult Show(long id)
+        public ActionResult Details(long id)
         {
             return View();
         }
 
         public ActionResult Edit(long id)
         {
+
             return View(new ProgramInputModel());
         }
 
@@ -58,5 +77,38 @@ namespace nTestSwarm.Areas.Api.Controllers
             return View();
         }
 
+        public ActionResult QueueJob()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult QueueJob(int programId, string[] correlation)
+        {
+            if (programId < 1)
+            {
+                ModelState["programId"].Errors.Add("Program is required.");
+            }
+
+            var request = new QueueJobForProgram { ProgramId = programId, Correlation = correlation };
+            var result = _bus.Request(request);
+
+            if (result.HasException)
+            {
+                //TODO: determine handling
+            }
+            
+            if (result.Data.HasErrors)
+            {
+                result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
+
+                return View();
+            }
+            else
+            {
+                //TODO: verify redirect
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

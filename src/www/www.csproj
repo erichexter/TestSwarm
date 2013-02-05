@@ -172,8 +172,13 @@
     <Compile Include="Application\Commands\JobCreation\Described\CreateJobFromDescriptionHandler.cs" />
     <Compile Include="Application\Commands\JobDeletion\DeleteJob.cs" />
     <Compile Include="Application\Commands\JobDeletion\DeleteJobHandler.cs" />
+    <Compile Include="Application\Commands\JobQueueing\QueueJobForProgram.cs" />
+    <Compile Include="Application\Commands\JobQueueing\QueueJobForProgramHandler.cs" />
+    <Compile Include="Application\Commands\JobQueueing\QueueJobForProgramResult.cs" />
     <Compile Include="Application\Commands\JobResetting\ResetJob.cs" />
     <Compile Include="Application\Commands\JobResetting\ResetJobHandler.cs" />
+    <Compile Include="Application\Commands\ProgramCreation\CreateProgram.cs" />
+    <Compile Include="Application\Commands\ProgramCreation\CreateProgramHandler.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRun.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRunHandler.cs" />
     <Compile Include="Application\Commands\UpdateUser\UpdateUser.cs" />
@@ -284,11 +289,13 @@
     <Compile Include="Areas\Api\Controllers\JobListController.cs" />
     <Compile Include="Areas\Api\Controllers\JobSummaryController.cs" />
     <Compile Include="Areas\Api\Controllers\ProgramController.cs" />
+    <Compile Include="Areas\Api\Controllers\TestController.cs" />
     <Compile Include="Areas\Api\Controllers\WipeController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
     <Compile Include="Areas\Api\Models\ProgramInputModel.cs" />
     <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
+    <Compile Include="Areas\Api\Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />
     <Compile Include="Areas\Tests\Controllers\ManualController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
@@ -609,7 +616,8 @@
     <Content Include="Areas\Api\Views\Program\Index.cshtml" />
     <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramInputModel.cshtml" />
     <Content Include="Areas\Api\Views\Program\Edit.cshtml" />
-    <Content Include="Areas\Api\Views\Program\Show.cshtml" />
+    <Content Include="Areas\Api\Views\Program\Details.cshtml" />
+    <Content Include="Areas\Api\Views\Program\QueueJob.cshtml" />
     <None Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\ZeroClipboard.js" />
     <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.js" />
@@ -684,6 +692,7 @@
     <None Include="Web.CI.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Application\Commands\ProgramUpdate\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />

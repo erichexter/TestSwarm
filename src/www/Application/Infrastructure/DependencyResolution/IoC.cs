@@ -9,6 +9,7 @@ using nTestSwarm.Application.Queries.NextRun;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using nTestSwarm.Controllers;
+using System.Data.Entity;
 
 namespace nTestSwarm.Application.Infrastructure.DependencyResolution
 {
@@ -32,6 +33,8 @@ namespace nTestSwarm.Application.Infrastructure.DependencyResolution
                     .Use(() => new nTestSwarmContext());
 
                 x.Forward<nTestSwarmContext, IDataBase>();
+
+                x.For<Database>().Use(c => c.GetInstance<nTestSwarmContext>().Database);
                 
                 x.For<IUserAgentCache>().Singleton().Use<UserAgentCache>();
 

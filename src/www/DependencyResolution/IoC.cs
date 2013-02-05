@@ -8,6 +8,7 @@ using nTestSwarm.Application.Queries.NextRun;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using nTestSwarm.Controllers;
+using System.Data.Entity;
 
 namespace www {
     public static class IoC {
@@ -27,6 +28,8 @@ namespace www {
                 
                 x.For<nTestSwarmContext>().HybridHttpOrThreadLocalScoped()
                     .Use(() => new nTestSwarmContext());
+
+                x.For<Database>().Use(c => c.GetInstance<nTestSwarmContext>().Database);
 
                 x.Forward<nTestSwarmContext, IDataBase>();
                 
