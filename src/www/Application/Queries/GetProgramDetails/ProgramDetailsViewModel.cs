@@ -12,7 +12,7 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
         public string JobDescriptionUrl { get; set; }
         public DateTime LastJobCreatedTime { get; set; }
         public string LastCorrelation { get; set; }
-        public JobStatusType LastJobStatus { get; set; }
+        public string LastJobStatus { get; set; }
         public string LastJobResult { get; set; }
     }
 }

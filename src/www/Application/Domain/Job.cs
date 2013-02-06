@@ -26,6 +26,7 @@ namespace nTestSwarm.Application.Domain
         public DateTime? Finished { get; protected set; }
         public string SuiteID { get; set; }
         public int Status { get; protected set; }
+        public Program Program { get; set; }
 
         public JobStatusType JobStatus
         {

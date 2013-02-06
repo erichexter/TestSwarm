@@ -17,25 +17,23 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
 
         public ProgramDetailsViewModel Handle(ProgramDetailsQuery request)
         {
+            var lastJobId = _db.All<Job>().AsNoTracking()
+                            .Where(j => j.Program.Id == request.ProgramId)
+                            .Max(j => j.Id);
+
             //TODO: add job result and correlation values
-            const string sql = "SELECT " +
-                                    "p.Id ProgramId, " +
-                                    "p.Name, " +
-                                    "p.DefaultMaxRuns, " +
-                                    "p.JobDescriptionUrl, " +
-                                    "j.Created LastJobCreatedTime, " +
-                                    "j.Status LastJobStatus " +
-                                "FROM " +
-                                    "Programs p " +
-                                    "RIGHT JOIN Jobs j ON p.Id = j.Program_Id " +
-                                "WHERE " +
-                                    "p.ID = @p0 " +
-                                    "AND j.ID = (SELECT Max(Id) FROM jobs)";
-
-            var viewModel = _db.Database
-                              .SqlQuery<ProgramDetailsViewModel>(sql, new object[] { request.ProgramId })
-                              .FirstOrDefault();
-
+            var viewModel = (from j in _db.All<Job>().AsNoTracking()
+                             where j.Id == lastJobId
+                             select new ProgramDetailsViewModel
+                             {
+                                 ProgramId = j.Program.Id,
+                                 Name = j.Program.Name,
+                                 JobDescriptionUrl = j.Program.JobDescriptionUrl,
+                                 DefaultMaxRuns = j.Program.DefaultMaxRuns,
+                                 LastJobCreatedTime = j.Created,
+                                 LastJobStatus = j.JobStatus.ToString(),
+                             }).FirstOrDefault();
+                        
             viewModel.UserAgents = (from p in _db.All<Program>().AsNoTracking()
                                     from u in p.UserAgentsToTest
                                     where p.Id == request.ProgramId
