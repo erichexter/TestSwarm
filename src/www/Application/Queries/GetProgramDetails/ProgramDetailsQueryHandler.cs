@@ -1,8 +1,8 @@
 ﻿using nTestSwarm.Application.Data;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
 
 namespace nTestSwarm.Application.Queries.GetProgramDetails
 {
