@@ -84,21 +84,5 @@ namespace nTestSwarm.Areas.Api.Controllers
             });
         }
 
-        protected ActionResult HandleBusResult<TResult>(TResult result) where TResult : Result
-        {
-            return HandleBusResult(result, null);
-        }
-
-        protected ActionResult HandleBusResult<TResult>(TResult result, Func<TResult,ActionResult> successAction) where TResult : Result
-        {
-            //TODO: revisit result handling
-            if (successAction == null)
-                successAction = _ => View();
-
-            if (result.HasException)
-                return ApiVoid(result);
-            else
-                return successAction(result);
-        }
     }
 }
