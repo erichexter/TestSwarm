@@ -22,9 +22,9 @@ namespace nTestSwarm.Application.Domain
 
         [Required]
         [StringLength(50)]
-        public string Name { get; protected set; }
-        public int DefaultMaxRuns { get; protected set; }
-        public string JobDescriptionUrl { get; protected set; }
+        public string Name { get; set; }
+        public int DefaultMaxRuns { get; set; }
+        public string JobDescriptionUrl { get; set; }
         public virtual ICollection<UserAgent> UserAgentsToTest { get; protected set; }
         public virtual ICollection<Job> Jobs { get; protected set; }
         public string LastJobStatus { get; protected set; }

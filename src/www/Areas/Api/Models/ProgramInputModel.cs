@@ -4,7 +4,8 @@ namespace nTestSwarm.Areas.Api.Models
 {
     public class ProgramInputModel
     {
-        public long Id { get; set; }
+        [Required]
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -179,6 +179,8 @@
     <Compile Include="Application\Commands\JobResetting\ResetJobHandler.cs" />
     <Compile Include="Application\Commands\ProgramCreation\CreateProgram.cs" />
     <Compile Include="Application\Commands\ProgramCreation\CreateProgramHandler.cs" />
+    <Compile Include="Application\Commands\ProgramUpdate\UpdateProgram.cs" />
+    <Compile Include="Application\Commands\ProgramUpdate\UpdateProgramHandler.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRun.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRunHandler.cs" />
     <Compile Include="Application\Commands\UpdateUser\UpdateUser.cs" />
@@ -315,6 +317,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="Filters\MvcValidationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -692,7 +695,6 @@
     <None Include="Web.CI.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Application\Commands\ProgramUpdate\" />
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />

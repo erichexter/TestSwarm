@@ -2,10 +2,6 @@
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace www.Application.Commands.JobQueueing
 {
@@ -29,7 +25,7 @@ namespace www.Application.Commands.JobQueueing
 
             if (program != null)
             {
-                var jobDescriptor = _descriptionClient.GetFrom(request.Url, request.Correlation);
+                var jobDescriptor = _descriptionClient.GetFrom(request.Url, new[] { request.Correlation });
 
                 if (jobDescriptor == null || string.IsNullOrWhiteSpace(jobDescriptor.Name))
                     result.Errors.Add("url", "Url does not return expected data.");

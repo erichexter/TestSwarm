@@ -1,8 +1,11 @@
 ﻿using nTestSwarm.Application;
 using nTestSwarm.Application.Commands.ProgramCreation;
+using nTestSwarm.Application.Commands.ProgramUpdate;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Areas.Api.Models;
+using nTestSwarm.Filters;
+using System;
 using System.Web.Mvc;
 using www.Application.Commands.JobQueueing;
 
@@ -18,14 +21,11 @@ namespace nTestSwarm.Areas.Api.Controllers
             _bus = bus;
         }
 
-        //
-        // GET: /Api/Program/
         [OutputCache(Duration=2)]
         public ActionResult Index()
         {
-            var queryResults = _bus.Request(new ProgramListQuery());
-
-            return View(new ProgramsViewModel { Programs = queryResults.Data });
+            return HandleBusResult(_bus.Request(new ProgramListQuery()), result => 
+                View(new ProgramsViewModel { Programs = result.Data }));
         }
 
         public ActionResult Create()
@@ -34,47 +34,29 @@ namespace nTestSwarm.Areas.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ProgramInputModel inputModel)
+        [MvcValidation]
+        public ActionResult Create(CreateProgram command)
         {
-            if (!ModelState.IsValid)
-            {
-                var message = new CreateProgram
-                {
-                    Name = inputModel.Name,
-                    JobDescriptionUrl = inputModel.JobDescriptionUrl,
-                    DefaultMaxRuns = inputModel.DefaultMaxRuns
-                };
-
-                var result = _bus.Send(message);
-
-                if (result.HasException)
-                {
-                    //TODO: determine handling
-                }
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(inputModel);
-            }
+            return HandleBusResult(_bus.Send(command), _ => RedirectToAction("Index"));
         }
 
-        public ActionResult Details(long id)
+        public ActionResult Details(int id)
         {
+
             return View();
         }
 
-        public ActionResult Edit(long id)
+        public ActionResult Edit(int id)
         {
 
-            return View(new ProgramInputModel());
+            return View(new ProgramInputModel() { Id = id });
         }
 
         [HttpPost]
-        public ActionResult Edit(ProgramInputModel inputModel)
+        [MvcValidation]
+        public ActionResult Edit(UpdateProgram command)
         {
-            return View();
+            return HandleBusResult(_bus.Send(command), _ => RedirectToAction("Index"));
         }
 
         public ActionResult QueueJob()
@@ -83,32 +65,40 @@ namespace nTestSwarm.Areas.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult QueueJob(int programId, string[] correlation)
+        [MvcValidation]
+        public ActionResult QueueJob(QueueJobForProgram command)
         {
-            if (programId < 1)
+            return HandleBusResult(_bus.Request(command), result =>
             {
-                ModelState["programId"].Errors.Add("Program is required.");
-            }
+                if (result.Data.HasErrors)
+                {
+                    result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
 
-            var request = new QueueJobForProgram { ProgramId = programId, Correlation = correlation };
-            var result = _bus.Request(request);
+                    return View();
+                }
+                else
+                {
+                    //TODO: verify redirect
+                    return RedirectToAction("Index");
+                }
+            });
+        }
+
+        protected ActionResult HandleBusResult<TResult>(TResult result) where TResult : Result
+        {
+            return HandleBusResult(result, null);
+        }
+
+        protected ActionResult HandleBusResult<TResult>(TResult result, Func<TResult,ActionResult> successAction) where TResult : Result
+        {
+            //TODO: revisit result handling
+            if (successAction == null)
+                successAction = _ => View();
 
             if (result.HasException)
-            {
-                //TODO: determine handling
-            }
-            
-            if (result.Data.HasErrors)
-            {
-                result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
-
-                return View();
-            }
+                return ApiVoid(result);
             else
-            {
-                //TODO: verify redirect
-                return RedirectToAction("Index");
-            }
+                return successAction(result);
         }
     }
 }
