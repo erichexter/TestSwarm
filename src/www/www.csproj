@@ -230,6 +230,9 @@
     <Compile Include="Application\Infrastructure\RecurringTasks\ClientRunWipeTimer.cs" />
     <Compile Include="Application\Infrastructure\RecurringTasks\JobHost.cs" />
     <Compile Include="Application\PartialExtensions.cs" />
+    <Compile Include="Application\Queries\GetProgram\ProgramQuery.cs" />
+    <Compile Include="Application\Queries\GetProgram\ProgramQueryHandler.cs" />
+    <Compile Include="Application\Queries\GetProgram\ProgramViewModel.cs" />
     <Compile Include="Application\Queries\JobList\JobListQuery.cs" />
     <Compile Include="Application\Queries\JobStatus\BrowserComparer.cs" />
     <Compile Include="Application\Queries\JobStatus\JobStatusQuery.cs" />
@@ -257,6 +260,8 @@
     <Compile Include="Application\Queries\UserAgentInfo\UserAgentInfoQuery.cs" />
     <Compile Include="Application\Queries\UserAgentInfo\UserAgentInfoQueryHandler.cs" />
     <Compile Include="Application\Queries\UserAgentInfo\UserAgentInfoResult.cs" />
+    <Compile Include="Application\Queries\UserAgentList\UserAgentQuery.cs" />
+    <Compile Include="Application\Queries\UserAgentList\UserAgentQueryHandler.cs" />
     <Compile Include="Application\Queries\UserExists\UserExistsQuery.cs" />
     <Compile Include="Application\Queries\UserExists\UserExistsQueryHandler.cs" />
     <Compile Include="Application\Queries\UserExists\UserExistsResult.cs" />
@@ -295,7 +300,6 @@
     <Compile Include="Areas\Api\Controllers\WipeController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
-    <Compile Include="Areas\Api\Models\ProgramInputModel.cs" />
     <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
     <Compile Include="Areas\Api\Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />

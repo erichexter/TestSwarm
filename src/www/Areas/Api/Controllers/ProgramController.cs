@@ -2,10 +2,12 @@
 using nTestSwarm.Application.Commands.ProgramCreation;
 using nTestSwarm.Application.Commands.ProgramUpdate;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Queries.GetProgram;
 using nTestSwarm.Application.Queries.ProgramList;
+using nTestSwarm.Application.Queries.UserAgentList;
 using nTestSwarm.Areas.Api.Models;
 using nTestSwarm.Filters;
-using System;
+using System.Linq;
 using System.Web.Mvc;
 using www.Application.Commands.JobQueueing;
 
@@ -30,7 +32,15 @@ namespace nTestSwarm.Areas.Api.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return HandleBusResult(_bus.Request(new UserAgentQuery()), r =>
+            {
+                var viewModel = new ProgramViewModel  
+                {
+                    UserAgents = r.Data.Select(ua => new SelectListItem { Value = ua.Item1.ToString(), Text = ua.Item2 }).ToArray()
+                };
+
+                return View(viewModel);
+            });
         }
 
         [HttpPost]
@@ -40,16 +50,16 @@ namespace nTestSwarm.Areas.Api.Controllers
             return HandleBusResult(_bus.Send(command), _ => RedirectToAction("Index"));
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(long id)
         {
-
             return View();
         }
 
         public ActionResult Edit(int id)
         {
+            var query = new ProgramQuery { ProgramId = id };
 
-            return View(new ProgramInputModel() { Id = id });
+            return HandleBusResult(_bus.Request(query), result => View(result.Data));
         }
 
         [HttpPost]
