@@ -17,7 +17,8 @@ namespace nTestSwarm.Application.Queries.GetProgram
 
         [Display(Name = "Default Max Runs")]
         public int? DefaultMaxRuns { get; set; }
-
+        
+        [Display(Name= "User Agents")]
         public SelectListItem[] UserAgents { get; set; }
     }
 }

@@ -1,7 +1,9 @@
-﻿@model nTestSwarm.Areas.Api.Models.ProgramInputModel
-
+﻿@model nTestSwarm.Application.Queries.GetProgram.ProgramViewModel
+@{
+    var labelAttribs = new { @class = "control-label" };
+}
 <div class="control-group">
-    @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+    @Html.LabelFor(x => x.Name, labelAttribs)
     <div class="controls">
         @Html.EditorFor(x => x.Name)
         @Html.ValidationMessageFor(x => x.Name)
@@ -9,7 +11,7 @@
 </div>
     
 <div class="control-group">
-    @Html.LabelFor(x => x.JobDescriptionUrl, new { @class = "control-label" })
+    @Html.LabelFor(x => x.JobDescriptionUrl, labelAttribs)
     <div class="controls">
         @Html.EditorFor(x => x.JobDescriptionUrl)
         @Html.ValidationMessageFor(x => x.JobDescriptionUrl)
@@ -17,9 +19,16 @@
 </div>
 
 <div class="control-group">
-    @Html.LabelFor(x => x.DefaultMaxRuns, new { @class = "control-label" })
+    @Html.LabelFor(x => x.DefaultMaxRuns, labelAttribs)
     <div class="controls">
         @Html.EditorFor(x => x.DefaultMaxRuns)
         @Html.ValidationMessageFor(x => x.DefaultMaxRuns)
+    </div>
+</div>
+
+<div class="control-group">
+    @Html.LabelFor(x => x.UserAgents, labelAttribs)
+    <div class="controls">
+        @Html.ListBox("UserAgentIds", Model.UserAgents)
     </div>
 </div>
