@@ -3,6 +3,7 @@ using nTestSwarm.Application.Commands.ProgramCreation;
 using nTestSwarm.Application.Commands.ProgramUpdate;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.GetProgram;
+using nTestSwarm.Application.Queries.GetProgramDetails;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Application.Queries.UserAgentList;
 using nTestSwarm.Areas.Api.Models;
@@ -52,7 +53,8 @@ namespace nTestSwarm.Areas.Api.Controllers
 
         public ActionResult Details(long id)
         {
-            return View();
+            return HandleBusResult(_bus.Request(new ProgramDetailsQuery { ProgramId = id }), 
+                    r => View(r.Data));
         }
 
         public ActionResult Edit(int id)

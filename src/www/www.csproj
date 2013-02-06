@@ -230,6 +230,9 @@
     <Compile Include="Application\Infrastructure\RecurringTasks\ClientRunWipeTimer.cs" />
     <Compile Include="Application\Infrastructure\RecurringTasks\JobHost.cs" />
     <Compile Include="Application\PartialExtensions.cs" />
+    <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQuery.cs" />
+    <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQueryHandler.cs" />
+    <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsViewModel.cs" />
     <Compile Include="Application\Queries\GetProgram\ProgramQuery.cs" />
     <Compile Include="Application\Queries\GetProgram\ProgramQueryHandler.cs" />
     <Compile Include="Application\Queries\GetProgram\ProgramViewModel.cs" />
