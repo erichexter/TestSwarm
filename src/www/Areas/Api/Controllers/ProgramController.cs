@@ -72,14 +72,14 @@ namespace nTestSwarm.Areas.Api.Controllers
             return HandleBusResult(_bus.Send(command), _ => RedirectToAction("Index"));
         }
 
-        public ActionResult QueueJob(long? programId)
+        public ActionResult QueueJob(long? id)
         {
             return HandleBusResult(_bus.Request(new ProgramDescriptorsQuery()), r =>
             {
                 var viewModel = new QueueJobForProgramViewModel 
                 {
-                    ProgramId = programId ?? 0,
-                    Programs = r.Data.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == programId })
+                    ProgramId = id ?? 0,
+                    Programs = r.Data.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == id })
                 };
 
                 return View(viewModel);
