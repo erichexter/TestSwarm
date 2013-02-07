@@ -1,14 +1,13 @@
 ﻿using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace nTestSwarm.Application.Queries.UserAgentList
 {
-    public class UserAgentQueryHandler : IHandler<UserAgentQuery, IEnumerable<Tuple<long,string>>>
+    public class UserAgentQueryHandler : IHandler<UserAgentQuery, IEnumerable<Descriptor>>
     {
         private readonly IDataBase _db;
 
@@ -17,11 +16,11 @@ namespace nTestSwarm.Application.Queries.UserAgentList
             _db = db;
         }
 
-        public IEnumerable<Tuple<long, string>> Handle(UserAgentQuery request)
+        public IEnumerable<Descriptor> Handle(UserAgentQuery request)
         {
-            return (from x in _db.All<UserAgent>().AsNoTracking()
-                    select new Tuple<long, string>(x.Id, x.Name))
-                    .ToArray();
+            return _db.All<UserAgent>().AsNoTracking()
+                        .Select(x => new Descriptor { Id = x.Id, Name = x.Name })
+                        .ToArray();
         }
     }
 }
