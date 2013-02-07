@@ -23,7 +23,7 @@ namespace nTestSwarm.Application.Events.JobCompletion
             // this assumes one job suite for the entire system
             // TODO incorporate SuiteId
             return (from jobs in _db.All<Job>()
-                    where jobs.Status == (int)JobStatusType.Complete && jobs.Finished < job.Finished
+                    where jobs.Status == JobStatusType.Complete && jobs.Finished < job.Finished
                     orderby jobs.Finished descending 
                     select jobs).Take(1).SingleOrDefault();
         }

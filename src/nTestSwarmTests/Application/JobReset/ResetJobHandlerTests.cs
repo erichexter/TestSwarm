@@ -1,14 +1,13 @@
-﻿using System.Linq;
-using NUnit.Framework;
-using Should;
-using nTestSwarm.Application.Commands.CompletedRun;
+﻿using nTestSwarm.Application.Commands.CompletedRun;
 using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Commands.JobResetting;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.NextRun;
-using nTestSwarm.Application.Queries.NextRun;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
+using NUnit.Framework;
+using Should;
+using System.Linq;
 
 namespace nTestSwarmTests.Application.JobReset
 {
@@ -73,7 +72,7 @@ namespace nTestSwarmTests.Application.JobReset
                                   var job = context.Jobs.Single();
                                   jobId = job.Id;
 
-                                  job.JobStatus.ShouldEqual(JobStatusType.Complete);
+                                  job.Status.ShouldEqual(JobStatusType.Complete);
 
                               });
 
@@ -97,7 +96,7 @@ namespace nTestSwarmTests.Application.JobReset
             {
                 var job = context.Jobs.Single();
 
-                job.JobStatus.ShouldEqual(JobStatusType.Created);
+                job.Status.ShouldEqual(JobStatusType.Created);
                 job.Runs.All(x => x.RunStatus == RunStatusType.NotStarted).ShouldBeTrue();
                 job.Runs.SelectMany(x => x.RunUserAgents).All(x => x.RunStatus == RunStatusType.NotStarted).ShouldBeTrue();
             });

@@ -1,6 +1,9 @@
-﻿using System.Web;
+﻿using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Transformers;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
+using www.App_Start;
 
 namespace BootstrapSupport
 {
@@ -13,6 +16,18 @@ namespace BootstrapSupport
 #else
             BundleTable.EnableOptimizations = true;
 #endif
+
+            var cssTransformer = new CssTransformer();
+            var nullOrderer = new NullOrderer();
+
+            // can mix less, sass and css together
+            var sytleBundle = new Bundle("~/styles", cssTransformer).Include(
+                "~/Content/body.css",
+                "~/Content/site.less");
+
+            sytleBundle.Orderer = nullOrderer;
+
+            bundles.Add(sytleBundle);
 
             bundles.Add(new ScriptBundle("~/js").Include(
                 "~/Scripts/jquery-1.*",
@@ -27,13 +42,6 @@ namespace BootstrapSupport
                 //"~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"
                 ));
 
-            bundles.Add(new StyleBundle("~/content/css").Include(
-                "~/Content/bootstrap.css"
-                ));
-            bundles.Add(new StyleBundle("~/content/css-responsive").Include(
-                "~/Content/bootstrap-responsive.css",
-                "~/Content/site.css"
-                ));
         }
     }
 }

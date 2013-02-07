@@ -13,7 +13,7 @@ namespace nTestSwarm.Application.Domain
         public Job(string name)
         {
             Name = name;
-            JobStatus = JobStatusType.Created;
+            Status = JobStatusType.Created;
             Runs = new HashSet<Run>();
         }
 
@@ -25,34 +25,29 @@ namespace nTestSwarm.Application.Domain
         public DateTime? Started { get; protected set; }
         public DateTime? Finished { get; protected set; }
         public string SuiteID { get; set; }
-        public int Status { get; protected set; }
+        public JobStatusType Status { get; protected set; }
         public Program Program { get; set; }
-
-        public JobStatusType JobStatus
-        {
-            get { return (JobStatusType) Status; }
-            private set { Status = (int) value; }
-        }
+        public string Correlation { get; protected set; }
 
         public virtual ICollection<Run> Runs { get; protected set; }
 
         public void Reset()
         {
-            JobStatus = JobStatusType.Created;
+            Status = JobStatusType.Created;
             Started = null;
             Finished = null;
         }
 
         void Complete()
         {
-            JobStatus = JobStatusType.Complete;
+            Status = JobStatusType.Complete;
             Finished = SystemTime.NowThunk();
             DomainEvents.Raise(new JobCompleted(this));
         }
 
         void Running()
         {
-            JobStatus = JobStatusType.Running;
+            Status = JobStatusType.Running;
             Finished = null;
         }
 
@@ -83,7 +78,7 @@ namespace nTestSwarm.Application.Domain
 
         public bool IsComplete()
         {
-            return JobStatus == JobStatusType.Complete;
+            return Status == JobStatusType.Complete;
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using NUnit.Framework;
-using Should;
-using nTestSwarm.Application.Commands.CompletedRun;
+﻿using nTestSwarm.Application.Commands.CompletedRun;
 using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.NextRun;
+using NUnit.Framework;
+using Should;
+using System;
+using System.Linq;
 
 namespace nTestSwarmTests.Application.JobResultsDiff
 {
@@ -61,7 +61,7 @@ namespace nTestSwarmTests.Application.JobResultsDiff
             });
 
             DbContext().Jobs.Count().ShouldEqual(2);
-            DbContext().Jobs.ToArray().All(x => x.JobStatus == JobStatusType.Complete).ShouldBeTrue();
+            DbContext().Jobs.ToArray().All(x => x.Status == JobStatusType.Complete).ShouldBeTrue();
 
             // async process events
             WithDbContext(context => GetInstance<IJobCompletedEventDistributor>().DistributeAccumlatedJobCompletedEvents());

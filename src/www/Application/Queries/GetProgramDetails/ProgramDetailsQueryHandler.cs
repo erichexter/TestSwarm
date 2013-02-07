@@ -21,7 +21,7 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
                             .Where(j => j.Program.Id == request.ProgramId)
                             .Max(j => j.Id);
 
-            //TODO: add job result and correlation values
+            //TODO: add job result 
             var viewModel = (from j in _db.All<Job>().AsNoTracking()
                              where j.Id == lastJobId
                              select new ProgramDetailsViewModel
@@ -31,7 +31,8 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
                                  JobDescriptionUrl = j.Program.JobDescriptionUrl,
                                  DefaultMaxRuns = j.Program.DefaultMaxRuns,
                                  LastJobCreatedTime = j.Created,
-                                 LastJobStatus = j.JobStatus.ToString(),
+                                 LastJobStatus = j.Status.ToString(),
+                                 LastCorrelation = j.Correlation
                              }).FirstOrDefault();
                         
             viewModel.UserAgents = (from p in _db.All<Program>().AsNoTracking()
