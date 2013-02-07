@@ -16,7 +16,7 @@
     <tbody>
         @foreach (var program in Model.Programs) {
         <tr>
-            <td>@Html.ActionLink(program.Name, "show", new { id = @program.Id })</td>
+            <td>@Html.ActionLink(program.Name, "details", new { id = @program.Id })</td>
             <td>@program.JobCount</td>
             <td>@program.LastJobStatus</td>
         </tr>            
