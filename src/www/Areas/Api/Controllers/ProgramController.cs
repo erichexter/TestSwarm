@@ -37,7 +37,7 @@ namespace nTestSwarm.Areas.Api.Controllers
             {
                 var viewModel = new ProgramViewModel  
                 {
-                    UserAgents = r.Data.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name }).ToArray()
+                    UserAgents = r.Data.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = true }).ToArray()
                 };
 
                 return View(viewModel);
