@@ -1,4 +1,4 @@
-﻿@model nTestSwarm.Areas.Api.Models.ProgramInputModel
+﻿@model nTestSwarm.Application.Queries.GetProgram.ProgramViewModel
 @{
     ViewBag.Title = "Create Program";
 }
@@ -10,9 +10,9 @@
 </div>
 
 @using (Html.BeginForm("Create", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
-    @Html.EditorForModel()
+    @Html.EditorFor(x => x)
     
     <div class="control-group">
-        <div class="controls"><input type="submit" value="Save" /></div>
+        <div class="controls"><input type="submit" value="Save" class="save-button" /></div>
     </div>
 }

@@ -243,6 +243,7 @@
     <Compile Include="Application\Infrastructure\RecurringTasks\ClientRunWipeTimer.cs" />
     <Compile Include="Application\Infrastructure\RecurringTasks\JobHost.cs" />
     <Compile Include="Application\PartialExtensions.cs" />
+    <Compile Include="Application\Queries\Descriptor.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQuery.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQueryHandler.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsViewModel.cs" />
@@ -656,7 +657,7 @@
     <Content Include="Application\Domain\Model.cd" />
     <Content Include="Areas\Api\Views\Program\Create.cshtml" />
     <Content Include="Areas\Api\Views\Program\Index.cshtml" />
-    <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramInputModel.cshtml" />
+    <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramViewModel.cshtml" />
     <Content Include="Areas\Api\Views\Program\Edit.cshtml" />
     <Content Include="Areas\Api\Views\Program\Details.cshtml" />
     <Content Include="Areas\Api\Views\Program\QueueJob.cshtml" />
@@ -705,6 +706,8 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\accordion.less" />
     <Content Include="Content\_tables.less" />
+    <Content Include="Content\_forms.less" />
+    <Content Include="Content\_buttons.less" />
     <None Include="Scripts\jquery-1.9.0-vsdoc.js" />
     <Content Include="Scripts\DataTables-1.9.4\extras\TableTools\media\js\ZeroClipboard.js" />
     <Content Include="Scripts\DataTables-1.9.4\media\js\jquery.dataTables.js" />

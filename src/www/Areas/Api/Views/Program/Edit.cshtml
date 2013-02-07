@@ -1,4 +1,4 @@
-﻿@model nTestSwarm.Areas.Api.Models.ProgramInputModel
+﻿@model nTestSwarm.Application.Queries.GetProgram.ProgramViewModel
 @{
     ViewBag.Title = "Edit Program";
 }
@@ -15,6 +15,6 @@
     @Html.EditorForModel()
     
     <div class="control-group">
-        <div class="controls"><input type="submit" value="Save" /></div>
+        <div class="controls"><input type="submit" value="Save" class="save-button" /></div>
     </div>
 }
