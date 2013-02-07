@@ -17,22 +17,21 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
 
         public ProgramDetailsViewModel Handle(ProgramDetailsQuery request)
         {
-            var lastJobId = _db.All<Job>().AsNoTracking()
-                            .Where(j => j.Program.Id == request.ProgramId)
-                            .Max(j => j.Id);
+            var programs = _db.All<Program>().AsNoTracking();
+            var jobs = _db.All<Job>().AsNoTracking();
 
             //TODO: add job result 
-            var viewModel = (from j in _db.All<Job>().AsNoTracking()
-                             where j.Id == lastJobId
+            var viewModel = (from p in programs
+                             where  p.Id == request.ProgramId
                              select new ProgramDetailsViewModel
                              {
-                                 ProgramId = j.Program.Id,
-                                 Name = j.Program.Name,
-                                 JobDescriptionUrl = j.Program.JobDescriptionUrl,
-                                 DefaultMaxRuns = j.Program.DefaultMaxRuns,
-                                 LastJobCreatedTime = j.Created,
-                                 LastJobStatus = j.Status.ToString(),
-                                 LastCorrelation = j.Correlation
+                                 ProgramId = p.Id,
+                                 Name = p.Name,
+                                 JobDescriptionUrl = p.JobDescriptionUrl,
+                                 DefaultMaxRuns = p.DefaultMaxRuns,
+                                 Job = (from j in p.Jobs
+                                        orderby j.Id descending
+                                        select j).FirstOrDefault()
                              }).FirstOrDefault();
                         
             viewModel.UserAgents = (from p in _db.All<Program>().AsNoTracking()

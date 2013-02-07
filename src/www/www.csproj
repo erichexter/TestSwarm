@@ -244,6 +244,8 @@
     <Compile Include="Application\Infrastructure\RecurringTasks\JobHost.cs" />
     <Compile Include="Application\PartialExtensions.cs" />
     <Compile Include="Application\Queries\Descriptor.cs" />
+    <Compile Include="Application\Queries\GetProgramDescriptors\ProgramDescriptorsQuery.cs" />
+    <Compile Include="Application\Queries\GetProgramDescriptors\ProgramDescriptorsQueryHandler.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQuery.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsQueryHandler.cs" />
     <Compile Include="Application\Queries\GetProgramDetails\ProgramDetailsViewModel.cs" />
@@ -366,6 +368,10 @@
     <Compile Include="Migrations\201301301838136_Program.cs" />
     <Compile Include="Migrations\201301301838136_Program.Designer.cs">
       <DependentUpon>201301301838136_Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302072119451_AddJobCorrelation.cs" />
+    <Compile Include="Migrations\201302072119451_AddJobCorrelation.Designer.cs">
+      <DependentUpon>201302072119451_AddJobCorrelation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
@@ -804,6 +810,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201301301838136_Program.resx">
       <DependentUpon>201301301838136_Program.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302072119451_AddJobCorrelation.resx">
+      <DependentUpon>201302072119451_AddJobCorrelation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

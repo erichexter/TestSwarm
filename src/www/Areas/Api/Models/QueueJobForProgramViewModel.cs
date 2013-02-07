@@ -1,13 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace nTestSwarm.Areas.Api.Models
 {
     public class QueueJobForProgramViewModel
     {
 
-        public SelectList Programs { get; set; }
+        public IEnumerable<SelectListItem> Programs { get; set; }
 
-        public int ProgramId { get; set; }
+        public long ProgramId { get; set; }
 
     }
 }

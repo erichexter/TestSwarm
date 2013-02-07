@@ -3,6 +3,7 @@ using nTestSwarm.Application.Commands.ProgramCreation;
 using nTestSwarm.Application.Commands.ProgramUpdate;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.GetProgram;
+using nTestSwarm.Application.Queries.GetProgramDescriptors;
 using nTestSwarm.Application.Queries.GetProgramDetails;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Application.Queries.UserAgentList;
@@ -71,9 +72,18 @@ namespace nTestSwarm.Areas.Api.Controllers
             return HandleBusResult(_bus.Send(command), _ => RedirectToAction("Index"));
         }
 
-        public ActionResult QueueJob()
+        public ActionResult QueueJob(long? programId)
         {
-            return View();
+            return HandleBusResult(_bus.Request(new ProgramDescriptorsQuery()), r =>
+            {
+                var viewModel = new QueueJobForProgramViewModel 
+                {
+                    ProgramId = programId ?? 0,
+                    Programs = r.Data.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == programId })
+                };
+
+                return View(viewModel);
+            });
         }
 
         [HttpPost]

@@ -9,22 +9,18 @@
     <div class="span2 display-label">Name</div>
     <div class="span4 display-values">@Model.Name</div>
 </div>
-    <div class="control-group">
-        <label class="control-label">Name</label>
-        <div class="controls">
-            <span class="uneditable-input">@Model.Name</span>
-        </div>
+<div class="row">
+    <div class="span2 display-label">Job Desc Url</div>
+    <div class="span4 display-values">@Model.JobDescriptionUrl</div>
+</div>
+<div class="row">
+    <div class="span2 display-label">Default Max Runs</div>
+    <div class="span4 display-values">@Model.DefaultMaxRuns</div>
+</div>
+<div class="row">
+    <div class="span2 display-label">Name</div>
+    <div class="span4 display-values">
+        @Html.DisplayTextFor(x => x.DefaultMaxRuns)
     </div>
-    <div class="control-group">
-        <label class="control-label">Job Desc Url</label>
-        <div class="controls">
-            <span class="uneditable-input">@Model.JobDescriptionUrl</span>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label">Name</label>
-        <div class="controls">
-            <span class="uneditable-input">@Model.Name</span>
-        </div>
-    </div>
-</form>
+</div>
+
