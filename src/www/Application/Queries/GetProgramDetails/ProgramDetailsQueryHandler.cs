@@ -18,7 +18,6 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
         public ProgramDetailsViewModel Handle(ProgramDetailsQuery request)
         {
             var programs = _db.All<Program>().AsNoTracking();
-            var jobs = _db.All<Job>().AsNoTracking();
 
             //TODO: add job result 
             var viewModel = (from p in programs
