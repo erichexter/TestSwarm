@@ -1,13 +1,44 @@
 ﻿@import-once "bootstrap/bootstrap";
 
-.read-only-form {
-	> .border {
+#program-details {
+	margin-bottom: 20px;
+	//height: 300px;
 
+	> div {
+		padding-top: 10px;	
+	}
+
+	#program-panel {
+		.makeColumn(6);
+		.border-radius(6px);
+		background-color: #f0f0f0;
+		height: 100%;
+	}
+
+	#job-status-panel {
+		.makeColumn(6);
+		.border-radius(6px);
+		height: 100%;
 	}
 
 	.display-label {
+		.makeColumn(2);
+	}
+
+	.display-values {
+		.makeColumn(4);
+	}
+}
+
+.read-only-form {
+	.makeRow();	
+	
+	.display-label {
 		font-weight: bold;
+		text-align: right;
 	}
 		
-
+	.row {
+		margin-bottom: 10px;
+	}
 }

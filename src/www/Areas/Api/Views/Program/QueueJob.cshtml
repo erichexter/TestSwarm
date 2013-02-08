@@ -6,6 +6,8 @@
 <h2>Queue Job</h2>
 
 @using (Html.BeginForm("QueueJob", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.Partial("~/Views/Shared/_validationSummary.cshtml");
+    
     <div class="control-group">
         <label for="programId" class="control-label">Programs</label>
         <div class="controls">
@@ -35,6 +37,6 @@
     </div>
 
     <div class="control-group">
-        <div class="controls"><input type="submit" value="Queue" /></div>
+        <div class="controls"><input type="submit" value="Queue" class="save-button" /></div>
     </div>
 }

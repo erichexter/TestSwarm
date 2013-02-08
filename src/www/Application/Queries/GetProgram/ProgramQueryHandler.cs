@@ -28,12 +28,12 @@ namespace nTestSwarm.Application.Queries.GetProgram
                         Name = p.Name,
                         JobDescriptionUrl = p.JobDescriptionUrl,
                         DefaultMaxRuns = p.DefaultMaxRuns,
-                        UserAgents = allUserAgents.Select(x => new SelectListItem
+                        UserAgents = allUserAgents.Select(x => new Descriptor
                         {
-                            Value = x.Id.ToString(),
-                            Text = x.Name,
+                            Id = x.Id,
+                            Name = x.Name,
                             Selected = p.UserAgentsToTest.Any(userAgent => userAgent.Id == x.Id)
-                        }).ToArray()
+                        })
                     })
                     .FirstOrDefault();
         }

@@ -1,26 +1,55 @@
-﻿@model nTestSwarm.Application.Queries.GetProgramDetails.ProgramDetailsViewModel
+﻿@using nTestSwarm.Application
+@model nTestSwarm.Application.Queries.GetProgramDetails.ProgramDetailsViewModel
 @{
-    ViewBag.Title = "Program";
+    ViewBag.Title = "Program - " + Model.Name;
 }
 
 <h2>Program Details</h2>
 
-<div class="row">
-    <div class="span2 display-label">Name</div>
-    <div class="span4 display-values">@Model.Name</div>
-</div>
-<div class="row">
-    <div class="span2 display-label">Job Desc Url</div>
-    <div class="span4 display-values">@Model.JobDescriptionUrl</div>
-</div>
-<div class="row">
-    <div class="span2 display-label">Default Max Runs</div>
-    <div class="span4 display-values">@Model.DefaultMaxRuns</div>
-</div>
-<div class="row">
-    <div class="span2 display-label">Name</div>
-    <div class="span4 display-values">
-        @Html.DisplayTextFor(x => x.DefaultMaxRuns)
+<div id="program-details" class="read-only-form">
+    <div id="program-panel">
+        <div class="row">
+            <div class="display-label">Name</div>
+            <div class="display-values">@Model.Name</div>
+        </div>
+        <div class="row">
+            <div class="display-label">Job Desc Url</div>
+            <div class="display-values">@Model.JobDescriptionUrl</div>
+        </div>
+        <div class="row">
+            <div class="display-label">Default Max Runs</div>
+            <div class="display-values">@Model.DefaultMaxRuns</div>
+        </div>
+        <div class="row">
+            <div class="display-label">User Agents</div>
+            <div class="display-values">@Html.StringList(Model.UserAgents)</div>
+        </div>
     </div>
+    <div id="job-status-panel">
+        @if (Model.LastCorrelation == null) {
+        <div>This program has no jobs.</div>
+        } else {
+        <div class="row">
+            <div class="display-label">Status</div>
+            <div class="display-values">@Model.LastJobStatus</div>
+        </div>
+        <div class="row">
+            <div class="display-label">Correlation</div>
+            <div class="display-values">@Model.LastCorrelation</div>
+        </div>
+        <div class="row">
+            <div class="display-label">Created</div>
+            <div class="display-values">@Model.LastJobCreatedTime</div>
+        </div>
+        <div class="row">
+            <div class="display-label">Result</div>
+            <div class="display-values">@Model.LastJobResult</div>
+        </div>
+        }
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "edit", new { id = Model.ProgramId }, new { @class = "action-button" })
+    @Html.ActionLink("Queue Job", "queuejob", new { id = Model.ProgramId }, new { @class = "action-button" })
 </div>
 

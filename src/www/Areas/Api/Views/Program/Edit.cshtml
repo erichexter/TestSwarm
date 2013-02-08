@@ -11,8 +11,8 @@
 </div>
 
 @using (Html.BeginForm("Create", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
-    @Html.HiddenFor(x => x.Id)
-    @Html.EditorForModel()
+    @Html.HiddenFor(x => x.ProgramId)
+    @Html.EditorFor(x => x)
     
     <div class="control-group">
         <div class="controls"><input type="submit" value="Save" class="save-button" /></div>

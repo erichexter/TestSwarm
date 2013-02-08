@@ -38,7 +38,7 @@ namespace nTestSwarm.Areas.Api.Controllers
             {
                 var viewModel = new ProgramViewModel  
                 {
-                    UserAgents = r.Data.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = true }).ToArray()
+                    UserAgents = r.Data
                 };
 
                 return View(viewModel);
@@ -76,10 +76,15 @@ namespace nTestSwarm.Areas.Api.Controllers
         {
             return HandleBusResult(_bus.Request(new ProgramDescriptorsQuery()), r =>
             {
+                var programs = r.Data.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == id })
+                                    .ToList();
+
+                programs.Insert(0, new SelectListItem { Text = "(Select)" });
+
                 var viewModel = new QueueJobForProgramViewModel 
                 {
                     ProgramId = id ?? 0,
-                    Programs = r.Data.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == id })
+                    Programs = programs
                 };
 
                 return View(viewModel);
@@ -87,23 +92,29 @@ namespace nTestSwarm.Areas.Api.Controllers
         }
 
         [HttpPost]
-        [MvcValidation]
         public ActionResult QueueJob(QueueJobForProgram command)
         {
-            return HandleBusResult(_bus.Request(command), result =>
+            if (ModelState.IsValid)
             {
-                if (result.Data.HasErrors)
+                return HandleBusResult(_bus.Request(command), result =>
                 {
-                    result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
+                    if (result.Data.HasErrors)
+                    {
+                        result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
 
-                    return View();
-                }
-                else
-                {
-                    //TODO: verify redirect
-                    return RedirectToAction("Index");
-                }
-            });
+                        return View();
+                    }
+                    else
+                    {
+                        //TODO: verify redirect
+                        return RedirectToAction("Index");
+                    }
+                });
+            }
+            else
+            {
+                return QueueJob((long?)null);
+            }
         }
 
     }

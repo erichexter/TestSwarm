@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace nTestSwarm.Application.Queries.GetProgram
@@ -17,8 +19,16 @@ namespace nTestSwarm.Application.Queries.GetProgram
 
         [Display(Name = "Default Max Runs")]
         public int? DefaultMaxRuns { get; set; }
-        
+
+        public IEnumerable<Descriptor> UserAgents 
+        {   
+            set 
+            {
+                UserAgentListItems = value.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = true });
+            } 
+        }
+
         [Display(Name= "User Agents")]
-        public SelectListItem[] UserAgents { get; set; }
+        public IEnumerable<SelectListItem> UserAgentListItems { get; set; }
     }
 }
