@@ -17,32 +17,33 @@ namespace nTestSwarm.Application.Queries.ProgramList
         public long Id { get; set; }
         public string Name { get; set; }
         public int JobCount { get; set; }
-        public string LastJobStatus { get; set; }
+        public JobStatusType LastJobStatus { get; set; }
+        public string LastJobStatusText { get { return JobCount == 0 ? "" : LastJobStatus.ToString(); } }
     }
 
     public class ProgramListQueryHandler : IHandler<ProgramListQuery, IEnumerable<ProgramListResult>>
     {
 
-        private readonly Database _db;
+        private readonly IDataBase _db;
 
-        public ProgramListQueryHandler(Database db)
+        public ProgramListQueryHandler(IDataBase db)
         {
             _db = db;
         }
 
         public IEnumerable<ProgramListResult> Handle(ProgramListQuery request)
         {
-            const string sql = "SELECT " +
-                                    "p.Id, p.Name, Count(j.Id) JobCount " +
-                               "FROM " +
-                                    "Programs p " +
-                                    "LEFT JOIN Jobs j ON p.Id = j.Program_Id " +
-                               "GROUP BY " +
-                                    "p.Id, p.Name " +
-                               "ORDER BY  " +
-                                    "Name";
-
-            return _db.SqlQuery<ProgramListResult>(sql).ToArray();
+            return (from p in _db.All<Program>().AsNoTracking()
+                    orderby p.Name
+                    select new ProgramListResult
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        JobCount = p.Jobs.Count(),
+                        LastJobStatus = (from j in p.Jobs
+                                        orderby j.Id descending
+                                        select j.Status).FirstOrDefault()
+                    }).ToArray();
         }
 
     }

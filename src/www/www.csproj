@@ -603,6 +603,7 @@
     <Content Include="images\winmo.png" />
     <Content Include="images\winmo.sm.png" />
     <Content Include="InstallationDummyFile.txt" />
+    <Content Include="Scripts\app\data-href-handler.js" />
     <Content Include="Scripts\app\job-status.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

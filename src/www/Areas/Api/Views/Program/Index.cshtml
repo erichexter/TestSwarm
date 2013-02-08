@@ -10,16 +10,20 @@
         <tr>
             <th>Name</th>
             <th>Jobs</th>
-            <th>Most Recent Job</th>
+            <th>Most Recent Job Status</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var program in Model.Programs) {
-        <tr>
+        <tr data-href="@Url.Action("details", new { id = @program.Id })">
             <td>@Html.ActionLink(program.Name, "details", new { id = @program.Id })</td>
             <td>@program.JobCount</td>
-            <td>@program.LastJobStatus</td>
+            <td>@program.LastJobStatusText</td>
         </tr>            
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/app/data-href-handler.js"></script>
+}

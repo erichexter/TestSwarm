@@ -4,48 +4,53 @@
 table.selection {
 	.table;
 	.table-striped;
+	.table-hover;
+	
+    tbody > tr {
+		cursor: pointer;
+    }
 }
 
 table.job-results {
-	.table;
-	.table-striped;
-	.table-hover;
+    .table;
+    .table-striped;
+    .table-hover;
 
-	thead th {
-		text-align: center;
-	}
+    thead th {
+        text-align: center;
+    }
 
-	thead .browser-name {
-		display: block;
-		margin-top: 5px;
-		background: #757575;
-		font-size: 12px;
-		color: white;
-		.border-radius(5px);
-		padding: 1px;
-	}
+    thead .browser-name {
+        display: block;
+        margin-top: 5px;
+        background: #757575;
+        font-size: 12px;
+        color: white;
+        .border-radius(5px);
+        padding: 1px;
+    }
 
-	td.pass {
-		background: @run-success-background-color;
-		color: @run-success-text-color;
-	}
+    td.pass {
+        background: @run-success-background-color;
+        color: @run-success-text-color;
+    }
 
-	td.fail {
-		background: @run-fail-background-color;
-		color: @run-fail-text-color;
-	}
+    td.fail {
+        background: @run-fail-background-color;
+        color: @run-fail-text-color;
+    }
 
-	td.progress {
-		background: @run-progress-background-color;
-		color: @run-progress-text-color;
-	}
+    td.progress {
+        background: @run-progress-background-color;
+        color: @run-progress-text-color;
+    }
 
-	td.timeout, td.error {
-		background: @run-error-background-color;
-		color: @run-error-text-color;
-	}
+    td.timeout, td.error {
+        background: @run-error-background-color;
+        color: @run-error-text-color;
+    }
 
-	a {
-		color: #000;
-	}
+    a {
+        color: #000;
+    }
 }
