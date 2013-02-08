@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace www.Application.Commands.JobQueueing
+namespace nTestSwarm.Application.Commands.JobQueueing
 {
     public class QueueJobForProgramResult
     {

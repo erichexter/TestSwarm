@@ -1,9 +1,6 @@
 ﻿using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Transformers;
-using System.Web;
-using System.Web.Mvc;
 using System.Web.Optimization;
-using www.App_Start;
 
 namespace BootstrapSupport
 {

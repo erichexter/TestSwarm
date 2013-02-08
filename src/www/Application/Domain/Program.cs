@@ -30,22 +30,16 @@ namespace nTestSwarm.Application.Domain
         public string LastJobStatus { get; protected set; }
         public string LastJobResult { get; protected set; }
 
-        public Job AddJob(string name, string suiteID)
+        public Job AddJob(string name, string correlation)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentNullException("name", "name is required");
             }
 
-            //TODO: Determine if we allow dups
-            if (Jobs.Any(x => x.Name == name && x.SuiteID == suiteID))
-            {
-                throw new InvalidOperationException("A job with that name and suite already exists for this program.");
-            }
-
             var job = new Job(name)
             {
-                SuiteID = suiteID
+                Correlation = correlation
             };
 
             Jobs.Add(job);

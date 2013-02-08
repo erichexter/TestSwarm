@@ -27,7 +27,7 @@ namespace nTestSwarm.Application.Domain
         public string SuiteID { get; set; }
         public JobStatusType Status { get; protected set; }
         public Program Program { get; set; }
-        public string Correlation { get; protected set; }
+        public string Correlation { get; set; }
 
         public virtual ICollection<Run> Runs { get; protected set; }
 

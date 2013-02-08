@@ -2,8 +2,9 @@
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
+using System;
 
-namespace www.Application.Commands.JobQueueing
+namespace nTestSwarm.Application.Commands.JobQueueing
 {
     public class QueueJobForProgramHandler : IHandler<QueueJobForProgram, QueueJobForProgramResult>
     {
@@ -25,13 +26,15 @@ namespace www.Application.Commands.JobQueueing
 
             if (program != null)
             {
+                var correlation = request.Correlation.ReplaceNullOrWhitespace(() => DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"));
+                var jobDescriptionUrl = request.Url.ReplaceNullOrWhitespace(program.JobDescriptionUrl);
                 var jobDescriptor = _descriptionClient.GetFrom(request.Url, new[] { request.Correlation });
 
                 if (jobDescriptor == null || string.IsNullOrWhiteSpace(jobDescriptor.Name))
                     result.Errors.Add("url", "Url does not return expected data.");
 
                 var allUserAgents = _userAgentCache.GetAll();
-                var job = program.AddJob(jobDescriptor.Name, jobDescriptor.SuiteId);
+                var job = program.AddJob(jobDescriptor.Name, correlation);
 
                 foreach (var runDescriptor in jobDescriptor.Runs)
                 {
