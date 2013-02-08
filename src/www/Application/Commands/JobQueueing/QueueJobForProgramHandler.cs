@@ -28,10 +28,13 @@ namespace nTestSwarm.Application.Commands.JobQueueing
             {
                 var correlation = request.Correlation.ReplaceNullOrWhitespace(() => DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"));
                 var jobDescriptionUrl = request.Url.ReplaceNullOrWhitespace(program.JobDescriptionUrl);
-                var jobDescriptor = _descriptionClient.GetFrom(request.Url, new[] { request.Correlation });
+                var jobDescriptor = _descriptionClient.GetFrom(request.Url, new[] { correlation });
 
                 if (jobDescriptor == null || string.IsNullOrWhiteSpace(jobDescriptor.Name))
+                {
                     result.Errors.Add("url", "Url does not return expected data.");
+                    return result;
+                }
 
                 var allUserAgents = _userAgentCache.GetAll();
                 var job = program.AddJob(jobDescriptor.Name, correlation);
