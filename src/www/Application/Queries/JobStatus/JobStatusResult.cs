@@ -29,6 +29,7 @@ namespace nTestSwarm.Application.Queries.JobStatus
             JobName = array.First().JobName;
         }
 
+        public bool IsEmpty { get { return JobName == null; } }
         public long JobId { get; set; }
         public string JobName { get; set; }
         public IEnumerable<UserAgentDto> Browsers { get; set; }

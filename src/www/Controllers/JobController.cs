@@ -35,7 +35,7 @@ namespace nTestSwarm.Controllers
         {
             var result = _bus.Request(new LatestJobStatusQuery());
 
-            if (result.HasException)
+            if (result.HasException || result.Data.IsEmpty)
             {
                 return View("NoJob", result.Exception);
             }
