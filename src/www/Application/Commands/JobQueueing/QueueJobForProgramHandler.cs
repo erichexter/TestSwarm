@@ -28,7 +28,7 @@ namespace nTestSwarm.Application.Commands.JobQueueing
             {
                 var correlation = request.Correlation.ReplaceNullOrWhitespace(() => DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss"));
                 var jobDescriptionUrl = request.Url.ReplaceNullOrWhitespace(program.JobDescriptionUrl);
-                var jobDescriptor = _descriptionClient.GetFrom(request.Url, new[] { correlation });
+                var jobDescriptor = _descriptionClient.GetFrom(jobDescriptionUrl, new[] { correlation });
 
                 if (jobDescriptor == null || string.IsNullOrWhiteSpace(jobDescriptor.Name))
                 {
