@@ -7,25 +7,25 @@
 <h2>Program Details</h2>
 
 <div id="program-details" class="read-only-form">
-    <div id="program-panel">
-        <div class="row">
+    <div id="program-panel" class="panel">
+        <div class="row-fluid">
             <div class="display-label">Name</div>
             <div class="display-values">@Model.Name</div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="display-label">Job Desc Url</div>
             <div class="display-values">@Model.JobDescriptionUrl</div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="display-label">Default Max Runs</div>
             <div class="display-values">@Model.DefaultMaxRuns</div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="display-label">User Agents</div>
             <div class="display-values">@Html.StringList(Model.UserAgents)</div>
         </div>
     </div>
-    <div id="job-status-panel">
+    <div id="job-status-panel" class="panel">
         @if (Model.LastCorrelation == null) {
         <div>This program has no jobs.</div>
         } else {

@@ -1,38 +1,51 @@
 ﻿@import-once "bootstrap/bootstrap";
 
-#program-details {
-	margin-bottom: 20px;
-	//height: 300px;
+@panel-border-color: #ddd;
+@panel-border-radius: 6px;
 
-	> div {
-		padding-top: 10px;	
+.makePanel() {
+	border: 1px solid @panel-border-color;
+	.border-radius(@panel-border-radius);
+	.box-shadow(0 1px 2px rgba(0,0,0,.075));
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#program-details {
+	.makePanel();
+
+	height: 300px;
+	.clearfix();
+	
+	> .panel {
+		padding: 10px;	
 	}
 
 	#program-panel {
-		.makeColumn(6);
-		.border-radius(6px);
+		.border-radius(@panel-border-radius);
+		float: left;
+		width: 450px;
 		background-color: #f0f0f0;
-		height: 100%;
 	}
 
 	#job-status-panel {
-		.makeColumn(6);
-		.border-radius(6px);
-		height: 100%;
+		.makeColumn(5);
+		.border-radius(@panel-border-radius);
 	}
 
 	.display-label {
-		.makeColumn(2);
+		float: left;
+		width: 130px;
 	}
 
 	.display-values {
-		.makeColumn(4);
+		float: left;
+		width: 300px;
+		margin-left: 20px;
 	}
 }
 
 .read-only-form {
-	.makeRow();	
-	
 	.display-label {
 		font-weight: bold;
 		text-align: right;
