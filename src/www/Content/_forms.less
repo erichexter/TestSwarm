@@ -27,23 +27,37 @@
 		float: left;
 		width: 450px;
 		background-color: #f0f0f0;
+
+		
+		.display-label {
+			float: left;
+			width: 130px;
+		}
+
+		.display-values {
+			float: left;
+			width: 300px;
+			margin-left: 20px;
+		}
 	}
 
 	#job-status-panel {
 		.makeColumn(5);
 		.border-radius(@panel-border-radius);
+
+		
+		.display-label {
+			float: left;
+			width: 100px;
+		}
+
+		.display-values {
+			float: left;
+			width: 250px;
+			margin-left: 20px;
+		}
 	}
 
-	.display-label {
-		float: left;
-		width: 130px;
-	}
-
-	.display-values {
-		float: left;
-		width: 300px;
-		margin-left: 20px;
-	}
 }
 
 .read-only-form {
