@@ -36,7 +36,7 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                     return result;
                 }
 
-                var allUserAgents = _userAgentCache.GetAll();
+                var allUserAgents = program.UserAgentsToTest;
                 var job = program.AddJob(jobDescriptor.Name, correlation);
 
                 foreach (var runDescriptor in jobDescriptor.Runs)
