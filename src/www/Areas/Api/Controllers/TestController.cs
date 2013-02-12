@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace www.Areas.Api.Controllers
+namespace nTestSwarm.Areas.Api.Controllers
 {
     public class TestController : Controller
     {

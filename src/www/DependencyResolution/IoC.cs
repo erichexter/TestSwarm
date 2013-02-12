@@ -10,7 +10,7 @@ using nTestSwarm.Application.Services;
 using nTestSwarm.Controllers;
 using System.Data.Entity;
 
-namespace www {
+namespace nTestSwarm {
     public static class IoC {
         public static IContainer Initialize()
         {

@@ -6,7 +6,7 @@ using NUnit.Framework;
 using Should;
 using StructureMap;
 using System;
-using www;
+using nTestSwarm;
 
 namespace nTestSwarmTests
 {

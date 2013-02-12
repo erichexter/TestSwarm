@@ -6,7 +6,7 @@ using nTestSwarm.Application.Commands.JobCreation.Copy;
 using nTestSwarm.Application.Commands.JobCreation.Described;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Areas.Api.Models;
-using www.Areas.Api.Models;
+using nTestSwarm.Areas.Api.Models;
 
 namespace nTestSwarm.Areas.Api.Controllers
 {

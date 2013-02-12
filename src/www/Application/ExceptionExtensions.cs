@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace www.Application
+namespace nTestSwarm.Application
 {
     //http://stackoverflow.com/questions/9314172/getting-all-messages-from-innerexceptions
     public static class ExceptionExtensions

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace www
+namespace nTestSwarm
 {
     public class FilterConfig
     {

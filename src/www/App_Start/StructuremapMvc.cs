@@ -1,12 +1,12 @@
 using Microsoft.AspNet.SignalR;
 using StructureMap;
 using System.Web.Mvc;
-using www.DependencyResolution;
+using nTestSwarm.DependencyResolution;
 
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(www.App_Start.StructuremapMvc), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(nTestSwarm.App_Start.StructuremapMvc), "Start")]
 
-namespace www.App_Start {
+namespace nTestSwarm.App_Start {
     public static class StructuremapMvc {
         public static void Start() {
             var container = (IContainer) IoC.Initialize();

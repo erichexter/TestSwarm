@@ -2,7 +2,7 @@ using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using www.Application;
+using nTestSwarm.Application;
 
 namespace nTestSwarm.Areas.Api
 {

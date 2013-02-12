@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using nTestSwarm.Models;
 
-namespace www.Areas.Api.Models
+namespace nTestSwarm.Areas.Api.Models
 {
     public class JobCopyModel
     {

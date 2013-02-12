@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace www.DependencyResolution
+namespace nTestSwarm.DependencyResolution
 {
     public class SignalRDependencyResolver : DefaultDependencyResolver
     {
