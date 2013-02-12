@@ -14,15 +14,16 @@ namespace www {
     public static class IoC {
         public static IContainer Initialize()
         {
-                        ObjectFactory.Initialize(x =>
+            ObjectFactory.Initialize(x =>
             {
                 x.Scan(scan =>
-                        {
-                            scan.AssemblyContainingType<HomeController>();
-                            scan.WithDefaultConventions();
-                            scan.ConnectImplementationsToTypesClosing(typeof (IHandler<,>));
-                            scan.ConnectImplementationsToTypesClosing(typeof (IHandler<>));
-                        });
+                {
+                    scan.TheCallingAssembly();
+                    scan.WithDefaultConventions();
+                    scan.ConnectImplementationsToTypesClosing(typeof (IHandler<,>));
+                    scan.ConnectImplementationsToTypesClosing(typeof (IHandler<>));
+                    scan.RegisterConcreteTypesAgainstTheFirstInterface();
+                });
 
                 x.For(typeof (IRepository<>)).Use(typeof (Repository<>));
                 
@@ -46,7 +47,6 @@ namespace www {
                                                    return singleton.NewCache();
                                                });
 
-                x.For<IRunQueue>().Use<CachingRunQueue>();
             });
 
             DomainEvents.EventStore = ObjectFactory.GetInstance<IEventStore>;
