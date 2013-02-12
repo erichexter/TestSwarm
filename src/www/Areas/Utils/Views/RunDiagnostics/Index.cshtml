@@ -49,8 +49,7 @@ else
     
 <h3>Active runs</h3>
     
-    <table class="rundiag">
-
+    <table class="standard">
         <thead>
             <tr>
                 <th>Last Updated</th>
@@ -63,9 +62,7 @@ else
         </thead>
 
         <tbody>
-
-            @foreach (var result in Model.Data)
-            {
+            @foreach (var result in Model.Data) {
              <tr>
                 <td>@result.Updated</td>
                 <td>@result.JobName</td>
@@ -75,9 +72,6 @@ else
                 <td>@result.OperatingSystem</td>
              </tr>
             }
-
-
         </tbody>
-
     </table>
 }
