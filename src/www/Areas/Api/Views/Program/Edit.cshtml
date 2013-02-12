@@ -10,7 +10,7 @@
     @Html.ValidationSummary()
 </div>
 
-@using (Html.BeginForm("Create", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
+@using (Html.BeginForm("edit", "program", new { area = "api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
     @Html.HiddenFor(x => x.ProgramId)
     @Html.EditorFor(x => x)
     
