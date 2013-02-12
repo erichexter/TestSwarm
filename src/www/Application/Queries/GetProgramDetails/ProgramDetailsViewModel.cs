@@ -10,10 +10,7 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
         public string[] UserAgents { get; set; }
         public int DefaultMaxRuns { get; set; }
         public string JobDescriptionUrl { get; set; }
-        public DateTime LastJobCreatedTime { get; set; }
-        public string LastCorrelation { get; set; }
-        public JobStatusType LastJobStatus { get; set; }
         public string LastJobResult { get; set; }
-        public Job Job { get; set; }
+        public Job LastJob { get; set; }
     }
 }

@@ -26,20 +26,20 @@
         </div>
     </div>
     <div id="job-status-panel" class="panel">
-        @if (Model.LastCorrelation == null) {
+        @if (Model.LastJob == null) {
         <div>This program has no jobs.</div>
         } else {
         <div class="row">
             <div class="display-label">Status</div>
-            <div class="display-values">@Model.LastJobStatus</div>
+            <div class="display-values">@Model.LastJob.Status</div>
         </div>
         <div class="row">
             <div class="display-label">Correlation</div>
-            <div class="display-values">@Model.LastCorrelation</div>
+            <div class="display-values">@Model.LastJob.Correlation</div>
         </div>
         <div class="row">
             <div class="display-label">Created</div>
-            <div class="display-values">@Model.LastJobCreatedTime</div>
+            <div class="display-values">@Model.LastJob.Created</div>
         </div>
         <div class="row">
             <div class="display-label">Result</div>

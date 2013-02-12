@@ -28,7 +28,7 @@ namespace nTestSwarm.Application.Queries.GetProgramDetails
                                  Name = p.Name,
                                  JobDescriptionUrl = p.JobDescriptionUrl,
                                  DefaultMaxRuns = p.DefaultMaxRuns,
-                                 Job = (from j in p.Jobs
+                                 LastJob = (from j in p.Jobs
                                         orderby j.Id descending
                                         select j).FirstOrDefault()
                              }).FirstOrDefault();
