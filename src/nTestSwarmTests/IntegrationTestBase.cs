@@ -1,13 +1,12 @@
-using System;
+using nTestSwarm.Application.Data;
+using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Repositories;
+using nTestSwarm.Application.Services;
 using NUnit.Framework;
 using Should;
 using StructureMap;
-using nTestSwarm.Application;
-using nTestSwarm.Application.Data;
-using nTestSwarm.Application.Domain;
-using nTestSwarm.Application.Infrastructure.DependencyResolution;
-using nTestSwarm.Application.Repositories;
-using nTestSwarm.Application.Services;
+using System;
+using www;
 
 namespace nTestSwarmTests
 {

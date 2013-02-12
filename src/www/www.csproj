@@ -235,8 +235,6 @@
     <Compile Include="Application\Infrastructure\BusInfrastructure\IHandler.cs" />
     <Compile Include="Application\Infrastructure\BusInfrastructure\IRequest.cs" />
     <Compile Include="Application\Infrastructure\BusInfrastructure\Result.cs" />
-    <Compile Include="Application\Infrastructure\DependencyResolution\IoC.cs" />
-    <Compile Include="Application\Infrastructure\DependencyResolution\SmDependencyResolver.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\DomainEvents.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IDomainEvent.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventSerializer.cs" />
