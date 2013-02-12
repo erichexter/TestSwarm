@@ -3,6 +3,8 @@ using NUnit.Framework;
 using Should;
 using nTestSwarm.Application.Commands.CompletedRun;
 using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
+using nTestSwarm.Application.Infrastructure.Threading;
 
 namespace nTestSwarmTests.Application.RunCompletion
 {
@@ -66,7 +68,7 @@ namespace nTestSwarmTests.Application.RunCompletion
 
             var nTestSwarmContext = DbContext();
 
-            new CompleteRunHandler(nTestSwarmContext).Handle(runCompleted);
+            new CompleteRunHandler(nTestSwarmContext, new EventPublisherStub(new ThreadPool())).Handle(runCompleted);
 
             WithDbContext(context =>
             {

@@ -1,17 +1,21 @@
-﻿using System.Linq;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.Services;
+using System.Linq;
 
 namespace nTestSwarm.Application.Commands.CompletedRun
 {
     public class CompleteRunHandler : IHandler<CompleteRun>
     {
         readonly IDataBase _db;
+        readonly IEventPublisher _eventPublisher;
 
-        public CompleteRunHandler(IDataBase db)
+        public CompleteRunHandler(IDataBase db, IEventPublisher eventPublisher)
         {
             _db = db;
+            _eventPublisher = eventPublisher;
         }
 
         public void Handle(CompleteRun message)
@@ -30,6 +34,16 @@ namespace nTestSwarm.Application.Commands.CompletedRun
             }
 
             _db.SaveChanges();
+
+            //TODO: fill in the blanks
+            _eventPublisher.Publish(new RunCompleted
+            {
+                ClientId = message.Client_Id,
+                RunId = message.Run_id,
+                FailCount = message.Fail,
+                ErrorCount = message.Error,
+                TotalCount = message.Total
+            });
         }
     }
 }
