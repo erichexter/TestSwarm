@@ -42,12 +42,11 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                 foreach (var runDescriptor in jobDescriptor.Runs)
                 {
                     var run = new Run(job, runDescriptor.Name, runDescriptor.Url);
+                    job.Runs.Add(run);
 
                     if (allUserAgents != null)
                         foreach (var userAgent in allUserAgents)
                             run.RunUserAgents.Add(new RunUserAgent(run, userAgent, request.MaxRuns ?? program.DefaultMaxRuns));
-                    
-                    //todo: run is not being added to the context.. think this is a defect.
                 }
 
                 _db.SaveChanges();
