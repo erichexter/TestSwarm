@@ -340,12 +340,15 @@
     <Compile Include="Controllers\UserAgentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\SignalRDependencyResolver.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
     <Compile Include="Filters\MvcValidationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Headspring\Enumeration.cs" />
+    <Compile Include="Hubs\CustomJsonSerializer.cs" />
+    <Compile Include="Hubs\LastJobStatusHub.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.Designer.cs">
       <DependentUpon>201201241434170_InitialDb.cs</DependentUpon>
