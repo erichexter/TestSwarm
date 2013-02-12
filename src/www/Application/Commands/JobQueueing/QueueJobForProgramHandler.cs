@@ -46,6 +46,8 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                     if (allUserAgents != null)
                         foreach (var userAgent in allUserAgents)
                             run.RunUserAgents.Add(new RunUserAgent(run, userAgent, request.MaxRuns ?? program.DefaultMaxRuns));
+                    
+                    //todo: run is not being added to the context.. think this is a defect.
                 }
 
                 _db.SaveChanges();

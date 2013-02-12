@@ -226,6 +226,7 @@
     <Compile Include="Application\Events\JobCompletion\JobCompletedEvent.cs" />
     <Compile Include="Application\Events\JobCompletion\ResultsCorrelator.cs" />
     <Compile Include="Application\Events\JobCompletion\RunResult.cs" />
+    <Compile Include="Application\ExceptionExtensions.cs" />
     <Compile Include="Application\HtmlExtensions.cs" />
     <Compile Include="Application\Infrastructure\AspNetMvc\LoginResult.cs" />
     <Compile Include="Application\Infrastructure\BusInfrastructure\Bus.cs" />

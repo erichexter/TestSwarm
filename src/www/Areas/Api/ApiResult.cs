@@ -2,6 +2,7 @@ using System.Net;
 using System.Text;
 using System.Web.Mvc;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using www.Application;
 
 namespace nTestSwarm.Areas.Api
 {
@@ -27,7 +28,8 @@ namespace nTestSwarm.Areas.Api
                 response.TrySkipIisCustomErrors = true;
                 response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
-                response.Write(_result.Exception.Message);
+
+                response.Write(_result.Exception.GetAllMessages());
             }
             else
             {
