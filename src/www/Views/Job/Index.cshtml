@@ -77,8 +77,8 @@
 @* should be authenticated --> *@
 <form action="@Url.Action("WipeJob")" method="POST">
     <input type="hidden" name="job_id" value="@Model.JobId"/>
-    <input type="submit" name="type" value="delete" />
-    <input type="submit" name="type" value="reset" />
+    <input type="submit" name="type" value="delete" class="action-button" />
+    <input type="submit" name="type" value="reset" class="action-button" />
 </form>
 @* <-- should be authenticated *@
 
