@@ -15,6 +15,8 @@
 
             hub,
 
+            jobName = ko.observable(),
+
             browsers = ko.observableArray(),
 
             runResults = ko.observableArray(),
@@ -25,13 +27,13 @@
 
             parseIds = function () {
                 programId = parseValueFromInput('programId');
-                jobId = parseValueFromInput('job');
+                jobId = parseValueFromInput('jobId');
 
                 return !isNaN(jobId) && !isNaN(programId);
             },
 
             parseValueFromInput = function (id) {
-                var $input = $(id);
+                var $input = $('#' + id);
 
                 if ($input.length > 0) {
                     return parseInt($input.val(), 10);
@@ -45,17 +47,44 @@
                 statusChanged: statusChanged
             },
 
+            mapJobStatusData = function (data) {
+                logger.debug('Subscription successful.');
+
+                jobName(data.JobName);
+            },
+
+            subscriptionFailed = function (data) {
+                //logger.error(data);
+
+                //TODO: show msg to user
+                jobName('not working'); // temp
+            },
+
+            hubStarted = function () {
+                logger.log("Hub started");
+
+                hub.server.subscribeTo(jobId)
+                    .done(mapJobStatusData)
+                    .fail(subscriptionFailed);
+            },
+
+            startHubFailed = function (msg) {
+                //logger.error(data);
+
+                //TODO: show msg to user
+                jobName('not working'); // temp
+            },
+
             startHub = function () {
-                hub = $.connection.lastJobStatusHub;
+                hub = $.connection.jobStatusHub;
 
                 $.extend(hub.client, hubCallbacks);
 
                 logger.log('Starting hub...');
 
-                $.connection.hub.start().done(function () {
-                    logger.log("Hub started");
-                    hub.server.subscribeTo(jobId);
-                });
+                $.connection.hub.start()
+                    .done(hubStarted)
+                    .fail(startHubFailed);
             },
 
             init = function () {
@@ -67,6 +96,7 @@
         init();
 
         return {
+            jobName: jobName,
             browsers: browsers,
             runResults: runResults
         };
