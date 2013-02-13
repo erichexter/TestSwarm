@@ -323,6 +323,7 @@
     <Compile Include="Areas\Api\Controllers\WipeController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
+    <Compile Include="Areas\Api\Models\ProgramLatestJobViewModel.cs" />
     <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
     <Compile Include="Areas\Api\Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />
@@ -350,7 +351,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Headspring\Enumeration.cs" />
-    <Compile Include="Hubs\LastJobStatusHub.cs" />
+    <Compile Include="Hubs\JobStatusHub.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.Designer.cs">
       <DependentUpon>201201241434170_InitialDb.cs</DependentUpon>
@@ -492,6 +493,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\_colors.less" />
+    <Content Include="Areas\Api\Views\Program\LatestJob.cshtml" />
     <None Include="Content\site.less" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>

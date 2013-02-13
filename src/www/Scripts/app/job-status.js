@@ -9,6 +9,10 @@
                 debug: function () { }
             },      
 
+            programId,
+
+            jobId,
+
             hub,
 
             browsers = ko.observableArray(),
@@ -19,11 +23,29 @@
 
             },
 
+            parseIds = function () {
+                programId = parseValueFromInput('programId');
+                jobId = parseValueFromInput('job');
+
+                return !isNaN(jobId) && !isNaN(programId);
+            },
+
+            parseValueFromInput = function (id) {
+                var $input = $(id);
+
+                if ($input.length > 0) {
+                    return parseInt($input.val(), 10);
+                }
+                else {
+                    return NaN;
+                }
+            },
+
             hubCallbacks = {
                 statusChanged: statusChanged
             },
 
-            init = function () {
+            startHub = function () {
                 hub = $.connection.lastJobStatusHub;
 
                 $.extend(hub.client, hubCallbacks);
@@ -32,7 +54,14 @@
 
                 $.connection.hub.start().done(function () {
                     logger.log("Hub started");
+                    hub.server.subscribeTo(jobId);
                 });
+            },
+
+            init = function () {
+                if (parseIds()) {
+                    startHub();
+                }
             };
 
         init();

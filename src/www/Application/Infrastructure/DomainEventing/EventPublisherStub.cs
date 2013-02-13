@@ -24,7 +24,7 @@ namespace nTestSwarm.Application.Infrastructure.DomainEventing
         {
             if (@event is RunCompleted)
             {
-                GlobalHost.ConnectionManager.GetHubContext<LastJobStatusHub>().Clients.All.statusUpdated(@event);
+                JobStatusHub.UpdateStatus(@event);
             }
         }
     }
