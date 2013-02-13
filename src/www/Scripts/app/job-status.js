@@ -32,7 +32,6 @@
 
                 $.connection.hub.start().done(function () {
                     logger.log("Hub started");
-                    hub.server.connect();
                 });
             };
 
