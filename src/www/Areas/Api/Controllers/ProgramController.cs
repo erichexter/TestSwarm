@@ -119,8 +119,9 @@ namespace nTestSwarm.Areas.Api.Controllers
 
         public ActionResult LatestJob(int id)
         {
+            var viewModel = new ProgramLatestJobViewModel { ProgramId = id, JobId = 2 };
 
-            return View();
+            return View(viewModel);
         }
 
     }
