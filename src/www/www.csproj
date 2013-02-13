@@ -795,6 +795,7 @@
     <Content Include="Views\Shared\_BootstrapLayout.basic.cshtml" />
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Shared\_validationSummary.cshtml" />
+    <Content Include="Views\Shared\_GlobalJsVars.cshtml" />
     <None Include="Web.CI.config" />
   </ItemGroup>
   <ItemGroup>

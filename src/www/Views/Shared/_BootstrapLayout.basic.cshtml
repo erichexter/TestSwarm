@@ -38,8 +38,9 @@
                 <p>&copy; TestSwarm @System.DateTime.Now.ToString("yyyy")</p>
             </footer> 
         </div>
-         @Scripts.Render("~/js")
-         @RenderSection("Scripts", required: false)
+        @Scripts.Render("~/js")
+        @Html.Partial("_GlobalJsVars")
+        @RenderSection("Scripts", required: false)
     </body>
 </html>
 
