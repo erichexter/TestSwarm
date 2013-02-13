@@ -350,7 +350,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Headspring\Enumeration.cs" />
-    <Compile Include="Hubs\CustomJsonSerializer.cs" />
     <Compile Include="Hubs\LastJobStatusHub.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.cs" />
     <Compile Include="Migrations\201201241434170_InitialDb.Designer.cs">
@@ -612,6 +611,7 @@
     <Content Include="InstallationDummyFile.txt" />
     <Content Include="Scripts\app\data-href-handler.js" />
     <Content Include="Scripts\app\job-status.js" />
+    <Content Include="Scripts\app\oldscript.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DataTables-1.9.4\docs\media\js\doc.js" />
