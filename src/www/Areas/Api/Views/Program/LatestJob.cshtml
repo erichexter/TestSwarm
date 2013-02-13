@@ -1,0 +1,39 @@
+﻿@model nTestSwarm.Areas.Api.Models.ProgramLatestJobViewModel
+@{
+    ViewBag.Title = "Latest Job";
+}
+
+<h2>Latest Job</h2>
+
+<input type="hidden" id="programId" value="@Model.ProgramId" />
+<input type="hidden" id="jobId" value="@Model.JobId" />
+
+<table class="job-results">
+    <thead>
+        <tr>
+            <th></th>
+            <!-- ko foreach: browsers -->
+            <th>
+                <div class="browser">
+                    <img data-bind="attr: iconAttributes" class="browser-icon" />
+                    <div data-bind="text: name" class="browser-name"></div>
+                </div>
+            </th>
+            <!-- /ko -->
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: runResults">
+        <tr>
+            <th><a data-bind="text: runName, attr: { href: runUrl }"></a></th>
+
+            <!-- ko foreach: browsers -->
+            <td data-bind="attr: { class: statusClass }"><a data-bind="text: statusText, attr: { href: statusUrl }"></a></td>
+            <!-- /ko -->
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script src="~/scripts/app/job-status.js" type="text/javascript"></script>
+}

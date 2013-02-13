@@ -117,5 +117,11 @@ namespace nTestSwarm.Areas.Api.Controllers
             }
         }
 
+        public ActionResult LatestJob(int id)
+        {
+
+            return View();
+        }
+
     }
 }
