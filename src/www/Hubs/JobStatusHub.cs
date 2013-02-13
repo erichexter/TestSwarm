@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
+using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Queries.JobStatus;
 using System.Threading.Tasks;
 
 namespace nTestSwarm.Hubs
@@ -6,9 +8,18 @@ namespace nTestSwarm.Hubs
     public class JobStatusHub : Hub
     {
 
-        public Task SubscribeTo(long jobId)
+        private readonly IBus _bus;
+
+        public JobStatusHub(IBus bus)
         {
-            return Groups.Add(Context.ConnectionId, GetGroupName(jobId));
+            _bus = bus;
+        }
+
+        public Task<JobStatusResult> SubscribeTo(long jobId)
+        {
+            return Groups
+                    .Add(Context.ConnectionId, GetGroupName(jobId))
+                    .ContinueWith(_ => _bus.Request(new JobStatusQuery(jobId)).Data);
         }
 
         public static async void UpdateStatus(dynamic status)
