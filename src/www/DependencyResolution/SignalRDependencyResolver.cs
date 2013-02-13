@@ -17,30 +17,31 @@ namespace nTestSwarm.DependencyResolution
 
         public override object GetService(Type serviceType)
         {
-            var service = _container.TryGetInstance(serviceType);
-
-            if (service == null)
+            if (_container.Model.HasDefaultImplementationFor(serviceType))
             {
-                return base.GetService(serviceType);
+                return _container.GetInstance(serviceType);
             }
-            else
+            else 
             {
-                return service;
+                if (typeof(Hub).IsAssignableFrom(serviceType)) 
+                {
+                    _container.Configure(c => c.AddType(serviceType, serviceType));
+                    
+                    return _container.TryGetInstance(serviceType);
+                }
+                else 
+                {
+                    return base.GetService(serviceType);
+                }
             }
         }
 
         public override IEnumerable<object> GetServices(Type serviceType)
         {
-            var services = _container.GetAllInstances(serviceType);
-
-            if (services == null || services.Count == 0)
-            {
-                return base.GetServices(serviceType);
-            }
+            if (_container.Model.HasImplementationsFor(serviceType))
+                return _container.GetAllInstances(serviceType).Cast<object>();
             else
-            {
-                return services.Cast<object>();
-            }
+                return base.GetServices(serviceType);
         }
     }
 }
