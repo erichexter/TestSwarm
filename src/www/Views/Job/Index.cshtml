@@ -74,13 +74,17 @@
 <div id="dialog" title="Clients"></div>
 <div>@Html.LatestJobs()</div>
 <h3>@Model.JobName</h3>
-@* should be authenticated --> *@
+
+@if (Request.IsAuthenticated) {
 <form action="@Url.Action("WipeJob")" method="POST">
     <input type="hidden" name="job_id" value="@Model.JobId"/>
     <input type="submit" name="type" value="delete" class="action-button" />
     <input type="submit" name="type" value="reset" class="action-button" />
 </form>
-@* <-- should be authenticated *@
+}
 
 @{ Html.RenderPartial("StatusTable", Model); }
 
+@section Scripts {
+    <script src="~/scripts/app/job-status.js" type="text/javascript"></script>
+}
