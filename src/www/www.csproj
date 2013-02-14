@@ -270,6 +270,8 @@
     <Compile Include="Application\Queries\JobSummary\JobSummaryQuery.cs" />
     <Compile Include="Application\Queries\JobSummary\JobSummaryQueryHandler.cs" />
     <Compile Include="Application\Queries\JobSummary\JobSummaryResult.cs" />
+    <Compile Include="Application\Queries\LatestJobForProgram\LatestJobForProgramQuery.cs" />
+    <Compile Include="Application\Queries\LatestJobForProgram\LatestJobForProgramQueryHandler.cs" />
     <Compile Include="Application\Queries\LatestJobList\LatestJobListQuery.cs" />
     <Compile Include="Application\Queries\NextRun\IRunQueue.cs" />
     <Compile Include="Application\Queries\NextRun\NextRunQuery.cs" />

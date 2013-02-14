@@ -6,6 +6,7 @@ using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.GetProgram;
 using nTestSwarm.Application.Queries.GetProgramDescriptors;
 using nTestSwarm.Application.Queries.GetProgramDetails;
+using nTestSwarm.Application.Queries.LatestJobForProgram;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Application.Queries.UserAgentList;
 using nTestSwarm.Areas.Api.Models;
@@ -119,9 +120,9 @@ namespace nTestSwarm.Areas.Api.Controllers
 
         public ActionResult LatestJob(int id)
         {
-            var viewModel = new ProgramLatestJobViewModel { ProgramId = id, JobId = 2 };
+            var query = new LatestJobForProgramQuery { ProgramId = id };
 
-            return View(viewModel);
+            return HandleBusResult(_bus.Request(query), r => View(r.Data));
         }
 
     }
