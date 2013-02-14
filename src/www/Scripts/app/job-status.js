@@ -47,10 +47,45 @@
                 statusChanged: statusChanged
             },
 
+            mapRunResultsData = function (data) {
+                _.each(data, function (run) {
+                    runResults.push({
+                        runName: run.RunName,
+                        runUrl: run.RunUrl,
+                        browsers: function (cells) {
+                            var userAgents = [];
+
+                            _.each(cells, function (cell) {
+                                userAgents.push({
+                                    statusText: ko.observable("testing..."),
+                                    statusClass: ko.observable(""),
+                                    statusUrl: ko.observable("#")
+                                });
+                            });
+
+                            return ko.observableArray(userAgents);
+                        }(run.Cells)
+                    });
+                });
+            },
+
             mapJobStatusData = function (data) {
                 logger.debug('Subscription successful.');
 
-                jobName(data.JobName);
+                jobName(data.JobName + " Status");
+
+                _.each(data.Browsers, function (browser) {
+                    browsers.push({
+                        name: browser.Name,
+                        iconAttributes: {
+                            src: nTestSwarm.rootPath + 'images/' + browser.Browser + '.sm.png',
+                            title: browser.Name,
+                            alt: browser.Name
+                        }
+                    });
+                });
+
+                mapRunResultsData(data.RunResults);
             },
 
             subscriptionFailed = function (data) {
