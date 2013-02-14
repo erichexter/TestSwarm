@@ -11,6 +11,27 @@
 	margin-bottom: 20px;
 }
 
+
+.pass {
+    background: @run-success-background-color;
+    color: @run-success-text-color;
+}
+
+.fail {
+    background: @run-fail-background-color;
+    color: @run-fail-text-color;
+}
+
+.progress {
+    background: @run-progress-background-color;
+    color: @run-progress-text-color;
+}
+
+.timeout, td.error {
+    background: @run-error-background-color;
+    color: @run-error-text-color;
+}
+
 #program-details {
 	.makePanel();
 
@@ -20,6 +41,11 @@
 	> .panel {
 		padding: 10px;	
 		padding-bottom: 0;
+
+		h3 {
+			margin-top: 0;
+			font-size: 20px;
+		}
 	}
 
 	#program-panel {
@@ -44,7 +70,6 @@
 	#job-status-panel {
 		.makeColumn(5);
 		.border-radius(@panel-border-radius);
-
 		
 		.display-label {
 			float: left;

@@ -4,10 +4,9 @@
     ViewBag.Title = "Program - " + Model.Name;
 }
 
-<h2>Program Details</h2>
-
 <div id="program-details" class="read-only-form">
     <div id="program-panel" class="panel">
+        <h3>Program Details</h3>
         <div class="row">
             <div class="display-label">Name</div>
             <div class="display-values">@Model.Name</div>
@@ -26,6 +25,7 @@
         </div>
     </div>
     <div id="job-status-panel" class="panel">
+        <h3>Last Job</h3>
         @if (Model.LastJob == null) {
         <div>This program has no jobs.</div>
         } else {
