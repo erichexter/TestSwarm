@@ -54,8 +54,8 @@
 
                             _.each(cells, function (cell) {
                                 userAgents.push({
-                                    statusText: ko.observable("testing..."),
-                                    statusClass: ko.observable(""),
+                                    statusText: ko.observable(cell.CellContents),
+                                    statusClass: ko.observable(cell.Status.Css),
                                     statusUrl: ko.observable("#")
                                 });
                             });
