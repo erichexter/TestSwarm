@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNet.SignalR;
-using nTestSwarm.Application.Events.JobCompletion;
+﻿using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Infrastructure.Threading;
 using nTestSwarm.Application.Queries.JobStatus;
-using nTestSwarm.Application.Queries.LatestJobForProgram;
 using nTestSwarm.Hubs;
 
 namespace nTestSwarm.Application.Infrastructure.DomainEventing
