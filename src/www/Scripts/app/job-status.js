@@ -8,7 +8,7 @@
             jobId,
             hub,
             imagesPath = $('#imagesPath').val(),
-            jobName = ko.observable(),
+            jobName = ko.observable('&nssp;'),
             browsers = ko.observableArray(),
             runResults = ko.observableArray(),
 
