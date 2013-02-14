@@ -22,13 +22,13 @@ namespace nTestSwarm.Hubs
                     .ContinueWith(_ => _bus.Request(new JobStatusQuery(jobId)).Data);
         }
 
-        public static async void UpdateStatus(dynamic status)
+        public static async void UpdateStatus(JobStatusResult status)
         {
             await Task.Run(() => 
             {
                 var groupName = GetGroupName(status.JobId);
 
-                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
+                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status.RunResults);
             });
         }
 
