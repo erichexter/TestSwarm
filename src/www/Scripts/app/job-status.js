@@ -18,8 +18,29 @@
                 error: function () { }
             },
 
-            statusChanged = function (data) {
+            statusChanged = function (runResultsChange) {
+                // update cell contents and status css
+                _.each(runResultsChange, function (runResultChange) {
+                    // find the run result in the grid that matches the status change
+                    var runResult = runResults.find(function (rr) {
+                        return rr.runId === runResultChange.RunId;
+                    });
 
+                    if (runResult) {
+                        _.each(runResultChange.Cells, function (cell) {
+                            // find the browser column that matches the status change
+                            var browser = runResult.browsers.find(function (b) {
+                                return b.clientId === cell.ClientId;
+                            });
+
+                            // update the browaser status
+                            if (browser) {
+                                browser.statusText(cell.CellContents);
+                                browser.statusClass(cell.Status.Css);
+                            }
+                        });
+                    }
+                });
             },
 
             parseIds = function () {
@@ -47,6 +68,7 @@
             mapRunResultsData = function (data) {
                 _.each(data, function (run) {
                     runResults.push({
+                        runId: run.RunId,
                         runName: run.RunName,
                         runUrl: run.RunUrl,
                         browsers: function (cells) {
@@ -54,6 +76,7 @@
 
                             _.each(cells, function (cell) {
                                 browserStatuses.push({
+                                    cliendId: cell.ClientId,
                                     statusText: ko.observable(cell.CellContents),
                                     statusClass: ko.observable(cell.Status.Css),
                                     statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId)
