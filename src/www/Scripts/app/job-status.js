@@ -50,17 +50,17 @@
                         runName: run.RunName,
                         runUrl: run.RunUrl,
                         browsers: function (cells) {
-                            var userAgents = [];
+                            var browserStatuses = [];
 
                             _.each(cells, function (cell) {
-                                userAgents.push({
+                                browserStatuses.push({
                                     statusText: ko.observable(cell.CellContents),
                                     statusClass: ko.observable(cell.Status.Css),
-                                    statusUrl: ko.observable("#")
+                                    statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId)
                                 });
                             });
 
-                            return ko.observableArray(userAgents);
+                            return ko.observableArray(browserStatuses);
                         }(run.Cells)
                     });
                 });
