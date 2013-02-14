@@ -1,4 +1,5 @@
-﻿@model nTestSwarm.Areas.Api.Models.ProgramsViewModel
+﻿@using nTestSwarm
+@model nTestSwarm.Areas.Api.Models.ProgramsViewModel
 @{
     ViewBag.Title = "Programs";
 }
@@ -18,7 +19,11 @@
         <tr data-href="@Url.Action("details", new { id = @program.Id })">
             <td>@Html.ActionLink(program.Name, "details", new { id = @program.Id })</td>
             <td>@program.JobCount</td>
-            <td>@Html.ActionLink(program.LastJobStatusText, "latestjob", new { id = @program.Id })</td>
+            @if (program.HasJobs) {
+            <td>@Html.ActionLink(program.LastJobStatusText.ReplaceNullOrWhitespace("(unknown)"), "latestjob", new { id = @program.Id })</td>
+            } else {
+            <td></td>    
+            }
         </tr>            
         }
     </tbody>

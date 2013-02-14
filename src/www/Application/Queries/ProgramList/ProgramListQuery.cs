@@ -16,6 +16,7 @@ namespace nTestSwarm.Application.Queries.ProgramList
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public bool HasJobs { get { return JobCount > 0; } }
         public int JobCount { get; set; }
         public JobStatusType LastJobStatus { get; set; }
         public string LastJobStatusText { get { return JobCount == 0 ? "" : LastJobStatus.ToString(); } }
