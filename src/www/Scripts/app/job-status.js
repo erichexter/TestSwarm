@@ -4,24 +4,19 @@
     var viewModel = function () {
 
         var
+            programId,
+            jobId,
+            hub,
+            imagesPath = $('#imagesPath').val(),
+            jobName = ko.observable(),
+            browsers = ko.observableArray(),
+            runResults = ko.observableArray(),
+
             logger = window.console || {
                 log: function () { },
-                debug: function () { }
-            },      
-
-            programId,
-
-            jobId,
-
-            hub,
-
-            imagesPath = $('#imagesPath').val(),
-
-            jobName = ko.observable(),
-
-            browsers = ko.observableArray(),
-
-            runResults = ko.observableArray(),
+                debug: function () { },
+                error: function () { }
+            },
 
             statusChanged = function (data) {
 
