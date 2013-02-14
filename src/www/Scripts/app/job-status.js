@@ -15,6 +15,8 @@
 
             hub,
 
+            imagesPath = $('#imagesPath').val(),
+
             jobName = ko.observable(),
 
             browsers = ko.observableArray(),
@@ -78,7 +80,7 @@
                     browsers.push({
                         name: browser.Name,
                         iconAttributes: {
-                            src: nTestSwarm.rootPath + 'images/' + browser.Browser + '.sm.png',
+                            src: imagesPath + browser.Browser + '.sm.png',
                             title: browser.Name,
                             alt: browser.Name
                         }
