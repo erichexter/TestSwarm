@@ -42,7 +42,8 @@ namespace nTestSwarm.Application.Commands.CompletedRun
                 RunId = message.Run_id,
                 FailCount = message.Fail,
                 ErrorCount = message.Error,
-                TotalCount = message.Total
+                TotalCount = message.Total,
+                JobId=clientRun.Run.JobId
             });
         }
     }
