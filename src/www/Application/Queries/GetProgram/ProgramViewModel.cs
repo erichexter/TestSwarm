@@ -24,7 +24,7 @@ namespace nTestSwarm.Application.Queries.GetProgram
         {   
             set 
             {
-                UserAgentListItems = value.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = true });
+                UserAgentListItems = value.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = ua.Selected });
             } 
         }
 

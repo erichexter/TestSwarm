@@ -1,4 +1,6 @@
-﻿using nTestSwarm.Application.Domain;
+﻿using System;
+using System.Linq;
+using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
 
@@ -26,7 +28,12 @@ namespace nTestSwarm.Application.Commands.ProgramUpdate
             program.Name = message.Name;
             program.JobDescriptionUrl = message.JobDescriptionUrl;
             program.DefaultMaxRuns = message.DefaultMaxRuns;
-
+            program.UserAgentsToTest.Clear();
+            var agents = _db.All<UserAgent>().Where(f => message.UserAgentIds.Any(t=>t==f.Id));
+            foreach (var userAgent in agents)
+            {
+                program.UserAgentsToTest.Add(userAgent);
+            } 
             _db.SaveChanges();
         }
 
