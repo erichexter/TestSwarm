@@ -1,6 +1,8 @@
 ﻿using System;
 using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.Queries.NextRun;
 using nTestSwarm.Application.Services;
 
@@ -10,11 +12,13 @@ namespace nTestSwarm.Application.NextRun
     {
         readonly IDataBase _db;
         readonly IRunQueue _queue;
+        private readonly IEventPublisher _eventPublisher;
 
-        public NextRunQueryHandler(IDataBase db, IRunQueue queue)
+        public NextRunQueryHandler(IDataBase db, IRunQueue queue, IEventPublisher eventPublisher)
         {
             _db = db;
             _queue = queue;
+            _eventPublisher = eventPublisher;
         }
 
         public NextRunResult Handle(NextRunQuery request)
@@ -26,7 +30,16 @@ namespace nTestSwarm.Application.NextRun
 
             var nextRun = _queue.GetNext(client);
 
-            return nextRun == null ? null : new NextRunResult(nextRun);
+            if (nextRun == null)
+            {
+                return null;
+            }
+            _eventPublisher.Publish(new RunInProgress()
+            {
+                JobId = nextRun.JobId
+            });
+
+            return new NextRunResult(nextRun);
         }
     }
 }

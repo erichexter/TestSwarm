@@ -11,4 +11,9 @@ namespace nTestSwarm.Application.Events.JobCompletion
         public int TotalCount { get; set; }
         public string Results { get; set; }
     }
+
+    public class RunInProgress:IDomainEvent
+    {
+        public long JobId { get; set; }
+    }
 }

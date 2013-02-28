@@ -34,6 +34,15 @@ namespace nTestSwarm.Application.Infrastructure.DomainEventing
                     JobStatusHub.UpdateStatus(status);
                 }
             }
+            if (@event is RunInProgress)
+            {
+                var e = (RunInProgress)(object)@event;
+                var status = _bus.Request(new JobStatusQuery(e.JobId)).Data;
+                if (status != null)
+                {
+                    JobStatusHub.UpdateStatus(status);
+                }
+            }
         }
     }
 }
