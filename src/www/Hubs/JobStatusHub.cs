@@ -28,7 +28,7 @@ namespace nTestSwarm.Hubs
             {
                 var groupName = GetGroupName(status.JobId);
 
-                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status.RunResults);
+                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
             });
         }
 

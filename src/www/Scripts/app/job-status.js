@@ -18,29 +18,11 @@
                 error: function () { }
             },
 
-            statusChanged = function (runResultsChange) {
-                // update cell contents and status css
-                _.each(runResultsChange, function (runResultChange) {
-                    // find the run result in the grid that matches the status change
-                    var runResult = runResults.find(function (rr) {
-                        return rr.runId === runResultChange.RunId;
-                    });
-
-                    if (runResult) {
-                        _.each(runResultChange.Cells, function (cell) {
-                            // find the browser column that matches the status change
-                            var browser = runResult.browsers.find(function (b) {
-                                return b.clientId === cell.ClientId;
-                            });
-
-                            // update the browaser status
-                            if (browser) {
-                                browser.statusText(cell.CellContents);
-                                browser.statusClass(cell.Status.Css);
-                            }
-                        });
-                    }
-                });
+            statusChanged = function (status) {
+                browsers.removeAll();
+                runResults.removeAll();
+                mapJobStatusData(status);
+            
             },
 
             parseIds = function () {
@@ -76,10 +58,11 @@
 
                             _.each(cells, function (cell) {
                                 browserStatuses.push({
-                                    cliendId: cell.ClientId,
+                                    clientId: cell.ClientId,
                                     statusText: ko.observable(cell.CellContents),
                                     statusClass: ko.observable(cell.Status.Css),
-                                    statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId)
+                                    statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId),
+                                    userAgentBrowser:cell.userAgentBrowser
                                 });
                             });
 
