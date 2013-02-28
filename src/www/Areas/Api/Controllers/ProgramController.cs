@@ -1,4 +1,5 @@
-﻿using nTestSwarm.Application;
+﻿using BootstrapSupport;
+using nTestSwarm.Application;
 using nTestSwarm.Application.Commands.JobQueueing;
 using nTestSwarm.Application.Commands.ProgramCreation;
 using nTestSwarm.Application.Commands.ProgramUpdate;
@@ -101,9 +102,10 @@ namespace nTestSwarm.Areas.Api.Controllers
                 {
                     if (result.Data.HasErrors)
                     {
-                        result.Data.Errors.Each(x => ModelState.AddModelError(x.Key, x.Value));
+                        TempData.Add(Alerts.ERROR,
+                                     string.Join("<br/>", result.Data.Errors.Select(e => e.Value)));
 
-                        return View();
+                        return RedirectToAction("QueueJob");
                     }
                     else
                     {

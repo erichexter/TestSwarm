@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Jobs</th>
             <th>Most Recent Job Status</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,13 @@
             } else {
             <td></td>    
             }
+            <td>
+                @using (Html.BeginForm("QueueJob", "Program", new {area = "Api",id=@program.Id}, FormMethod.Post, new {@class = "form-horizontal"}))
+                {
+                    <input type="hidden" name="programid" value="@program.Id"/>
+                    <button class="action-button" type="submit">Queue</button>
+                }
+            </td>
         </tr>            
         }
     </tbody>

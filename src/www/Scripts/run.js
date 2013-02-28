@@ -5,8 +5,8 @@ var nts_defaults = {
 jQuery.extend(nts_defaults, window.ntestswarmDefaults);
 
 
-var	updateRate = 30,
-	timeoutRate = 180,
+var	updateRate = 15,
+	timeoutRate = 240,
 	run_id, run_url, testTimeout, pauseTimer;
 
 if ( typeof client_id !== "undefined" ) {
