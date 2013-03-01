@@ -77,6 +77,7 @@ namespace nTestSwarm.Application.Domain
             if (message.RepresentsAPassingRun())
             {
                 Run.Pass(this);
+
             }
             else // test fail or error
             {

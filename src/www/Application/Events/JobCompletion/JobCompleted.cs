@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNet.SignalR;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using nTestSwarm.Hubs;
 
 namespace nTestSwarm.Application.Events.JobCompletion
 {
@@ -22,7 +24,7 @@ namespace nTestSwarm.Application.Events.JobCompletion
 
         public void Handle(JobCompleted message)
         {
-            var target = _db.Find<Job>(message.Job);
+            var target = _db.Find<Job>(message.JobId);
 
             var source = _previousJobQuerier.GetPreviousCompleteJob(target);
 
@@ -35,4 +37,15 @@ namespace nTestSwarm.Application.Events.JobCompletion
             _db.SaveChanges();
         }
     }
+
+
+    public class JobComleteHandlerNotifier : IHandler<JobCompleted>
+    {
+
+        public void Handle(JobCompleted message)
+        {
+            GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.finished(message.JobId);
+        }
+    }
+
 }

@@ -33,7 +33,7 @@ namespace BootstrapSupport
                 "~/Scripts/underscore.js",
                 "~/Scripts/knockout-{version}.debug.js",
                 "~/Scripts/underscore-ko-{version}.js",
-                "~/Scripts/jquery.signalR-1.0.0-rc2.js"
+                "~/Scripts/jquery.signalR-{version}.js"
                 //"~/Scripts/jquery.validate.js",
                 //"~/scripts/jquery.validate.unobtrusive.js",
                 //"~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"

@@ -19,7 +19,7 @@ namespace nTestSwarm.Application.Commands.JobCreation.Copy
 
     //    public CreateJobResult Handle(CopyJob request)
     //    {
-    //        var existingJob = _db.Find<Job>(request.JobId);
+    //        var existingJob = _db.Find<JobId>(request.JobId);
 
     //        var createNewJob = new CreateJob
     //            {
@@ -32,7 +32,7 @@ namespace nTestSwarm.Application.Commands.JobCreation.Copy
     //        return result.Data;
     //    }
 
-    //    static IEnumerable<CreateJob.CreateNewRun> GetRuns(Job existingJob)
+    //    static IEnumerable<CreateJob.CreateNewRun> GetRuns(JobId existingJob)
     //    {
     //        return existingJob.Runs.Select(x => new CreateJob.CreateNewRun {Name = x.Name, Url = x.Url});
     //    }

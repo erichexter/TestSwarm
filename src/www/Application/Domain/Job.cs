@@ -73,7 +73,7 @@ namespace nTestSwarm.Application.Domain
             if (Started != null && Finished == null)
                 return SystemTime.NowThunk() - Started.Value;
 
-            throw new Exception("Job has finished but not started");
+            throw new Exception("JobId has finished but not started");
         }
 
         public bool IsComplete()

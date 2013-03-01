@@ -32,6 +32,7 @@ namespace nTestSwarm.Application.Commands.CompletedRun
             {
                 clientRun.Apply(message);
             }
+            
 
             _db.SaveChanges();
 
@@ -45,6 +46,14 @@ namespace nTestSwarm.Application.Commands.CompletedRun
                 TotalCount = message.Total,
                 JobId=clientRun.Run.JobId
             });
+
+            if (clientRun.Run.Job.IsComplete())
+            {
+                _eventPublisher.Publish(new JobCompleted()
+                    {
+                        JobId = clientRun.Run.JobId
+                    });     
+            }
         }
     }
 }

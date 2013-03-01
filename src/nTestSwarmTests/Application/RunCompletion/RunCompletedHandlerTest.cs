@@ -51,7 +51,7 @@ namespace nTestSwarmTests.Application.RunCompletion
         {
             //TODO: fix test
             //var userAgent = new UserAgent("browser", "Browser", null);
-            //var job = new Job("job");
+            //var job = new JobId("job");
             //var run = new Run(job, "run", "http://foo");
             //var runUserAgent = new RunUserAgent(run, userAgent, 2);
             //Client client = userAgent.SpawnNewClient("ip", "os");

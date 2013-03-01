@@ -1,4 +1,5 @@
-﻿using nTestSwarm.Application.Events.JobCompletion;
+﻿using Microsoft.AspNet.SignalR;
+using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Infrastructure.Threading;
 using nTestSwarm.Application.Queries.JobStatus;
@@ -42,6 +43,11 @@ namespace nTestSwarm.Application.Infrastructure.DomainEventing
                 {
                     JobStatusHub.UpdateStatus(status);
                 }
+            }
+            if (@event is JobCompleted)
+            {
+                var e = (JobCompleted)(object)@event;
+                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.finished(e.JobId);
             }
         }
     }

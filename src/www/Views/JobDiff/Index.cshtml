@@ -2,7 +2,7 @@
     <script>
         $(function () {
             var jobListUrl = '@Url.Action("All", "JobList", new { area = "Api" })';
-            $('#target').allJobSelect({ url: jobListUrl, initialOption: {text: "Select job", value: ""} }).change(function () {
+            $('#target').allJobSelect({ url: jobListUrl, initialOption: {text: "Select JobId", value: ""} }).change(function () {
                 var value = $(this).val();
                 $('div').show('slow');
                 $('#source').allJobSelect({ url: jobListUrl, exceptWithValue: value });
@@ -27,16 +27,16 @@
     </style>
 }
 <h2>
-    Job Diff</h2>
+    JobId Diff</h2>
 <form method="get" action="@Url.Action("ShowDiff")">
 <div class="target">
     <span>Select the target job (newer):</span>
-    <select id="target" name="TargetJobId">
+    <select id="target" name="TargetJobIdId">
     </select>
 </div>
 <div class="source">
     <span>Select the source job (older):</span>
-    <select id="source" name="SourceJobId">
+    <select id="source" name="SourceJobIdId">
     </select></div>
 <div class="submit">
     <button type="submit">

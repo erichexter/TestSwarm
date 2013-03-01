@@ -25,7 +25,7 @@ namespace nTestSwarm.Migrations
             {
                 jobCreator.Handle(new CreateJob
                 {
-                    Name = "Test Job 1",
+                    Name = "Test JobId 1",
                     Runs = new[]
                     {
                         new CreateJob.CreateNewRun

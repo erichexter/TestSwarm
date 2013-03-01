@@ -12,9 +12,9 @@
 <body>
 	<ul class="nav">		
 		<li><a href="@Url.Action("Index", "Run", new {area = ""})">Run</a></li>
-		<li><a href="@Url.Action("Index", "Jobs", new {area = "Admin" })">Jobs Admin</a></li>
-        <li><a href="@Url.Action("Index", "JobDiff")">Job Diff</a></li>
-        <li><a href="@Url.Action("Latest", "Job")">Latest Job</a></li>
+		<li><a href="@Url.Action("Index", "JobIds", new {area = "Admin" })">JobIds Admin</a></li>
+        <li><a href="@Url.Action("Index", "JobDiff")">JobId Diff</a></li>
+        <li><a href="@Url.Action("Latest", "Job")">Latest JobId</a></li>
         <li></li>
         <li></li>
         @if(Request.IsAuthenticated)

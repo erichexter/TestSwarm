@@ -17,9 +17,9 @@ namespace nTestSwarm
             routes.IgnoreRoute("images/*");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
 
-            routes.MapRoute("WipeJob", "job/wipejob", new { controller = "Job", action = "WipeJob" }, new[] { "nTestSwarm.Controllers" });
-            routes.MapRoute("Latest", "job/latest", new { controller = "Job", action = "Latest" }, new[] { "nTestSwarm.Controllers" });
-            routes.MapRoute("JobStatus", "job/{id}", new { controller = "Job", action = "Index" }, new[] { "nTestSwarm.Controllers" });
+            routes.MapRoute("WipeJob", "job/wipejob", new { controller = "JobId", action = "WipeJob" }, new[] { "nTestSwarm.Controllers" });
+            routes.MapRoute("Latest", "job/latest", new { controller = "JobId", action = "Latest" }, new[] { "nTestSwarm.Controllers" });
+            routes.MapRoute("JobStatus", "job/{id}", new { controller = "JobId", action = "Index" }, new[] { "nTestSwarm.Controllers" });
 
             routes.MapRoute(
                 "Default", // Route name

@@ -1,8 +1,10 @@
-﻿using nTestSwarm.Application.Domain;
+﻿using Microsoft.AspNet.SignalR;
+using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using System;
+using nTestSwarm.Hubs;
 
 namespace nTestSwarm.Application.Commands.JobQueueing
 {
@@ -50,6 +52,7 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                 }
 
                 _db.SaveChanges();
+                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.started(job.Id);
             }
             else
             {

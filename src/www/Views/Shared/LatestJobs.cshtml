@@ -1,11 +1,11 @@
 ﻿<script type="text/javascript">
     $(function () {
-        var source = $("#latestJobsTemplate").html();
+        var source = $("#latestJobIdsTemplate").html();
         var template = Handlebars.compile(source);
 
         var templatize = function (context) {
             var html = template(context);
-            $("#latest-jobs").html(html);
+            $("#latest-JobIds").html(html);
         };
         var refreshJobs = function () {
             $.get('@Url.Action("Latest", "JobList")', {}, function (data) {
@@ -26,8 +26,8 @@
 </script>
 <div id="latest-jobs">
 </div>
-<script id="latestJobsTemplate" type="text/x-handlebars-template">
-    <span>Recent Jobs</span>
+<script id="latestJobIdsTemplate" type="text/x-handlebars-template">
+    <span>Recent JobIds</span>
     <ul>
     {{#each jobs}}
     <li>

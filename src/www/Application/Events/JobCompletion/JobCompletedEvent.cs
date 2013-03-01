@@ -11,9 +11,9 @@ namespace nTestSwarm.Application.Events.JobCompletion
 
         public JobCompleted(Job job)
         {
-            Job = job.Id;
+            JobId = job.Id;
         }
 
-        public long Job { get; set; }
+        public long JobId { get; set; }
     }
 }

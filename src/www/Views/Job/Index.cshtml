@@ -2,7 +2,7 @@
 @using nTestSwarm.Application
 @model JobStatusResult
 @{
-    ViewBag.Title = "Job Status";
+    ViewBag.Title = "JobId Status";
 }
 @*@section head {
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
@@ -10,7 +10,7 @@
 
 }*@
 <div id="dialog" title="Clients"></div>
-@*<div>@Html.LatestJobs()</div>*@
+@*<div>@Html.LatestJobIds()</div>*@
 <h3>@Model.JobName</h3>
 
 @if (Request.IsAuthenticated) {

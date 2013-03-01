@@ -134,6 +134,7 @@ namespace nTestSwarm.Application.Domain
             }
 
             Job.RefreshStatusBasedOnRuns();
+           
         }
     }
 }

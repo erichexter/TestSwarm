@@ -14,7 +14,7 @@ namespace nTestSwarm.Application.Queries.GetProgram
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Job Description Url")]
+        [Display(Name = "JobId Description Url")]
         public string JobDescriptionUrl { get; set; }
 
         [Display(Name = "Default Max Runs")]
