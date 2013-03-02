@@ -1,4 +1,4 @@
-﻿namespace BrowserStack
+﻿namespace BrowserStackWorker
 {
     partial class BrowserStackService
     {

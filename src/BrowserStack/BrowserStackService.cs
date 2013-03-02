@@ -1,6 +1,6 @@
 ﻿using System.ServiceProcess;
 
-namespace BrowserStack
+namespace BrowserStackWorker
 {
     public partial class BrowserStackService : ServiceBase
     {
@@ -13,7 +13,7 @@ namespace BrowserStack
 
         protected override void OnStart(string[] args)
         {
-            tsc = new TestSwarmClient();
+            tsc = new TestSwarmClient(null,null);
             tsc.Start();
         }
 

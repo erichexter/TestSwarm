@@ -10,16 +10,18 @@ namespace BrowserStackWorker
 
         private HubConnection _connection;
         private IHubProxy _job;
+        private readonly string _testswarmUrl = "http://localhost:27367/";
 
-        public TestSwarmClient(Action<long> started,Action<long> Finished)
+        public TestSwarmClient(Action<long> started,Action<long> finished,string testswarmUrl)
         {
             _started = started;
-            _finished = Finished;
+            _finished = finished;
+            _testswarmUrl = testswarmUrl;
         }
 
         public void Start()
         {
-            _connection = new HubConnection("http://localhost:27367/");
+            _connection = new HubConnection(_testswarmUrl);
             _job=_connection.CreateHubProxy("JobStatusHub");   
             _job.On("started",onStarted);
             _job.On("finished", onFinished);
