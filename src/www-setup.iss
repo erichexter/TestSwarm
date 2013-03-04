@@ -22,7 +22,7 @@ DefaultDirName=c:\inetpub\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputBaseFilename=testswarm-setup-
+OutputBaseFilename=testswarm-setup
 Compression=lzma
 SolidCompression=yes
 

@@ -1,1 +1,1 @@
-"C:\Program Files (x86)\Inno Setup 5\iscc.exe"  /O"..\Output"  www-setup.iss /DVERSION_NAME=1.23
+"packages\hexter.innosetup.commandline.5.5.3.1\tools\iscc.exe"  /O"..\Output"  www-setup.iss
