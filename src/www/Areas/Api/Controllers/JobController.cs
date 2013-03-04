@@ -60,19 +60,5 @@ namespace nTestSwarm.Areas.Api.Controllers
         {
             return new ApiStringResult<CreateJobResult>(result, t => t.GetStatusUrl());
         }
-
-        [HttpPost]
-        public ApiStringResult<CreateJobResult> Copy(JobCopyInputModel input)
-        {
-            //TODO: determine the source of CopyJob
-            return null;
-            //Validate();
-
-            //var copyJob = new CopyJob(input);
-
-            //Result<CreateJobResult> result = _bus.Request(copyJob);
-
-            //return GetResultString(result);
-        }
     }
 }

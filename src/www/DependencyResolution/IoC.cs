@@ -1,58 +1,35 @@
-using System;
-using System.Web;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IoC.cs" company="Web Advanced">
+// Copyright 2012 Web Advanced (www.webadvanced.com)
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+
 using StructureMap;
-using nTestSwarm.Application.Data;
-using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Application.Infrastructure.DomainEventing;
-using nTestSwarm.Application.Queries.NextRun;
-using nTestSwarm.Application.Repositories;
-using nTestSwarm.Application.Services;
-using nTestSwarm.Controllers;
-using System.Data.Entity;
-
-namespace nTestSwarm {
+namespace nTestSwarm.DependencyResolution {
     public static class IoC {
-        public static IContainer Initialize()
-        {
+        public static IContainer Initialize() {
             ObjectFactory.Initialize(x =>
-            {
-                x.Scan(scan =>
-                {
-                    scan.TheCallingAssembly();
-                    scan.WithDefaultConventions();
-                    scan.ConnectImplementationsToTypesClosing(typeof (IHandler<,>));
-                    scan.ConnectImplementationsToTypesClosing(typeof (IHandler<>));
-                    scan.RegisterConcreteTypesAgainstTheFirstInterface();
-                });
-
-                x.For(typeof (IRepository<>)).Use(typeof (Repository<>));
-                
-                x.For<nTestSwarmContext>().HybridHttpOrThreadLocalScoped()
-                    .Use(() => new nTestSwarmContext());
-
-                x.For<Database>().Use(c => c.GetInstance<nTestSwarmContext>().Database);
-
-                x.Forward<nTestSwarmContext, IDataBase>();
-                
-                x.For<IUserAgentCache>().Singleton().Use<UserAgentCache>();
-
-                x.For<HttpContextBase>().Use(() => HttpContext.Current == null ? null : new HttpContextWrapper(HttpContext.Current));
-
-                x.For<INextRunCache>().Singleton().Use(c =>
-                                               {
-                                                   var singleton = new NextRunCachePrimingSingleton(
-                                                           c.GetInstance<IUserAgentCache>(),
-                                                           c.GetInstance<Func<nTestSwarmContext>>());
-
-                                                   return singleton.NewCache();
-                                               });
-
-            });
-
-            DomainEvents.EventStore = ObjectFactory.GetInstance<IEventStore>;
-
+                        {
+                            x.Scan(scan =>
+                                    {
+                                        scan.TheCallingAssembly();
+                                        scan.WithDefaultConventions();
+                                    });
+            //                x.For<IExample>().Use<Example>();
+                        });
             return ObjectFactory.Container;
         }
-
-        }
     }
+}

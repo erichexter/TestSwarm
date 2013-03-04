@@ -89,6 +89,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.1.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -323,11 +327,8 @@
     <Compile Include="Areas\Api\ApiStringResult`1.cs" />
     <Compile Include="Areas\Api\ApiVoidResult.cs" />
     <Compile Include="Areas\Api\Controllers\JobController.cs" />
-    <Compile Include="Areas\Api\Controllers\JobListController.cs" />
-    <Compile Include="Areas\Api\Controllers\JobSummaryController.cs" />
+    <Compile Include="Areas\Api\Controllers\NeededClientsController.cs" />
     <Compile Include="Areas\Api\Controllers\ProgramController.cs" />
-    <Compile Include="Areas\Api\Controllers\TestController.cs" />
-    <Compile Include="Areas\Api\Controllers\WipeController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
     <Compile Include="Areas\Api\Models\ProgramLatestJobViewModel.cs" />
@@ -341,18 +342,16 @@
     <Compile Include="Areas\Utils\UtilsAreaRegistration.cs" />
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
-    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobDiffController.cs" />
-    <Compile Include="Controllers\LogoutResult.cs" />
     <Compile Include="Controllers\RunController.cs" />
     <Compile Include="Controllers\UserAgentController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\IoC-custom.cs" />
     <Compile Include="DependencyResolution\SignalRDependencyResolver.cs" />
-    <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
     <Compile Include="Filters\MvcValidationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -390,8 +389,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
-    <Compile Include="Models\LoginInput.cs" />
-    <Compile Include="Models\NewUserInput.cs" />
     <Compile Include="Models\RunInput.cs" />
     <Compile Include="Models\RunViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
@@ -542,6 +539,7 @@
     <Content Include="Content\less\bootstrap.less" />
     <Content Include="Content\less\alerts.less" />
     <Content Include="Content\less\accordion.less" />
+    <Content Include="Areas\Api\Views\NeededClients\Index.cshtml" />
     <None Include="Content\site.less" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
@@ -713,7 +711,6 @@
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\collection.psd" />
     <Content Include="Areas\Api\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Api\Views\Job\DescribeNew.cshtml" />
-    <Content Include="Areas\Api\Views\Wipe\Index.cshtml" />
     <Content Include="Areas\Tests\Views\Auto\AutoTest.cshtml" />
     <Content Include="Areas\Tests\Views\Manual\Index.cshtml" />
     <Content Include="Areas\Utils\Views\ClientDetection\Index.cshtml" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Microsoft.AspNet.SignalR.Client.Hubs;
 
 namespace BrowserStackWorker
@@ -12,7 +13,7 @@ namespace BrowserStackWorker
         private IHubProxy _job;
         private readonly string _testswarmUrl = "http://localhost:27367/";
 
-        public TestSwarmClient(Action<long> started,Action<long> finished,string testswarmUrl)
+        public TestSwarmClient(Action<long> started, Action<long> finished, string testswarmUrl)
         {
             _started = started;
             _finished = finished;
@@ -22,8 +23,8 @@ namespace BrowserStackWorker
         public void Start()
         {
             _connection = new HubConnection(_testswarmUrl);
-            _job=_connection.CreateHubProxy("JobStatusHub");   
-            _job.On("started",onStarted);
+            _job = _connection.CreateHubProxy("JobStatusHub");
+            _job.On("started", onStarted);
             _job.On("finished", onFinished);
             _connection.Start();
         }
@@ -34,13 +35,15 @@ namespace BrowserStackWorker
         private void onStarted(dynamic d)
         {
             _started(d);
-            
+            // /Api/neededclients/index
         }
 
         public void Stop()
         {
             _connection.Stop();
-            
+
         }
     }
+
+
 }
