@@ -5,7 +5,11 @@
 #define MyAppVersion "1.0"
 #define MyAppPublisher "Eric Hexter"
 #define MyAppURL "https://github.com/erichexter/TestSwarm"
-#define SourceDir "www\"
+#define WWWDir "www\"
+#define ServiceDir "TestSwarmBrowserStackWorker\"
+#define ServiceDirName="{pf}\{#MyAppName}\"
+#define WWWDestinationDir="c:\inetpub\"
+
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
@@ -18,26 +22,42 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName=c:\inetpub\{#MyAppName}
+DefaultDirName={pf}\TestSwarn
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=testswarm-setup
 Compression=lzma
 SolidCompression=yes
+ShowLanguageDialog=no
+DisableWelcomePage=True
+DisableReadyPage=True
+DisableReadyMemo=True
+DisableFinishedPage=True
+AppModifyPath={pf}\TestSwarm
+AllowUNCPath=False
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "{#SourceDir}*.cshtml"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.js"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.asax"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.css"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.less"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}web.config"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.jpg"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.png"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#SourceDir}*.gif"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "{#WWWDir}*.dll"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+Source: "{#WWWDir}*.cshtml"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+Source: "{#WWWDir}*.js"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: WebApplication
+Source: "{#WWWDir}*.asax"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: WebApplication
+Source: "{#WWWDir}*.css"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: WebApplication
+Source: "{#WWWDir}*.less"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: WebApplication
+Source: "{#WWWDir}web.config"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: WebApplication
+Source: "{#WWWDir}*.jpg"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+Source: "{#WWWDir}*.png"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+Source: "{#WWWDir}*.gif"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+Source: "{#ServiceDir}bin\Debug\*.*"; DestDir: "{app}\BrowserStack"; Components: Service
 
+[Components]
+Name: "Service"; Description: "Browser Stack Integration"; Types: Full browserStackOnly; Flags: checkablealone; Languages: english
+Name: "WebApplication"; Description: "TestSwarm Server"; Types: Full wwwOnly; Flags: checkablealone; Languages: english
+
+[Types]
+Name: "Full"; Description: "Full Install"
+Name: "wwwOnly"; Description: "TestSwarm Server"
+Name: "browserStackOnly"; Description: "Browser Stack Addon"
