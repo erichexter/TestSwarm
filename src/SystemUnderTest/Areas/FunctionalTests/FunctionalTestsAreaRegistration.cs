@@ -27,7 +27,7 @@ namespace FunctionalTests
 
             context.MapRoute(FuncTestsRunner,
                                           AreaName + "/Run/{action}",
-                                          new { action = "Index", controller = "FunctionalTestRunner" },
+                                          new { action = "Index", controller = "Runner" },
                                           new[] { typeof(RunnerController).Namespace });
 
             context.MapRoute(

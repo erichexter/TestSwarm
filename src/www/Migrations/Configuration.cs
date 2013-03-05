@@ -60,9 +60,9 @@ namespace nTestSwarm.Migrations
 
         private void SeedPrograms(nTestSwarmContext context)
         {
-            const string seedProgramName = "Magnum UX";
+            const string seedProgramName = "localhost test";
 
-            var program = new ProgramEntity(seedProgramName, "http://www-m1/functionaltests/runner/list", 10);
+            var program = new ProgramEntity(seedProgramName, "http://localhost:38597/functionaltests/runner/list", 2);
             var userAgents = context.UserAgents
                                 .Where(x => x.Name.StartsWith("Chrome"))
                                 .ToList();
