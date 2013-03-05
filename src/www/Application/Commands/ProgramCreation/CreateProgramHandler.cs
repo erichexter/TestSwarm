@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using System.Linq;
 
 namespace nTestSwarm.Application.Commands.ProgramCreation
 {
@@ -18,12 +17,10 @@ namespace nTestSwarm.Application.Commands.ProgramCreation
         public void Handle(CreateProgram message)
         {
             var program = new Program(message.Name, message.JobDescriptionUrl, message.DefaultMaxRuns ?? 10);
-           
-           var agents=     _db.All<UserAgent>().Where(ua => Array.Exists(message.UserAgentIds, (i) => i.Equals(ua.Id)));
-            foreach (var userAgent in agents)
-            {
-                program.UserAgentsToTest.Add(userAgent);
-            } 
+            var agents = _db.All<UserAgent>().Where(ua => message.UserAgentIds.Contains(ua.Id));
+
+            agents.Each(program.UserAgentsToTest.Add);
+
             _db.Add(program);
             _db.SaveChanges();
         }
