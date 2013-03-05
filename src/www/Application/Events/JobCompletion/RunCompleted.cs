@@ -1,4 +1,5 @@
 ﻿using nTestSwarm.Application.Infrastructure.DomainEventing;
+
 namespace nTestSwarm.Application.Events.JobCompletion
 {
     public class RunCompleted : IDomainEvent
@@ -12,7 +13,7 @@ namespace nTestSwarm.Application.Events.JobCompletion
         public string Results { get; set; }
     }
 
-    public class RunInProgress:IDomainEvent
+    public class RunInProgress : IDomainEvent
     {
         public long JobId { get; set; }
     }
