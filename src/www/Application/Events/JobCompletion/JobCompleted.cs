@@ -37,15 +37,4 @@ namespace nTestSwarm.Application.Events.JobCompletion
             _db.SaveChanges();
         }
     }
-
-
-    public class JobComleteHandlerNotifier : IHandler<JobCompleted>
-    {
-
-        public void Handle(JobCompleted message)
-        {
-            GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.finished(message.JobId);
-        }
-    }
-
 }
