@@ -24,12 +24,14 @@ namespace nTestSwarm.Hubs
 
         public static async void UpdateStatus(JobStatusResult status)
         {
-            await Task.Run(() => 
-            {
-                var groupName = GetGroupName(status.JobId);
+            var groupName = GetGroupName(status.JobId);
 
-                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
-            });
+            await GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
+        }
+
+        public static async void JobFinished(long jobId)
+        {
+            await GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.finished(jobId);
         }
 
         private static string GetGroupName(long jobId)
