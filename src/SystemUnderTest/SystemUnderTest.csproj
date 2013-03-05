@@ -140,6 +140,7 @@
     <Content Include="Content\qunit.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\funcunit.js" />
+    <Content Include="Scripts\testswarm.inject.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
