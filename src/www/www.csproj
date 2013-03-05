@@ -250,12 +250,12 @@
     <Compile Include="Application\Infrastructure\BusInfrastructure\Result.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\DomainEvents.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\EventPublisher.cs" />
-    <Compile Include="Application\Infrastructure\DomainEventing\HandlerFactory.cs" />
+    <Compile Include="Application\Infrastructure\BusInfrastructure\HandlerFactory.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IDomainEvent.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventPublisher.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventSerializer.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventStore.cs" />
-    <Compile Include="Application\Infrastructure\DomainEventing\IHandlerFactory.cs" />
+    <Compile Include="Application\Infrastructure\BusInfrastructure\IHandlerFactory.cs" />
     <Compile Include="Application\Infrastructure\RecurringTasks\ClientRunWipeTimer.cs" />
     <Compile Include="Application\Infrastructure\RecurringTasks\JobHost.cs" />
     <Compile Include="Application\Infrastructure\Threading\IThreadPool.cs" />
