@@ -29,6 +29,11 @@ namespace nTestSwarm.Hubs
             await GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
         }
 
+        public static async void JobStarted(long jobId)
+        {
+            await GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.started(jobId);
+        }
+
         public static async void JobFinished(long jobId)
         {
             await GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.finished(jobId);
