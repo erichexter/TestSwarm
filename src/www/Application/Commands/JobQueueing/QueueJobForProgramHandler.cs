@@ -52,7 +52,7 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                 }
 
                 _db.SaveChanges();
-                
+                JobStatusHub.JobStarted(job.Id);
             }
             else
             {
