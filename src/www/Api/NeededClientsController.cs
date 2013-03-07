@@ -10,7 +10,7 @@ namespace nTestSwarm.Api
         public NeededClientsController(IBus bus) : base(bus)
         {
         }
-
+        
         public NeededClientResults Get()
         {
             var result = HandleRequest(new RunDiagnosticsQuery());
