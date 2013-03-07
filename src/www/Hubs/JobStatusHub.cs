@@ -15,6 +15,11 @@ namespace nTestSwarm.Hubs
             _bus = bus;
         }
 
+        private static dynamic AllClients
+        {
+            get { return GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All; }
+        }
+
         public Task<JobStatusResult> SubscribeTo(long jobId)
         {
             return Groups
@@ -24,12 +29,24 @@ namespace nTestSwarm.Hubs
 
         public static async void UpdateStatus(JobStatusResult status)
         {
-            await Task.Run(() => 
-            {
-                var groupName = GetGroupName(status.JobId);
+            await GetJobClients(status.JobId).statusChanged(status);
+        }
 
-                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName).statusChanged(status);
-            });
+        public static async void JobStarted(long id)
+        {
+            await AllClients.started(id);
+        }
+
+        public static async void JobFinished(long id)
+        {
+            await AllClients.finished(id);
+        }
+
+        private static dynamic GetJobClients(long jobId)
+        {
+            var groupName = GetGroupName(jobId);
+
+            return GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.Group(groupName);
         }
 
         private static string GetGroupName(long jobId)
