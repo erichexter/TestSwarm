@@ -246,7 +246,6 @@
     <Compile Include="Application\Infrastructure\BusInfrastructure\IRequest.cs" />
     <Compile Include="Application\Infrastructure\BusInfrastructure\Result.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\DomainEvents.cs" />
-    <Compile Include="Application\Infrastructure\DomainEventing\EventPublisherStub.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IDomainEvent.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventPublisher.cs" />
     <Compile Include="Application\Infrastructure\DomainEventing\IEventSerializer.cs" />
