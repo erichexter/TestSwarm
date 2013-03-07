@@ -9,7 +9,6 @@ namespace nTestSwarm.Api
 {
     public class JobsController : ApiController
     {
-
         public void Delete(long id)
         {
         }

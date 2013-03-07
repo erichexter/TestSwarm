@@ -181,6 +181,7 @@
   <ItemGroup>
     <Compile Include="Api\ClientsController.cs" />
     <Compile Include="Api\JobsController.cs" />
+    <Compile Include="Api\NeededClientsController.cs" />
     <Compile Include="Api\RunStatusesController.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClient.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClientHandler.cs" />
