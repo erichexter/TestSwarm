@@ -2,6 +2,7 @@
 using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Events.JobCompletion;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.NextRun;
 using NUnit.Framework;
 using Should;
@@ -18,6 +19,7 @@ namespace nTestSwarmTests.Application.JobResultsDiff
 
         protected override void SetUp()
         {
+            StructureMap.Inject(typeof(IEventPublisher), new NoOpEventPublisher());
             var browser1 = new UserAgent("test", "test 1", 1);
 
             var client1 = browser1.SpawnNewClient(null, null);
@@ -81,6 +83,14 @@ namespace nTestSwarmTests.Application.JobResultsDiff
             result.TargetJobName.ShouldEqual("job 2");
             result.UserAgentName.ShouldEqual("test 1");
             result.Transition.ShouldEqual(RunStatusTransition.NewlyFailing);
+        }
+    }
+
+    public class NoOpEventPublisher:IEventPublisher
+    {
+        public void Publish<TEvent>(TEvent @event) where TEvent : class, IDomainEvent
+        {
+            
         }
     }
 }

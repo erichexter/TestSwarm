@@ -2,12 +2,14 @@
 using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Commands.JobResetting;
 using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.NextRun;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using NUnit.Framework;
 using Should;
 using System.Linq;
+using nTestSwarmTests.Application.JobResultsDiff;
 
 namespace nTestSwarmTests.Application.JobReset
 {
@@ -20,6 +22,8 @@ namespace nTestSwarmTests.Application.JobReset
 
         protected override void SetUp()
         {
+            StructureMap.Inject(typeof(IEventPublisher), new NoOpEventPublisher());
+
             var browser1 = new UserAgent("test", "test 1", 1);
             var browser2 = new UserAgent("test", "test 2", 2);
             var browser3 = new UserAgent("another", "another 1", 3);

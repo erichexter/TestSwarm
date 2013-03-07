@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using NUnit.Framework;
 //using nTestSwarmTests.App_Start;
 
@@ -11,7 +12,14 @@ public class TestAssemblySetup
         //EntityFramework_SqlServerCompact.Start();
         if (Database.Exists("nTestSwarmContext.sdf"))
         {
-            Database.Delete("nTestSwarmContext.sdf");
+            try
+            {
+                Database.Delete("nTestSwarmContext.sdf");
+            }
+            catch (Exception)
+            {
+                
+            }
         }
     }
 }
