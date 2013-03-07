@@ -52,7 +52,7 @@ namespace nTestSwarm.Application.Commands.JobQueueing
                 }
 
                 _db.SaveChanges();
-                
+                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.started(job.Id);
             }
             else
             {

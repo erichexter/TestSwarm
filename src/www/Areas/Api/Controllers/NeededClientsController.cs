@@ -26,6 +26,9 @@ namespace nTestSwarm.Areas.Api.Controllers
                     Version = r.UserAgentVersion,
                 }).Distinct().ToList();
             model.Jobs = result.Data.Select(e => e.JobId).Distinct().ToList();
+            var uh = new UrlHelper(this.ControllerContext.RequestContext);
+
+            model.ClientUrl = uh.Action("Index","Run");
             return Json(model, JsonRequestBehavior.AllowGet);
         }
     }
@@ -35,6 +38,8 @@ namespace nTestSwarm.Areas.Api.Controllers
         public List<NeededClient> UserAgents { get; set; }
 
         public List<long> Jobs { get; set; }
+
+        public string ClientUrl { get; set; }
     }
 
     public class NeededClient

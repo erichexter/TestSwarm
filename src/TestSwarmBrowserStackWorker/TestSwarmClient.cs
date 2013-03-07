@@ -35,13 +35,11 @@ namespace BrowserStackWorker
         private void onStarted(dynamic d)
         {
             _started(d);
-            // /Api/neededclients/index
         }
 
         public void Stop()
         {
             _connection.Stop();
-
         }
     }
 
