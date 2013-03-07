@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using nTestSwarm.Filters;
+using System.Web.Http;
 
 namespace nTestSwarm
 {
@@ -8,10 +9,21 @@ namespace nTestSwarm
 
         public static void Register(HttpConfiguration config)
         {
+            config.ConfigureRoutes();
+            config.ConfigureFilters();
+        }
+
+        private static void ConfigureRoutes(this HttpConfiguration config)
+        {
             config.Routes.MapHttpRoute(
                 name: DefaultRoute,
                 routeTemplate: "api/{controller}/{id}/{action}"
             );
+        }
+
+        private static void ConfigureFilters(this HttpConfiguration config)
+        {
+            config.Filters.Add(new ValidateAttribute());
         }
     }
 }
