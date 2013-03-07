@@ -20,6 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSwarmBrowserStackWorker
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemUnderTest", "SystemUnderTest\SystemUnderTest.csproj", "{2F3C0BBE-DA65-4C4E-94AB-7A85486044C0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{68998337-4188-40FD-97EE-6E8112F519CD}"
+	ProjectSection(SolutionItems) = preProject
+		www-setup.iss = www-setup.iss
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

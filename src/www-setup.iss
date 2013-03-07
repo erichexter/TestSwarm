@@ -9,6 +9,7 @@
 #define ServiceDir "TestSwarmBrowserStackWorker\"
 #define ServiceDirName="{pf}\{#MyAppName}\"
 #define WWWDestinationDir="c:\inetpub\"
+#define TestAppDir "SystemUnderTest\"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -51,11 +52,24 @@ Source: "{#WWWDir}web.config"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flag
 Source: "{#WWWDir}*.jpg"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
 Source: "{#WWWDir}*.png"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
 Source: "{#WWWDir}*.gif"; DestDir: "{#WWWDestinationDir}{#MyAppName}"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: WebApplication
+
 Source: "{#ServiceDir}bin\Debug\*.*"; DestDir: "{app}\BrowserStack"; Components: Service
+
+Source: "{#TestAppDir}*.dll"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
+Source: "{#TestAppDir}*.cshtml"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
+Source: "{#TestAppDir}*.js"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: sut
+Source: "{#TestAppDir}*.asax"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: sut
+Source: "{#TestAppDir}*.css"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: sut
+Source: "{#TestAppDir}*.less"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: sut
+Source: "{#TestAppDir}web.config"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion recursesubdirs createallsubdirs; Components: sut
+Source: "{#TestAppDir}*.jpg"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
+Source: "{#TestAppDir}*.png"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
+Source: "{#TestAppDir}*.gif"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
 
 [Components]
 Name: "Service"; Description: "Browser Stack Integration"; Types: Full browserStackOnly; Flags: checkablealone; Languages: english
-Name: "WebApplication"; Description: "TestSwarm Server"; Types: Full wwwOnly; Flags: checkablealone; Languages: english
+Name: "WebApplication"; Description: "Continous Server"; Types: Full wwwOnly; Flags: checkablealone; Languages: english
+Name: "sut"; Description: "Sample Test Web Application"; Types: Full wwwOnly; Flags: checkablealone; Languages: english
 
 [Types]
 Name: "Full"; Description: "Full Install"
