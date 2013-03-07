@@ -55,21 +55,21 @@ namespace nTestSwarm.Controllers
             return new Tuple<string, object>(string.Empty, result.Data);
         }
             
-        [HttpPost]
-        public ActionResult WipeJob(string type, long job_id)
-        {
-            if (string.Equals(type, "reset", StringComparison.OrdinalIgnoreCase))
-            {
-                _bus.Send(new ResetJob(job_id));
-                return RedirectToAction("Index", new {id = job_id, area = string.Empty});
-            }
-            if (string.Equals(type, "delete", StringComparison.OrdinalIgnoreCase))
-            {
-                _bus.Send(new DeleteJob(job_id));
-                return RedirectToAction("Index", "Jobs", new {area = "Admin"});
-            }
-            throw new Exception("Invalid type for WipeJob");
-        }
+        //[HttpPost]
+        //public ActionResult WipeJob(string type, long job_id)
+        //{
+        //    if (string.Equals(type, "reset", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        _bus.Send(new ResetJob(job_id));
+        //        return RedirectToAction("Index", new {id = job_id, area = string.Empty});
+        //    }
+        //    if (string.Equals(type, "delete", StringComparison.OrdinalIgnoreCase))
+        //    {
+        //        _bus.Send(new DeleteJob(job_id));
+        //        return RedirectToAction("Index", "Jobs", new {area = "Admin"});
+        //    }
+        //    throw new Exception("Invalid type for WipeJob");
+        //}
 
     }
 }

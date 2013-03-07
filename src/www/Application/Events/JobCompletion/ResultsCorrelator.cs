@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using nTestSwarm.Application.Domain;
-using System.Data.Entity;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace nTestSwarm.Application.Events.JobCompletion
 {
@@ -46,11 +46,9 @@ namespace nTestSwarm.Application.Events.JobCompletion
                         };
             
             var results = query.ToArray();
-            
             var sourceResults = results.Where(x => x.JobId == source.Id).Select(x => x.result);
             var targetResults = results.Where(x => x.JobId == target.Id).Select(x => x.result);
-
-            IEnumerable<CorrelatedResult> joined = _joiner.Join(sourceResults, targetResults);
+            var joined = _joiner.Join(sourceResults, targetResults);
 
             return MapToResults(source, target, joined ?? Enumerable.Empty<CorrelatedResult>());
         }
@@ -63,18 +61,18 @@ namespace nTestSwarm.Application.Events.JobCompletion
                 var runStatusTransition = RunStatusTransition.GetTransition(result.Source.RunUserAgentResult, result.Target.RunUserAgentResult);
 
                 return new RunUserAgentCompareResult
-                                               {
-                                                   RunName = result.Target.RunName,
-                                                   SourceJobId = source.Id,
-                                                   SourceJobName = source.Name,
-                                                   TargetJobName = target.Name,
-                                                   TargetJobId = target.Id,
-                                                   UserAgentName = result.Target.UserAgentName,
-                                                   TargetRunUrl = result.Target.Url,
-                                                   ClientId = result.Target.RunUserAgentResult.ClientId,
-                                                   RunId = result.Target.RunId,
-                                                   Transition = runStatusTransition,
-                                               };
+                {
+                    RunName = result.Target.RunName,
+                    SourceJobId = source.Id,
+                    SourceJobName = source.Name,
+                    TargetJobName = target.Name,
+                    TargetJobId = target.Id,
+                    UserAgentName = result.Target.UserAgentName,
+                    TargetRunUrl = result.Target.Url,
+                    ClientId = result.Target.RunUserAgentResult.ClientId,
+                    RunId = result.Target.RunId,
+                    Transition = runStatusTransition,
+                };
             });
         }
     }

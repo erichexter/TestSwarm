@@ -179,6 +179,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ClientsController.cs" />
+    <Compile Include="Api\JobsController.cs" />
+    <Compile Include="Api\RunStatusesController.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClient.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClientHandler.cs" />
     <Compile Include="Application\Commands\CompletedRun\CompleteRun.cs" />
@@ -324,10 +327,12 @@
     <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProgramsController.cs" />
     <Compile Include="Areas\Api\ApiActionResult.cs" />
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\ApiController.cs" />
-    <Compile Include="Areas\Api\ApiJsonResult.cs" />
     <Compile Include="Areas\Api\ApiResult.cs" />
     <Compile Include="Areas\Api\ApiStringResult.cs" />
     <Compile Include="Areas\Api\ApiStringResult`1.cs" />
@@ -395,7 +400,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
-    <Compile Include="Models\RunInput.cs" />
+    <Compile Include="Models\ClientInputModel.cs" />
+    <Compile Include="Models\ClientModelBinder.cs" />
+    <Compile Include="Models\CreateRunStatus.cs" />
     <Compile Include="Models\RunViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
@@ -546,6 +553,7 @@
     <Content Include="Content\less\alerts.less" />
     <Content Include="Content\less\accordion.less" />
     <Content Include="Areas\Api\Views\NeededClients\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Web.config" />
     <None Include="Content\site.less" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
@@ -853,6 +861,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
     <Folder Include="Areas\Utils\Models\" />

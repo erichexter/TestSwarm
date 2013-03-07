@@ -35,30 +35,30 @@ namespace nTestSwarm.Controllers
             return View(model.Data);
         }
 
+        //[HttpPost]
+        //public void GetRunAsync(long client_id)
+        //{
+        //    AsyncManager.OutstandingOperations.Increment();
+
+        //    _bus.AsyncRequest(new NextRunQuery(client_id), result =>
+        //    {
+        //        AsyncManager.Parameters["result"] = result;
+        //        AsyncManager.OutstandingOperations.Decrement();
+        //    });
+        //}
+
+        //public ActionResult GetRunCompleted(Result<NextRunResult> result)
+        //{
+        //    return ApiJson(result);
+        //}
+
         [HttpPost]
-        public void GetRunAsync(long client_id)
-        {
-            AsyncManager.OutstandingOperations.Increment();
-
-            _bus.AsyncRequest(new NextRunQuery(client_id), result =>
-            {
-                AsyncManager.Parameters["result"] = result;
-                AsyncManager.OutstandingOperations.Decrement();
-            });
-        }
-
-        public ActionResult GetRunCompleted(Result<NextRunResult> result)
-        {
-            return ApiJson(result);
-        }
-
-        [HttpPost]
-        public string SaveRun(RunInput input)
+        public string SaveRun(CreateRunStatus input)
         {
             _bus.Send(new CompleteRun
                 {
-                    Client_Id = input.Client_Id,
-                    Run_id = input.Run_id,
+                    Client_Id = input.ClientId,
+                    Run_id = input.RunId,
                     Total = input.Total,
                     Results = input.Results,
                     Fail = input.Fail,
