@@ -401,7 +401,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
-    <Compile Include="Models\ClientInputModel.cs" />
     <Compile Include="Models\ClientModelBinder.cs" />
     <Compile Include="Models\CreateRunStatus.cs" />
     <Compile Include="Models\RunViewModel.cs" />

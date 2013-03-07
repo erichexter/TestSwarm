@@ -1,4 +1,5 @@
-﻿using nTestSwarm.Models;
+﻿using nTestSwarm.Application.Commands.ClientCreation;
+using nTestSwarm.Models;
 using System.Web.Mvc;
 
 namespace nTestSwarm.Areas.Admin.Controllers
@@ -7,7 +8,7 @@ namespace nTestSwarm.Areas.Admin.Controllers
     {
 
         [HttpGet]
-        public ActionResult New([ModelBinder(typeof(ClientModelBinder))] ClientInputModel input)
+        public ActionResult New([ModelBinder(typeof(ClientModelBinder))] CreateClient input)
         {
             return View();
         }

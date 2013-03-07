@@ -1,5 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using nTestSwarm.Application.Commands.ClientCreation;
+using System;
 
 namespace nTestSwarm.Models
 {
@@ -15,7 +15,7 @@ namespace nTestSwarm.Models
             return BindModel(name => controllerContext.RequestContext.HttpContext.Request.Headers[name]);
         }
 
-        private ClientInputModel BindModel(Func<string,string> getHeader)
+        private CreateClient BindModel(Func<string,string> getHeader)
         {
             throw new NotImplementedException();
         }
