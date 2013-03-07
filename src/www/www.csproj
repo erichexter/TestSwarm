@@ -179,6 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\BusControllerBase.cs" />
     <Compile Include="Api\ClientsController.cs" />
     <Compile Include="Api\JobsController.cs" />
     <Compile Include="Api\NeededClientsController.cs" />
