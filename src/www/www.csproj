@@ -329,8 +329,10 @@
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
-    <Compile Include="Models\CopyJob.cs" />
+    <Compile Include="Models\JobCopyModel.cs" />
     <Compile Include="Models\CreateJobInput.cs" />
+    <Compile Include="Models\CreateJobRunInput.cs" />
+    <Compile Include="Models\JobCopyInputModel.cs" />
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
     <Compile Include="Models\ProgramLatestJobViewModel.cs" />

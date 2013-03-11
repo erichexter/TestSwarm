@@ -1,7 +1,8 @@
-﻿using nTestSwarm.Application.Commands.JobCreation.Described;
+﻿using nTestSwarm.Application.Commands.JobCreation;
+using nTestSwarm.Application.Commands.JobCreation.Described;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.JobStatus;
-using nTestSwarm.Areas.Api.Models;
+using nTestSwarm.Models;
 using System.Web.Mvc;
 using System.Web.UI;
 
@@ -22,13 +23,19 @@ namespace nTestSwarm.Controllers
         public ActionResult Latest()
         {
             return Query(new LatestJobStatusQuery(), 
-                        r => RedirectToAction("Details", new { id = r.JobId }), 
-                        ex => View("NoJob", ex));
+                         r => RedirectToAction("Details", new { id = r.JobId }), 
+                         ex => View("NoJob", ex));
         }
 
         public ViewResult Create()
         {
             return View(new CreateJobInput());
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateJob input)
+        {
+            return Query(input);
         }
 
         public ViewResult DescribeNew()

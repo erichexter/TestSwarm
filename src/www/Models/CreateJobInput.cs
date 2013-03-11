@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace nTestSwarm.Areas.Api.Models
+namespace nTestSwarm.Models
 {
     public class CreateJobInput
     {
@@ -10,15 +10,7 @@ namespace nTestSwarm.Areas.Api.Models
 
         [Required]
         public string SuiteId { get; set; }
+
         public IList<CreateJobRunInput> Runs { get; set; }
-    }
-
-    public class CreateJobRunInput
-    {
-        [Required]
-        public string Name { get; set; }
-
-        [Required]
-        public string Url { get; set; }
     }
 }
