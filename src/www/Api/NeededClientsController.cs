@@ -13,7 +13,7 @@ namespace nTestSwarm.Api
         
         public NeededClientResults Get()
         {
-            var result = Request(new RunDiagnosticsQuery());
+            var result = Query(new RunDiagnosticsQuery());
             var response = new NeededClientResults
             {
                 UserAgents = result

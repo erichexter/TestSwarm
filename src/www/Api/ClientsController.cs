@@ -21,7 +21,7 @@ namespace nTestSwarm.Api
         [HttpGet]
         public NextRunResult NextRun(long id)
         {
-            return Request(new NextRunQuery(id));
+            return Query(new NextRunQuery(id));
         }
     }
 }

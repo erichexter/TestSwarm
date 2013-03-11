@@ -13,7 +13,7 @@ namespace nTestSwarm.Api
 
         public RunStatusResult Get([FromBody]RunStatusQuery query)
         {
-            return Request(query);
+            return Query(query);
         }
 
         public void Post([FromBody]CompleteRun input)

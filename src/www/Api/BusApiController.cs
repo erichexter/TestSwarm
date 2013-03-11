@@ -13,7 +13,7 @@ namespace nTestSwarm.Api
             _bus = bus;
         }
 
-        protected TResponse Request<TResponse>(IRequest<TResponse> request)
+        protected TResponse Query<TResponse>(IRequest<TResponse> request)
         {
             var result = _bus.Request(request);
 
