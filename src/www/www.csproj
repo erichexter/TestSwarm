@@ -181,7 +181,7 @@
   <ItemGroup>
     <Compile Include="Api\BusApiController.cs" />
     <Compile Include="Api\ClientsController.cs" />
-    <Compile Include="Api\RunsController.cs" />
+    <Compile Include="Api\JobsController.cs" />
     <Compile Include="Api\NeededClientsController.cs" />
     <Compile Include="Api\RunStatusesController.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClient.cs" />
@@ -328,21 +328,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\ClientsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProgramsController.cs" />
-    <Compile Include="Areas\Api\ApiActionResult.cs" />
-    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
-    <Compile Include="Areas\Api\ApiController.cs" />
-    <Compile Include="Areas\Api\ApiResult.cs" />
-    <Compile Include="Areas\Api\ApiStringResult.cs" />
-    <Compile Include="Areas\Api\ApiStringResult`1.cs" />
-    <Compile Include="Areas\Api\ApiVoidResult.cs" />
-    <Compile Include="Areas\Api\Controllers\JobController.cs" />
-    <Compile Include="Areas\Api\Controllers\NeededClientsController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
-    <Compile Include="Areas\Api\Models\CopyJob.cs" />
-    <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
+    <Compile Include="Models\CopyJob.cs" />
+    <Compile Include="Models\CreateJobInput.cs" />
+    <Compile Include="Models\NeededClient.cs" />
+    <Compile Include="Models\NeededClientResults.cs" />
     <Compile Include="Models\ProgramLatestJobViewModel.cs" />
     <Compile Include="Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
@@ -351,9 +341,8 @@
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />
     <Compile Include="Areas\Tests\Controllers\ManualController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
-    <Compile Include="Areas\Utils\Controllers\ClientDetectionController.cs" />
-    <Compile Include="Areas\Utils\Controllers\RunDiagnosticsController.cs" />
-    <Compile Include="Areas\Utils\UtilsAreaRegistration.cs" />
+    <Compile Include="Areas\Diagnostics\Controllers\ClientDetectionController.cs" />
+    <Compile Include="Areas\Diagnostics\Controllers\RunDiagnosticsController.cs" />
     <Compile Include="BootstrapSupport\ControlGroupExtensions.cs" />
     <Compile Include="BootstrapSupport\ViewHelperExtensions.cs" />
     <Compile Include="Controllers\BootstrapBaseController.cs" />
@@ -555,8 +544,7 @@
     <Content Include="Content\less\bootstrap.less" />
     <Content Include="Content\less\alerts.less" />
     <Content Include="Content\less\accordion.less" />
-    <Content Include="Areas\Api\Views\NeededClients\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Views\NeededClients\Index.cshtml" />
     <Content Include="Areas\Client\Views\Web.config" />
     <Content Include="Areas\Diagnostics\Views\Web.config" />
     <None Include="Content\site.less" />
@@ -728,17 +716,16 @@
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\file_types.psd" />
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\copy document.psd" />
     <Content Include="Content\DataTables-1.9.4\extras\TableTools\media\images\psd\collection.psd" />
-    <Content Include="Areas\Api\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Api\Views\Job\DescribeNew.cshtml" />
+    <Content Include="Views\Job\Create.cshtml" />
     <Content Include="Areas\Tests\Views\Auto\AutoTest.cshtml" />
     <Content Include="Areas\Tests\Views\Manual\Index.cshtml" />
-    <Content Include="Areas\Utils\Views\ClientDetection\Index.cshtml" />
-    <Content Include="Areas\Utils\Views\RunDiagnostics\Index.cshtml" />
+    <Content Include="Areas\Diagnostics\Views\ClientDetection\Index.cshtml" />
+    <Content Include="Areas\Diagnostics\Views\RunDiagnostics\Index.cshtml" />
     <Content Include="Areas\Web.config" />
     <Content Include="Application\Domain\Model.cd" />
     <Content Include="Views\Program\Create.cshtml" />
     <Content Include="Views\Program\Index.cshtml" />
-    <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProgramViewModel.cshtml" />
     <Content Include="Views\Program\Edit.cshtml" />
     <Content Include="Views\Program\Details.cshtml" />
     <Content Include="Views\Program\QueueJob.cshtml" />
@@ -836,9 +823,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Authentication\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
     <Content Include="Views\Job\NoJob.cshtml" />
-    <Content Include="Views\Job\StatusTable.cshtml" />
     <Content Include="Views\JobDiff\Index.cshtml" />
     <Content Include="Views\JobDiff\ShowDiff.cshtml" />
     <Content Include="Areas\Client\Views\Run\Index.cshtml" />
@@ -866,16 +852,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Client\Views\Shared\" />
-    <Folder Include="Areas\Diagnostics\Controllers\" />
     <Folder Include="Areas\Diagnostics\Models\" />
-    <Folder Include="Areas\Diagnostics\Views\Shared\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
-    <Folder Include="Areas\Utils\Models\" />
-    <Folder Include="Areas\Utils\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

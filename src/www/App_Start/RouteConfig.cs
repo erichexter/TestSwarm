@@ -1,6 +1,6 @@
 ﻿using NavigationRoutes;
 using nTestSwarm.Areas.Client.Controllers;
-using nTestSwarm.Areas.Utils.Controllers;
+using nTestSwarm.Areas.Diagnostics.Controllers;
 using nTestSwarm.Controllers;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -26,7 +26,7 @@ namespace nTestSwarm
 
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
 
-            routes.MapNavigationRoute<JobController>("Jobs", c => c.Index(0))
+            routes.MapNavigationRoute<JobController>("Jobs", c => c.Latest())
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
                 .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null), "api");
 

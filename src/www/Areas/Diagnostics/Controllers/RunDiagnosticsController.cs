@@ -8,7 +8,7 @@ using nTestSwarm.Application.Data;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 
-namespace nTestSwarm.Areas.Utils.Controllers
+namespace nTestSwarm.Areas.Diagnostics.Controllers
 {
     public class RunDiagnosticsController : Controller
     {

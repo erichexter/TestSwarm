@@ -1,6 +1,6 @@
-using System.Linq;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using System.Linq;
 
 namespace nTestSwarm.Application.Commands.JobCreation.Described
 {
@@ -17,7 +17,7 @@ namespace nTestSwarm.Application.Commands.JobCreation.Described
 
         public CreateJobResult Handle(CreateJobFromDescription request)
         {
-            var desc = _descriptionClient.GetFrom(request.Url, request.Correlation);
+            var desc = _descriptionClient.GetFrom(request.Url, new[] { request.Correlation });
 
             var createJobMessage = new CreateJob
             {
@@ -26,10 +26,8 @@ namespace nTestSwarm.Application.Commands.JobCreation.Described
                 SuiteId = desc.SuiteId,
             };
 
-            if(request.MaxRuns.HasValue)
-            {
+            if (request.MaxRuns.HasValue)
                 createJobMessage.MaxRuns = request.MaxRuns;
-            }
 
             var result = _bus.Request(createJobMessage);
 

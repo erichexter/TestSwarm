@@ -1,6 +1,6 @@
 ﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Areas.Api.Controllers;
-using nTestSwarm.Areas.Utils.Controllers;
+using nTestSwarm.Areas.Diagnostics.Controllers;
+using nTestSwarm.Models;
 using System.Linq;
 
 namespace nTestSwarm.Api

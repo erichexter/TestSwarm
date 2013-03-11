@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace nTestSwarm.Areas.Utils.Controllers
+namespace nTestSwarm.Areas.Diagnostics.Controllers
 {
     public class ClientDetectionController : Controller
     {

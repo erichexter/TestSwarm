@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
-using NUnit.Framework;
-using nTestSwarm;
-using nTestSwarm.Application.Commands.DataCleanup;
+﻿using nTestSwarm.Application.Commands.DataCleanup;
 using nTestSwarm.Application.Domain;
-using nTestSwarm.Areas.Api.Controllers;
+using NUnit.Framework;
 using Should;
+using System;
+using System.Linq;
 
 namespace nTestSwarmTests.Application.ClientRunWiping
 {

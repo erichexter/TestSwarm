@@ -1,75 +1,45 @@
-﻿using nTestSwarm.Application.Commands.JobDeletion;
-using nTestSwarm.Application.Commands.JobResetting;
+﻿using nTestSwarm.Application.Commands.JobCreation.Described;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.JobStatus;
-using System;
+using nTestSwarm.Areas.Api.Models;
 using System.Web.Mvc;
 using System.Web.UI;
 
 namespace nTestSwarm.Controllers
 {
-    public class JobController : Controller
+    public class JobController : BusController
     {
-        readonly IBus _bus;
-
-        public JobController(IBus bus)
+        public JobController(IBus bus) : base(bus)
         {
-            _bus = bus;
         }
 
         [OutputCache(CacheProfile = "jobstatus", Location = OutputCacheLocation.Server)]
-        public ViewResult Index(long id)
+        public ActionResult Details(long id)
         {
-            var viewAndData = GetViewAndData(id);
-            return View(viewAndData.Item1, viewAndData.Item2);
+            return Query(new JobStatusQuery(id), null, ex => View("NoJob", ex));
         }
 
-        [OutputCache(CacheProfile = "jobstatus", Location = OutputCacheLocation.Server)]
-        public PartialViewResult StatusTable(long id)
+        public ActionResult Latest()
         {
-            var viewAndData = GetViewAndData(id);
-            return PartialView(viewAndData.Item1, viewAndData.Item2);
+            return Query(new LatestJobStatusQuery(), 
+                        r => RedirectToAction("Details", new { id = r.JobId }), 
+                        ex => View("NoJob", ex));
         }
 
-        public ViewResult Latest()
+        public ViewResult Create()
         {
-            var result = _bus.Request(new LatestJobStatusQuery());
-
-            if (result.HasException || result.Data.IsEmpty)
-            {
-                return View("NoJob", result.Exception);
-            }
-
-            return View("Index", result.Data);
+            return View(new CreateJobInput());
         }
 
-        Tuple<string, object> GetViewAndData(long id)
+        public ViewResult DescribeNew()
         {
-            var result = _bus.Request(new JobStatusQuery(id));
-
-            if (result.HasException)
-            {
-                return new Tuple<string, object>("NoJob", result.Exception);
-            }
-
-            return new Tuple<string, object>(string.Empty, result.Data);
+            return View();
         }
-            
-        //[HttpPost]
-        //public ActionResult WipeJob(string type, long job_id)
-        //{
-        //    if (string.Equals(type, "reset", StringComparison.OrdinalIgnoreCase))
-        //    {
-        //        _bus.Send(new ResetJob(job_id));
-        //        return RedirectToAction("Index", new {id = job_id, area = string.Empty});
-        //    }
-        //    if (string.Equals(type, "delete", StringComparison.OrdinalIgnoreCase))
-        //    {
-        //        _bus.Send(new DeleteJob(job_id));
-        //        return RedirectToAction("Index", "Jobs", new {area = "Admin"});
-        //    }
-        //    throw new Exception("Invalid type for WipeJob");
-        //}
 
+        [HttpPost]
+        public ActionResult DescribeNew(CreateJobFromDescription input)
+        {
+            return Query(input);
+        }
     }
 }
