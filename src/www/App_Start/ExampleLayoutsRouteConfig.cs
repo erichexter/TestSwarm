@@ -1,8 +1,8 @@
 ﻿using NavigationRoutes;
+using nTestSwarm.Areas.Client.Controllers;
 using nTestSwarm.Areas.Utils.Controllers;
 using nTestSwarm.Controllers;
 using System.Web.Routing;
-using ApiJobController = nTestSwarm.Areas.Api.Controllers.JobController;
 using ApiProgramController = nTestSwarm.Areas.Api.Controllers.ProgramController;
 
 namespace BootstrapMvcSample

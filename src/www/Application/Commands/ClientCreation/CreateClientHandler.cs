@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
-using nTestSwarm.Models;
+using nTestSwarm.Areas.Client.Models;
+using System.Linq;
 
 namespace nTestSwarm.Application.Commands.ClientCreation
 {

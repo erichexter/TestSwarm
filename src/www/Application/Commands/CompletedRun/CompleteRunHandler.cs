@@ -26,7 +26,7 @@ namespace nTestSwarm.Application.Commands.CompletedRun
                                 x => x.Run.RunUserAgents.Select(r => r.UserAgent),
                                 x => x.Run.ClientRuns)
 
-                .FirstOrDefault(x => x.ClientId == message.Client_Id && x.RunId == message.Run_id);
+                .FirstOrDefault(x => x.ClientId == message.ClientId && x.RunId == message.RunId);
 
             if (clientRun != null)
             {
@@ -39,8 +39,8 @@ namespace nTestSwarm.Application.Commands.CompletedRun
             //TODO: fill in the blanks
             _eventPublisher.Publish(new RunCompleted
             {
-                ClientId = message.Client_Id,
-                RunId = message.Run_id,
+                ClientId = message.ClientId,
+                RunId = message.RunId,
                 FailCount = message.Fail,
                 ErrorCount = message.Error,
                 TotalCount = message.Total,

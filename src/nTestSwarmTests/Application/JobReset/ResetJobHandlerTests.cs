@@ -59,7 +59,7 @@ namespace nTestSwarmTests.Application.JobReset
                                           var handler = GetInstance<NextRunQueryHandler>();
                                           var nextRunResult = handler.Handle(nextRunQuery);
 
-                                          var runCompleted = new CompleteRun {Client_Id = client.Id, Run_id = nextRunResult.id, Total = 1};
+                                          var runCompleted = new CompleteRun {ClientId = client.Id, RunId = nextRunResult.id, Total = 1};
                                           GetInstance<CompleteRunHandler>().Handle(runCompleted);
                                       }
                                   }

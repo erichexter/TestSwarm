@@ -181,7 +181,7 @@
   <ItemGroup>
     <Compile Include="Api\BusControllerBase.cs" />
     <Compile Include="Api\ClientsController.cs" />
-    <Compile Include="Api\JobsController.cs" />
+    <Compile Include="Api\RunsController.cs" />
     <Compile Include="Api\NeededClientsController.cs" />
     <Compile Include="Api\RunStatusesController.cs" />
     <Compile Include="Application\Commands\ClientCreation\CreateClient.cs" />
@@ -347,6 +347,9 @@
     <Compile Include="Areas\Api\Models\ProgramLatestJobViewModel.cs" />
     <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
     <Compile Include="Areas\Api\Models\QueueJobForProgramViewModel.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\RunController.cs" />
+    <Compile Include="Areas\Diagnostics\DiagnosticsAreaRegistration.cs" />
     <Compile Include="Areas\Tests\Controllers\AutoController.cs" />
     <Compile Include="Areas\Tests\Controllers\ManualController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
@@ -359,7 +362,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobDiffController.cs" />
-    <Compile Include="Controllers\RunController.cs" />
     <Compile Include="Controllers\UserAgentController.cs" />
     <Compile Include="DependencyResolution\IoC-custom.cs" />
     <Compile Include="DependencyResolution\SignalRDependencyResolver.cs" />
@@ -405,7 +407,7 @@
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
     <Compile Include="Models\ClientModelBinder.cs" />
     <Compile Include="Models\CreateRunStatus.cs" />
-    <Compile Include="Models\RunViewModel.cs" />
+    <Compile Include="Areas\Client\Models\RunViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
     <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
@@ -556,6 +558,8 @@
     <Content Include="Content\less\accordion.less" />
     <Content Include="Areas\Api\Views\NeededClients\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Client\Views\Web.config" />
+    <Content Include="Areas\Diagnostics\Views\Web.config" />
     <None Include="Content\site.less" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
@@ -838,7 +842,7 @@
     <Content Include="Views\Job\StatusTable.cshtml" />
     <Content Include="Views\JobDiff\Index.cshtml" />
     <Content Include="Views\JobDiff\ShowDiff.cshtml" />
-    <Content Include="Views\Run\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Run\Index.cshtml" />
     <Content Include="Views\Shared\_Form.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -865,6 +869,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Client\Views\Shared\" />
+    <Folder Include="Areas\Diagnostics\Controllers\" />
+    <Folder Include="Areas\Diagnostics\Models\" />
+    <Folder Include="Areas\Diagnostics\Views\Shared\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
     <Folder Include="Areas\Utils\Models\" />

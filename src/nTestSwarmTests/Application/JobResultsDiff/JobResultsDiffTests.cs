@@ -39,7 +39,7 @@ namespace nTestSwarmTests.Application.JobResultsDiff
                 });
                 job1Id = createJobResult.JobId;
                 NextRunResult result = GetInstance<NextRunQueryHandler>().Handle(new NextRunQuery(client1.Id));
-                GetInstance<CompleteRunHandler>().Handle(new CompleteRun{Client_Id = client1.Id, Fail = 0, Total = 1, Run_id = result.id});
+                GetInstance<CompleteRunHandler>().Handle(new CompleteRun{ClientId = client1.Id, Fail = 0, Total = 1, RunId = result.id});
             });
 
             // create a new job with one run and fail it
@@ -57,7 +57,7 @@ namespace nTestSwarmTests.Application.JobResultsDiff
                 });
                 job2Id = createJobResult.JobId;
                 NextRunResult result = GetInstance<NextRunQueryHandler>().Handle(new NextRunQuery(client1.Id));
-                GetInstance<CompleteRunHandler>().Handle(new CompleteRun { Client_Id = client1.Id, Fail = 1, Total = 1, Run_id = result.id });
+                GetInstance<CompleteRunHandler>().Handle(new CompleteRun { ClientId = client1.Id, Fail = 1, Total = 1, RunId = result.id });
             });
 
             DbContext().Jobs.Count().ShouldEqual(2);

@@ -13,7 +13,7 @@ namespace nTestSwarm.Api
             _bus = bus;
         }
 
-        protected TResponse HandleRequest<TResponse>(IRequest<TResponse> request)
+        protected TResponse Request<TResponse>(IRequest<TResponse> request)
         {
             var result = _bus.Request(request);
 
@@ -24,7 +24,7 @@ namespace nTestSwarm.Api
                 return result.Data;
         }
 
-        protected void HandleSend<TMessage>(TMessage message)
+        protected void Send<TMessage>(TMessage message)
         {
             var result = _bus.Send(message);
 

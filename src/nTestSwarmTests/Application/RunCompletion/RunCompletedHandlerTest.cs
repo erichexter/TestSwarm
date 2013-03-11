@@ -25,8 +25,8 @@ namespace nTestSwarmTests.Application.RunCompletion
 
             var runCompleted = new CompleteRun
                 {
-                    Client_Id = client.Id,
-                    Run_id =  run.Id,
+                    ClientId = client.Id,
+                    RunId =  run.Id,
                     Total = 10
                 };
 

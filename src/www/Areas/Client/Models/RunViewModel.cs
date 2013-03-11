@@ -1,4 +1,4 @@
-﻿namespace nTestSwarm.Models
+﻿namespace nTestSwarm.Areas.Client.Models
 {
     public class RunViewModel
     {

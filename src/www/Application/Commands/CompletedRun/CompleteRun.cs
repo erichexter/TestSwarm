@@ -2,9 +2,8 @@
 {
     public class CompleteRun
     {
-        public long Run_id { get; set; }
-        public long Client_Id { get; set; }
-
+        public long RunId { get; set; }
+        public long ClientId { get; set; }
         public int Fail { get; set; }
         public int Error { get; set; }
         public int Total { get; set; }
