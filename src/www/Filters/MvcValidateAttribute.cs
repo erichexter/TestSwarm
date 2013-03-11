@@ -2,6 +2,12 @@
 
 namespace nTestSwarm.Filters
 {
+    /// <summary>
+    /// Enforces validation of incoming MVC models.
+    /// </summary>
+    /// <remarks>
+    /// Do not apply globally as it does not fit all scenarios.
+    /// </remarks>
     public class MvcValidateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
