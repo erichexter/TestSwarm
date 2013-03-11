@@ -1,12 +1,12 @@
-﻿@model nTestSwarm.Areas.Api.Models.QueueJobForProgramViewModel
+﻿@model nTestSwarm.Models.QueueJobForProgramViewModel
 @{
-    ViewBag.Title = "QueueJob";
+    ViewBag.Title = "Queue Job";
 }
 
 <h2>Queue JobId</h2>
 
-@using (Html.BeginForm("QueueJob", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
-    @Html.Partial("~/Views/Shared/_validationSummary.cshtml");
+@using (Html.BeginForm("QueueJob", "Program", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.Partial("_validationSummary.cshtml");
     
     <div class="control-group">
         <label for="programId" class="control-label">Programs</label>

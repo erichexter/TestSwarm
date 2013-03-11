@@ -1,0 +1,28 @@
+﻿<h2>Queue New Run</h2>
+
+@using (Html.BeginForm("DescribeNew", "Job", FormMethod.Post, new { @class = "form-horizontal" })) {
+   <div class="control-group">
+       <label for="url" class="control-label">URL</label> 
+       <div class="controls">
+           <input type="text" id="url" name="url" />
+       </div>
+   </div>
+    
+    <div class="control-group">
+        <label for="correlation" class="control-label">Correlation</label>
+        <div class="controls">
+            <input type="text" id="correlation" name="correlation" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label for="maxruns" class="control-label">Max Runs</label>
+        <div class="controls">
+            <input type="text" id="maxruns" name="maxruns" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls"><input type="submit" value="Queue" /></div>
+    </div>
+}

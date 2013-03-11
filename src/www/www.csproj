@@ -507,7 +507,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\_colors.less" />
-    <Content Include="Views\Program\LatestJob.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
     <Content Include="Content\less\wells.less" />
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\utilities.less" />
@@ -828,8 +828,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Authentication\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Job\Details.cshtml" />
-    <Content Include="Views\Job\NoJob.cshtml" />
     <Content Include="Views\JobDiff\Index.cshtml" />
     <Content Include="Views\JobDiff\ShowDiff.cshtml" />
     <Content Include="Areas\Client\Views\Run\Index.cshtml" />
@@ -853,6 +851,8 @@
     <Content Include="Views\Shared\_alerts.cshtml" />
     <Content Include="Views\Shared\_validationSummary.cshtml" />
     <Content Include="Views\Shared\_GlobalJsVars.cshtml" />
+    <Content Include="Views\Job\DescribeNew.cshtml" />
+    <Content Include="Views\Job\NoJob.cshtml" />
     <None Include="Web.CI.config" />
   </ItemGroup>
   <ItemGroup>

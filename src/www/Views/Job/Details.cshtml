@@ -1,38 +1,36 @@
-﻿@using nTestSwarm.Application.Queries.JobStatus
-@using nTestSwarm.Application
-
-@model JobStatusResult
+﻿@model nTestSwarm.Models.ProgramLatestJobViewModel
 @{
-    ViewBag.Title = "Job Status";
+    ViewBag.Title = "Job Details";
 }
-<div id="dialog" title="Clients"></div>
-<h3>@Model.JobName</h3>
+
+<h3 data-bind="text: jobName">&nbsp;</h3>
+
+<input type="hidden" id="imagesPath" value="~/images/" />
+<input type="hidden" id="programId" value="@Model.ProgramId" />
+<input type="hidden" id="jobId" value="@Model.JobId" />
 
 <table class="job-results">
     <thead>
         <tr>
             <th></th>
-            @foreach (var browser in Model.Browsers) {
+            <!-- ko foreach: browsers -->
             <th>
-                <div class="browser" rel="@Url.Action("UserAgentInfo", "UserAgent", new {browser.Id})">
-                    <img src="@(Url.Content("~/images/") + browser.Browser + ".sm.png")" class="browser-icon @browser.Browser" alt="@browser.Name" title="@browser.Name" /><br />
-                    <span class="browser-name">@browser.Name</span>
+                <div class="browser">
+                    <img data-bind="attr: iconAttributes" class="browser-icon" />
+                    <div data-bind="text: name" class="browser-name"></div>
                 </div>
             </th>
-            }
+            <!-- /ko -->
         </tr>
     </thead>
-    <tbody>
-        @foreach (var row in Model.RunResults) {
+    <tbody data-bind="foreach: runResults">
         <tr>
-            <th><a href="@row.RunUrl">@row.RunName</a></th>
-            @foreach (var cell in row.Cells) {
-            <td class="@cell.Status.Css">
-                <a href="@Url.Action("Status", "Run", new {cell.ClientId, row.RunId})">@cell.CellContents</a>
-            </td>
-            }
+            <th><a data-bind="text: runName, attr: { href: runUrl }"></a></th>
+
+            <!-- ko foreach: browsers -->
+            <td data-bind="attr: { class: statusClass }"><a data-bind="text: statusText, attr: { href: statusUrl }"></a></td>
+            <!-- /ko -->
         </tr>
-        }
     </tbody>
 </table>
 
