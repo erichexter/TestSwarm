@@ -1,4 +1,5 @@
 ﻿using BootstrapSupport;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace nTestSwarm.Controllers
@@ -23,6 +24,11 @@ namespace nTestSwarm.Controllers
         public void Error(string message)
         {
             TempData.Add(Alerts.ERROR, message);
+        }
+
+        public void Errors(IEnumerable<string> errors)
+        {
+            TempData.Add(Alerts.ERROR, string.Join("<br/>", errors));
         }
     }
 }

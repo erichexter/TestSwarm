@@ -1,4 +1,4 @@
-﻿namespace nTestSwarm.Areas.Api.Models
+﻿namespace nTestSwarm.Models
 {
     public class ProgramLatestJobViewModel
     {

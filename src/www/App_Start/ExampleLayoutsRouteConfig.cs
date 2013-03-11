@@ -3,7 +3,6 @@ using nTestSwarm.Areas.Client.Controllers;
 using nTestSwarm.Areas.Utils.Controllers;
 using nTestSwarm.Controllers;
 using System.Web.Routing;
-using ApiProgramController = nTestSwarm.Areas.Api.Controllers.ProgramController;
 
 namespace BootstrapMvcSample
 {
@@ -15,7 +14,7 @@ namespace BootstrapMvcSample
 
             routes.MapNavigationRoute<JobController>("Jobs", c => c.Index(0))
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
-                .AddChildRoute<ApiProgramController>("Queue New", c => c.QueueJob((long?)null), "api");
+                .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null), "api");
 
             routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
 

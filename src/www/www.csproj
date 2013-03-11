@@ -341,12 +341,11 @@
     <Compile Include="Areas\Api\ApiVoidResult.cs" />
     <Compile Include="Areas\Api\Controllers\JobController.cs" />
     <Compile Include="Areas\Api\Controllers\NeededClientsController.cs" />
-    <Compile Include="Areas\Api\Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Areas\Api\Models\CopyJob.cs" />
     <Compile Include="Areas\Api\Models\CreateJobInput.cs" />
-    <Compile Include="Areas\Api\Models\ProgramLatestJobViewModel.cs" />
-    <Compile Include="Areas\Api\Models\ProgramsViewModel.cs" />
-    <Compile Include="Areas\Api\Models\QueueJobForProgramViewModel.cs" />
+    <Compile Include="Models\ProgramLatestJobViewModel.cs" />
+    <Compile Include="Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\RunController.cs" />
     <Compile Include="Areas\Diagnostics\DiagnosticsAreaRegistration.cs" />
@@ -515,7 +514,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\_colors.less" />
-    <Content Include="Areas\Api\Views\Program\LatestJob.cshtml" />
+    <Content Include="Views\Program\LatestJob.cshtml" />
     <Content Include="Content\less\wells.less" />
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\utilities.less" />
@@ -738,12 +737,12 @@
     <Content Include="Areas\Utils\Views\RunDiagnostics\Index.cshtml" />
     <Content Include="Areas\Web.config" />
     <Content Include="Application\Domain\Model.cd" />
-    <Content Include="Areas\Api\Views\Program\Create.cshtml" />
-    <Content Include="Areas\Api\Views\Program\Index.cshtml" />
+    <Content Include="Views\Program\Create.cshtml" />
+    <Content Include="Views\Program\Index.cshtml" />
     <Content Include="Areas\Api\Views\Shared\EditorTemplates\ProgramViewModel.cshtml" />
-    <Content Include="Areas\Api\Views\Program\Edit.cshtml" />
-    <Content Include="Areas\Api\Views\Program\Details.cshtml" />
-    <Content Include="Areas\Api\Views\Program\QueueJob.cshtml" />
+    <Content Include="Views\Program\Edit.cshtml" />
+    <Content Include="Views\Program\Details.cshtml" />
+    <Content Include="Views\Program\QueueJob.cshtml" />
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>

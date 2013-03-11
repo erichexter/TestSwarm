@@ -14,6 +14,16 @@ namespace nTestSwarm.Controllers
             _bus = bus;
         }
 
+        protected IBus Bus
+        {
+            get { return _bus; }
+        }
+
+        protected ActionResult Send<TMessage>() where TMessage : class, new()
+        {
+            return Send(new TMessage());
+        }
+
         protected ActionResult Send<TMessage>(TMessage message, Func<ActionResult> successAction = null, Func<Exception,ActionResult> failureAction = null)
         {
             if (successAction == null)

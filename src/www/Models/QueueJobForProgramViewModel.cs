@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace nTestSwarm.Areas.Api.Models
+namespace nTestSwarm.Models
 {
     public class QueueJobForProgramViewModel
     {

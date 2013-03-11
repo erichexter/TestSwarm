@@ -1,5 +1,5 @@
 ﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Areas.Api.Models;
+using nTestSwarm.Models;
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
