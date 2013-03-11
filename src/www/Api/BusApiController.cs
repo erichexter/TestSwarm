@@ -4,11 +4,11 @@ using System.Web.Http;
 
 namespace nTestSwarm.Api
 {
-    public abstract class BusControllerBase : ApiController
+    public abstract class BusApiController : ApiController
     {
         private readonly IBus _bus;
 
-        public BusControllerBase(IBus bus)
+        public BusApiController(IBus bus)
         {
             _bus = bus;
         }

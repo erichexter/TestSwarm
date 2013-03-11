@@ -7,7 +7,7 @@ using System.Web.Http.ModelBinding;
 
 namespace nTestSwarm.Api
 {
-    public class ClientsController : BusControllerBase
+    public class ClientsController : BusApiController
     {
         public ClientsController(IBus bus) : base(bus)
         {

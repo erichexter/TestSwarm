@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace nTestSwarm.Api
 {
-    public class NeededClientsController : BusControllerBase
+    public class NeededClientsController : BusApiController
     {
         public NeededClientsController(IBus bus) : base(bus)
         {

@@ -179,7 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\BusControllerBase.cs" />
+    <Compile Include="Api\BusApiController.cs" />
     <Compile Include="Api\ClientsController.cs" />
     <Compile Include="Api\RunsController.cs" />
     <Compile Include="Api\NeededClientsController.cs" />

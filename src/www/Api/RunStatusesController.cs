@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace nTestSwarm.Api
 {
-    public class RunStatusesController : BusControllerBase
+    public class RunStatusesController : BusApiController
     {
         public RunStatusesController(IBus bus) : base(bus)
         {
