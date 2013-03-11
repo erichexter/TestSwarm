@@ -17,12 +17,7 @@ namespace nTestSwarm.Controllers
 {
     public class ProgramController : BusController
     {
-
-        private readonly IBus _bus;
-
-        public ProgramController(IBus bus) : base(bus)
-        {
-        }
+        public ProgramController(IBus bus) : base(bus) { }
 
         [OutputCache(Duration=2)]
         public ActionResult Index()
@@ -116,6 +111,5 @@ namespace nTestSwarm.Controllers
         {
             return Query(new LatestJobForProgramQuery { ProgramId = id });
         }
-
     }
 }

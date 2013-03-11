@@ -10,9 +10,7 @@ namespace nTestSwarm.Controllers
 {
     public class JobController : BusController
     {
-        public JobController(IBus bus) : base(bus)
-        {
-        }
+        public JobController(IBus bus) : base(bus) { }
 
         [OutputCache(CacheProfile = "jobstatus", Location = OutputCacheLocation.Server)]
         public ActionResult Details(long id)

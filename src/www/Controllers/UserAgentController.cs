@@ -1,23 +1,16 @@
-﻿using System.Web.Mvc;
-using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.UserAgentInfo;
+using System.Web.Mvc;
 
 namespace nTestSwarm.Controllers
 {
-    public class UserAgentController : Controller
+    public class UserAgentController : BusController
     {
-        readonly IBus _bus;
+        public UserAgentController(IBus bus) : base(bus) { }
 
-        public UserAgentController(IBus bus)
+        public ActionResult UserAgentInfo(UserAgentInfoQuery input)
         {
-            _bus = bus;
-        }
-
-        public PartialViewResult UserAgentInfo(UserAgentInfoQuery input)
-        {
-            var response = _bus.Request(input);
-
-            return PartialView(response.Data);
+            return Query(input, PartialView);
         }
     }
 }

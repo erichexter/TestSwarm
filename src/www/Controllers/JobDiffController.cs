@@ -1,33 +1,22 @@
-﻿using System.Web.Mvc;
-using nTestSwarm.Application.Events.JobCompletion;
+﻿using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.JobList;
+using System.Web.Mvc;
 
 namespace nTestSwarm.Controllers
 {
-    public class JobDiffController : Controller
+    public class JobDiffController : BusController
     {
-        readonly IBus _bus;
+        public JobDiffController(IBus bus) : base(bus) { }
 
-        public JobDiffController(IBus bus)
+        public ActionResult Index()
         {
-            _bus = bus;
+            return Query(new JobListQuery());
         }
 
-        [HttpGet]
-        public ViewResult Index()
-        {
-            var request = _bus.Request(new JobListQuery());
-
-            return View();
-        }
-
-        [HttpGet]
         public ActionResult ShowDiff(JobDiffQuery input)
         {
-            var result = _bus.Request(input);
-            
-            return View(result);
+            return Query(input);
         }
     }
 }
