@@ -853,6 +853,7 @@
     <Content Include="Views\Shared\_GlobalJsVars.cshtml" />
     <Content Include="Views\Job\DescribeNew.cshtml" />
     <Content Include="Views\Job\NoJob.cshtml" />
+    <Content Include="Views\Program\NoJob.cshtml" />
     <None Include="Web.CI.config" />
   </ItemGroup>
   <ItemGroup>

@@ -101,7 +101,8 @@ namespace nTestSwarm.Controllers
         public ActionResult LatestJob(int id)
         {
             return Query(new LatestJobForProgramQuery { ProgramId = id }, 
-                         r => RedirectToAction("Details", "Job", new { id = r.JobId }));
+                         r => RedirectToAction("Details", "Job", new { id = r.JobId }),
+                         ex => View("NoJob"));
         }
     }
 }

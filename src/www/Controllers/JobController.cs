@@ -22,7 +22,7 @@ namespace nTestSwarm.Controllers
         {
             return Query(new LatestJobStatusQuery(), 
                          r => RedirectToAction("Details", new { id = r.JobId }), 
-                         ex => View("NoJob", ex));
+                         ex => View("NoJob"));
         }
 
         public ViewResult Create()
