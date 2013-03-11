@@ -1,5 +1,5 @@
 ﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Areas.Diagnostics.Controllers;
+using nTestSwarm.Application.Queries.RunDiagnostics;
 using nTestSwarm.Models;
 using System.Linq;
 

@@ -298,6 +298,9 @@
     <Compile Include="Application\Queries\NextRun\NextRunQueryHandler.cs" />
     <Compile Include="Application\Queries\NextRun\RunQueue.cs" />
     <Compile Include="Application\Queries\ProgramList\ProgramListQuery.cs" />
+    <Compile Include="Application\Queries\RunDiagnostics\RunDiagnosticsQuery.cs" />
+    <Compile Include="Application\Queries\RunDiagnostics\RunDiagnosticsQueryHandler.cs" />
+    <Compile Include="Application\Queries\RunDiagnostics\RunDiagnosticsResult.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusQuery.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusQueryHandler.cs" />
     <Compile Include="Application\Queries\RunStatus\RunStatusResult.cs" />
@@ -854,7 +857,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Diagnostics\Models\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
