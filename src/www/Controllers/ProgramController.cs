@@ -44,7 +44,7 @@ namespace nTestSwarm.Controllers
         }
 
         [HttpPost]
-        [MvcValidation]
+        [MvcValidate]
         public ActionResult Create(CreateProgram command)
         {
             return Send(command, () => RedirectToAction("Index"));
@@ -61,7 +61,7 @@ namespace nTestSwarm.Controllers
         }
 
         [HttpPost]
-        [MvcValidation]
+        [MvcValidate]
         public ActionResult Edit(UpdateProgram command)
         {
             return Send(command, () => RedirectToAction("Index"));

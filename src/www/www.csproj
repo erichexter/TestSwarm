@@ -357,8 +357,8 @@
     <Compile Include="DependencyResolution\SignalRDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
     <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
-    <Compile Include="Filters\MvcValidationAttribute.cs" />
-    <Compile Include="Filters\ValidateAttribute.cs" />
+    <Compile Include="Filters\MvcValidateAttribute.cs" />
+    <Compile Include="Filters\ApiValidateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

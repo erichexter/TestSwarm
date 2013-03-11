@@ -2,7 +2,7 @@
 
 namespace nTestSwarm.Filters
 {
-    public class MvcValidationAttribute : ActionFilterAttribute
+    public class MvcValidateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

@@ -7,7 +7,7 @@ using System.Web.Http.Filters;
 
 namespace nTestSwarm.Filters
 {
-    public class ValidateAttribute : ActionFilterAttribute
+    public class ApiValidateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

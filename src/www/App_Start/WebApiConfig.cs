@@ -23,7 +23,7 @@ namespace nTestSwarm
 
         private static void ConfigureFilters(this HttpConfiguration config)
         {
-            config.Filters.Add(new ValidateAttribute());
+            config.Filters.Add(new ApiValidateAttribute());
         }
     }
 }
