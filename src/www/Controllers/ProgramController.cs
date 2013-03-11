@@ -8,7 +8,6 @@ using nTestSwarm.Application.Queries.GetProgramDetails;
 using nTestSwarm.Application.Queries.LatestJobForProgram;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Application.Queries.UserAgentList;
-using nTestSwarm.Filters;
 using nTestSwarm.Models;
 using System.Linq;
 using System.Web.Mvc;
@@ -27,15 +26,7 @@ namespace nTestSwarm.Controllers
 
         public ActionResult Create()
         {
-            return Query(new UserAgentQuery(), r =>
-            {
-                var viewModel = new ProgramViewModel  
-                {
-                    UserAgents = r
-                };
-
-                return View(viewModel);
-            });
+            return Query(new UserAgentQuery(), r => View(new ProgramViewModel { UserAgents = r }));
         }
 
         [HttpPost]
