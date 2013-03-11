@@ -325,8 +325,7 @@
     <Compile Include="Application\Services\OutputCacheInvalidator.cs" />
     <Compile Include="Application\Services\StringFormatter.cs" />
     <Compile Include="Application\Services\SystemTime.cs" />
-    <Compile Include="App_Start\BootstrapBundleConfig.cs" />
-    <Compile Include="App_Start\ExampleLayoutsRouteConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />

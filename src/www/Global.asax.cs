@@ -3,6 +3,7 @@ using StructureMap;
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace nTestSwarm
@@ -12,13 +13,12 @@ namespace nTestSwarm
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
+        {   
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            BootstrapSupport.BootstrapBundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
-            BootstrapMvcSample.ExampleLayoutsRouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)
@@ -26,6 +26,5 @@ namespace nTestSwarm
             ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
             DomainEvents.ClearCallbacks();
         }
-
     }
 }

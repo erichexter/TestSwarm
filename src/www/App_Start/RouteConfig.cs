@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using NavigationRoutes;
+using nTestSwarm.Areas.Client.Controllers;
+using nTestSwarm.Areas.Utils.Controllers;
+using nTestSwarm.Controllers;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -17,17 +17,24 @@ namespace nTestSwarm
             routes.IgnoreRoute("images/*");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
 
-            routes.MapRoute("WipeJob", "job/wipejob", new { controller = "JobId", action = "WipeJob" }, new[] { "nTestSwarm.Controllers" });
-            routes.MapRoute("Latest", "job/latest", new { controller = "JobId", action = "Latest" }, new[] { "nTestSwarm.Controllers" });
-            routes.MapRoute("JobStatus", "job/{id}", new { controller = "JobId", action = "Index" }, new[] { "nTestSwarm.Controllers" });
-
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
                 new[] { "nTestSwarm.Controllers" }
-                );
+            );
 
+            routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
+
+            routes.MapNavigationRoute<JobController>("Jobs", c => c.Index(0))
+                .AddChildRoute<JobController>("Latest", c => c.Latest())
+                .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null), "api");
+
+            routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
+
+            routes.MapNavigationRoute<RunDiagnosticsController>("Diagnostics", c => c.Nullo())
+                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index(), "utils")
+                .AddChildRoute<ClientDetectionController>("Client", c => c.Index(), "utils");
         }
     }
 }

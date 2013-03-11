@@ -2,9 +2,9 @@
 using BundleTransformer.Core.Transformers;
 using System.Web.Optimization;
 
-namespace BootstrapSupport
+namespace nTestSwarm
 {
-    public class BootstrapBundleConfig
+    public class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
