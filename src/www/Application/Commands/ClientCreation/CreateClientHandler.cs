@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace nTestSwarm.Application.Commands.ClientCreation
 {
-    public class CreateClientHandler : IHandler<CreateClient, RunViewModel>
+    public class CreateClientHandler : IHandler<CreateClient, ClientViewModel>
     {
         readonly IDataBase _db;
 
@@ -15,9 +15,9 @@ namespace nTestSwarm.Application.Commands.ClientCreation
             _db = db;
         }
 
-        public RunViewModel Handle(CreateClient request)
+        public ClientViewModel Handle(CreateClient request)
         {
-            var result = new RunViewModel
+            var result = new ClientViewModel
             {
                 Browser = request.Browser,
             };

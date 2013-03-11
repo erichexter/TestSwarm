@@ -3,7 +3,7 @@ using nTestSwarm.Areas.Client.Models;
 
 namespace nTestSwarm.Application.Commands.ClientCreation
 {
-    public class CreateClient : IRequest<RunViewModel>
+    public class CreateClient : IRequest<ClientViewModel>
     {
         public string OperatingSystem { get; set; }
         public string IpAddress { get; set; }
