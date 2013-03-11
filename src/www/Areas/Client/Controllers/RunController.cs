@@ -1,6 +1,7 @@
 ﻿using nTestSwarm.Application;
 using nTestSwarm.Application.Commands.ClientCreation;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Controllers;
 using System.Web.Mvc;
 
 namespace nTestSwarm.Areas.Client.Controllers
@@ -8,14 +9,9 @@ namespace nTestSwarm.Areas.Client.Controllers
     /// <summary>
     /// 
     /// </summary>
-    public class RunController : Controller
+    public class RunController : BusController
     {
-        private readonly IBus _bus;
-
-        public RunController(IBus bus)
-        {
-            _bus = bus;
-        }
+        public RunController(IBus bus) : base(bus) { }
 
         // GET: /Client/Run/
         /// <summary>
@@ -24,15 +20,15 @@ namespace nTestSwarm.Areas.Client.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var model = _bus.Request(new CreateClient
+            var command = new CreateClient
             {
                 Browser = Request.Browser.Browser,
                 Version = Request.Browser.MajorVersion,
                 IpAddress = Request.GetIpAddress(),
                 OperatingSystem = Request.Browser.Platform
-            });
+            };
 
-            return View(model.Data);
+            return Query(command);
         }
     }
 }

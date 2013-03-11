@@ -397,7 +397,7 @@
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
     <Compile Include="Models\ClientModelBinder.cs" />
     <Compile Include="Models\CreateRunStatus.cs" />
-    <Compile Include="Areas\Client\Models\ClientViewModel.cs" />
+    <Compile Include="Application\Commands\ClientCreation\ClientViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
     <Compile Include="NavigationRoutes\NavigationExtensions.cs" />
@@ -854,7 +854,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
+    <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Diagnostics\Models\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />

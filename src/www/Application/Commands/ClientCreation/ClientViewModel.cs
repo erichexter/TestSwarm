@@ -1,4 +1,4 @@
-﻿namespace nTestSwarm.Areas.Client.Models
+﻿namespace nTestSwarm.Application.Commands.ClientCreation
 {
     public class ClientViewModel
     {

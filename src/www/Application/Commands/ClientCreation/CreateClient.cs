@@ -1,5 +1,4 @@
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Areas.Client.Models;
 
 namespace nTestSwarm.Application.Commands.ClientCreation
 {
