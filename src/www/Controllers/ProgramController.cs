@@ -39,9 +39,9 @@ namespace nTestSwarm.Controllers
         }
 
         [HttpPost]
-        [MvcValidate]
         public ActionResult Create(CreateProgram command)
         {
+            //TODO: check for invalid state
             return Send(command, () => RedirectToAction("Index"));
         }
 
@@ -56,9 +56,9 @@ namespace nTestSwarm.Controllers
         }
 
         [HttpPost]
-        [MvcValidate]
         public ActionResult Edit(UpdateProgram command)
         {
+            //TODO: check for invalid state
             return Send(command, () => RedirectToAction("Index"));
         }
 
