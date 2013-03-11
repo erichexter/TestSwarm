@@ -1,7 +1,7 @@
 ﻿using BootstrapSupport;
 using System.Web.Mvc;
 
-namespace BootstrapMvcSample.Controllers
+namespace nTestSwarm.Controllers
 {
     public class BootstrapBaseController : Controller
     {
