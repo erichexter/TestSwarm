@@ -46,5 +46,11 @@ namespace nTestSwarm.Controllers
         {
             return Query(input);
         }
+
+        // empty route used for nav routes
+        public ActionResult Nullo()
+        {
+            return View();
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace nTestSwarm
         {
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
 
-            routes.MapNavigationRoute<JobController>("Jobs", c => c.Latest())
+            routes.MapNavigationRoute<JobController>("Jobs", c => c.Nullo())
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
                 .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null));
 
