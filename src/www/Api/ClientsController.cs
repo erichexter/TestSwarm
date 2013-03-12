@@ -9,9 +9,7 @@ namespace nTestSwarm.Api
 {
     public class ClientsController : BusApiController
     {
-        public ClientsController(IBus bus) : base(bus)
-        {
-        }
+        public ClientsController(IBus bus) : base(bus) { }
 
         public void Post([ModelBinder(typeof(ClientModelBinder))] CreateClient input)
         {

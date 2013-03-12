@@ -7,9 +7,7 @@ namespace nTestSwarm.Api
 {
     public class JobsController : BusApiController
     {
-        public JobsController(IBus bus) : base(bus)
-        {
-        }
+        public JobsController(IBus bus) : base(bus) { }
 
         public void Delete(long id)
         {

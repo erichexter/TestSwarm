@@ -55,21 +55,8 @@ namespace nTestSwarm.Controllers
 
         public ActionResult QueueJob(long? id)
         {
-            return Query(new ProgramDescriptorsQuery(), r =>
-            {
-                var programs = r.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name, Selected = x.Id == id })
-                                .ToList();
-
-                programs.Insert(0, new SelectListItem { Text = "(Select)" });
-
-                var viewModel = new QueueJobForProgramViewModel 
-                {
-                    ProgramId = id ?? 0,
-                    Programs = programs
-                };
-
-                return View(viewModel);
-            });
+            return Query(new ProgramDescriptorsQuery(), 
+                         r => View(new QueueJobForProgramViewModel(id ?? 0, r)));
         }
 
         [HttpPost]

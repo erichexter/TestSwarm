@@ -7,9 +7,7 @@ namespace nTestSwarm.Api
 {
     public class NeededClientsController : BusApiController
     {
-        public NeededClientsController(IBus bus) : base(bus)
-        {
-        }
+        public NeededClientsController(IBus bus) : base(bus) { }
         
         public NeededClientResults Get()
         {

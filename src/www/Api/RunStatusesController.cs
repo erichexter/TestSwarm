@@ -7,9 +7,7 @@ namespace nTestSwarm.Api
 {
     public class RunStatusesController : BusApiController
     {
-        public RunStatusesController(IBus bus) : base(bus)
-        {
-        }
+        public RunStatusesController(IBus bus) : base(bus) { }
 
         public RunStatusResult Get([FromBody]RunStatusQuery query)
         {
