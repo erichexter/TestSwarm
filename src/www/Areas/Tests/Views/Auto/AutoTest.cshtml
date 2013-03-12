@@ -1,7 +1,7 @@
-﻿@using nTestSwarm.Areas.Tests.Controllers
+﻿@using System.Web.Optimization
+@using nTestSwarm.Areas.Tests.Controllers
 @model AutoTestModel
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
- 
+@Scripts.Render("~/bundles/jquery")
 
 <script>
     // custom inject just for this page

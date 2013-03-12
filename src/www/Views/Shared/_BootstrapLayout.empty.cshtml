@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="@Styles.Url("~/content/css")" rel="stylesheet"/>
+    @Styles.Render("~/styles")
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -40,7 +40,7 @@
         padding: 7px 9px;
       }
 
-    </style>    <link href="@Styles.Url("~/Content/css-responsive")" rel="stylesheet" type="text/css" />
+    </style>    
     @RenderSection("head", required: false)
     @Html.Partial("_html5shiv")
     @* favicons and touch icons go here *@
