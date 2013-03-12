@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B50087
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "www", "www\www.csproj", "{05600BA2-FDB4-4928-B9A4-F8F4B27B992F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nTestSwarm", "www\nTestSwarm.csproj", "{05600BA2-FDB4-4928-B9A4-F8F4B27B992F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSwarmBrowserStackWorker", "TestSwarmBrowserStackWorker\TestSwarmBrowserStackWorker.csproj", "{3B014931-3595-4ECC-9D7A-0A7CD1F318FA}"
 EndProject

@@ -157,9 +157,9 @@
       <Project>{2DD285F3-7847-43EB-864A-3E52FF644DA1}</Project>
       <Name>nTestSwarm.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\www\www.csproj">
+    <ProjectReference Include="..\www\nTestSwarm.csproj">
       <Project>{05600ba2-fdb4-4928-b9a4-f8f4b27b992f}</Project>
-      <Name>www</Name>
+      <Name>nTestSwarm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
