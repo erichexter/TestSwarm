@@ -1,15 +1,14 @@
 ﻿@model nTestSwarm.Application.Queries.GetProgram.ProgramViewModel
 @{
     ViewBag.Title = "Create Program";
+    Html.EnableClientValidation();
 }
 
 <h2>Create Program</h2>
 
-<div class="errors">
-    @Html.ValidationSummary()
-</div>
+@Html.Partial("_validationSummary.cshtml")
 
-@using (Html.BeginForm("Create", "Program", new { area = "Api" }, FormMethod.Post, new { @class = "form-horizontal" })) {
+@using (Html.BeginForm("Create", "Program", FormMethod.Post, new { @class = "form-horizontal" })) {
     @Html.EditorFor(x => x)
     
     <div class="control-group">

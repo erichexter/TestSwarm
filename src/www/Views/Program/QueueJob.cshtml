@@ -1,12 +1,15 @@
 ﻿@model nTestSwarm.Models.QueueJobForProgramViewModel
 @{
     ViewBag.Title = "Queue Job";
+    Html.EnableClientValidation();
 }
 
-<h2>Queue JobId</h2>
+<h2>Queue Job</h2>
+
+@Html.Partial("_validationSummary.cshtml")
 
 @using (Html.BeginForm("QueueJob", "Program", FormMethod.Post, new { @class = "form-horizontal" })) {
-    @Html.Partial("_validationSummary.cshtml");
+    
     
     <div class="control-group">
         <label for="programId" class="control-label">Programs</label>
