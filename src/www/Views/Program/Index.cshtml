@@ -1,5 +1,5 @@
 ﻿@using nTestSwarm
-@model nTestSwarm.Areas.Api.Models.ProgramsViewModel
+@model IEnumerable<nTestSwarm.Application.Queries.ProgramList.ProgramListResult>
 @{
     ViewBag.Title = "Programs";
 }
@@ -10,13 +10,13 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>JobIds</th>
-            <th>Most Recent JobId Status</th>
+            <th>Jobs</th>
+            <th>Most Recent Job Status</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var program in Model.Programs) {
+        @foreach (var program in Model) {
         <tr data-href="@Url.Action("details", new { id = @program.Id })">
             <td>@Html.ActionLink(program.Name, "details", new { id = @program.Id })</td>
             <td>@program.JobCount</td>
@@ -26,8 +26,7 @@
             <td></td>    
             }
             <td>
-                @using (Html.BeginForm("QueueJob", "Program", new {area = "Api",id=@program.Id}, FormMethod.Post, new {@class = "form-horizontal"}))
-                {
+                @using (Html.BeginForm("QueueJob", "Program", new { id = @program.Id }, FormMethod.Post, new {@class = "form-horizontal"})) {
                     <input type="hidden" name="programid" value="@program.Id"/>
                     <button class="btn btn-info btn-mini" type="submit">Queue</button>
                 }

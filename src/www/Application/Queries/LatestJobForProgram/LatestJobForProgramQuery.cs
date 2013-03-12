@@ -5,6 +5,11 @@ namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
     public class LatestJobForProgramQuery : IRequest<ProgramLatestJobViewModel>
     {
-        public long ProgramId { get; set; }
+        public LatestJobForProgramQuery(int programId)
+        {
+            ProgramId = programId;
+        }
+
+        public long ProgramId { get; private set; }
     }
 }

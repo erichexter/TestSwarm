@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 namespace nTestSwarm
 {
-    public class RouteConfig
+    public static class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -24,11 +24,16 @@ namespace nTestSwarm
                 new[] { "nTestSwarm.Controllers" }
             );
 
+            routes.MapNavigationRoutes();
+        }
+
+        private static void MapNavigationRoutes(this RouteCollection routes)
+        {
             routes.MapNavigationRoute<HomeController>("Home", c => c.Index());
 
             routes.MapNavigationRoute<JobController>("Jobs", c => c.Latest())
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
-                .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null), "api");
+                .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null));
 
             routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
 
