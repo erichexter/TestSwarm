@@ -4,7 +4,7 @@ using System.Web.Optimization;
 
 namespace nTestSwarm
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
@@ -14,18 +14,12 @@ namespace nTestSwarm
             BundleTable.EnableOptimizations = false;
 #endif
 
-            var cssTransformer = new CssTransformer();
-            var nullOrderer = new NullOrderer();
+            bundles.RegisterStyles();
+            bundles.RegisterScripts();
+        }
 
-            // can mix less, sass and css together
-            var sytleBundle = new Bundle("~/styles", cssTransformer).Include(
-                "~/Content/body.css",
-                "~/Content/site.less");
-
-            sytleBundle.Orderer = nullOrderer;
-
-            bundles.Add(sytleBundle);
-
+        private static void RegisterScripts(this BundleCollection bundles)
+        {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
@@ -42,6 +36,21 @@ namespace nTestSwarm
                 "~/Scripts/jquery.validate.js",
                 "~/scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/jquery.validate.unobtrusive-custom-for-bootstrap.js"));
+        }
+
+        private static void RegisterStyles(this BundleCollection bundles)
+        {
+            var cssTransformer = new CssTransformer();
+            var nullOrderer = new NullOrderer();
+
+            // can mix less, sass and css together
+            var sytleBundle = new Bundle("~/styles", cssTransformer).Include(
+                "~/Content/body.css",
+                "~/Content/site.less");
+
+            sytleBundle.Orderer = nullOrderer;
+
+            bundles.Add(sytleBundle);
         }
     }
 }
