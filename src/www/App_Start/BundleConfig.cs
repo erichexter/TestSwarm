@@ -8,10 +8,10 @@ namespace nTestSwarm
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-#if !RELEASE
-            BundleTable.EnableOptimizations = false;
-#else
+#if RELEASE
             BundleTable.EnableOptimizations = true;
+#else
+            BundleTable.EnableOptimizations = false;
 #endif
 
             var cssTransformer = new CssTransformer();
