@@ -30,16 +30,15 @@ namespace nTestSwarm.Controllers
                 successAction = View;
 
             if (failureAction == null)
-                failureAction = ex =>
-                {
-                    Error(ex.GetAllMessages());
-                    return View();
-                };
+                failureAction = ex => View();
 
             var result = _bus.Send(message);
 
             if (result.HasException)
+            {
+                Error(result.Exception.GetAllMessages());
                 return failureAction(result.Exception);
+            }
 
             return successAction();
         }
@@ -50,16 +49,15 @@ namespace nTestSwarm.Controllers
                 successAction = data => View(data);
 
             if (failureAction == null)
-                failureAction = ex =>
-                {
-                    Error(ex.GetAllMessages());
-                    return View();
-                };
+                failureAction = ex => View();
 
             var result = _bus.Request(message);
 
             if (result.HasException)
+            {
+                Error(result.Exception.GetAllMessages());
                 return failureAction(result.Exception);
+            }
 
             return successAction(result.Data);
         }
