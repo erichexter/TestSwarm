@@ -21,7 +21,7 @@ namespace nTestSwarm.Controllers
         [OutputCache(Duration=2)]
         public ActionResult Index()
         {
-            return Query(new ProgramListQuery());
+            return Query(new ProgramListQuery(), null, ex => View(new ProgramListResult[0]));
         }
 
         public ActionResult Create()
