@@ -66,6 +66,12 @@ Source: "{#TestAppDir}*.jpg"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; 
 Source: "{#TestAppDir}*.png"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
 Source: "{#TestAppDir}*.gif"; DestDir: "{#WWWDestinationDir}{#MyAppName}-test"; Flags: ignoreversion createallsubdirs recursesubdirs; Components: sut
 
+Source: "{#WWWDir}\bin\*.dll"; DestDir: "{app}\database"; Flags: ignoreversion ; Components: WebApplication
+Source: "packages\EntityFramework.6.0.0-alpha2\tools\migrate.exe"; DestDir: "{app}\database"; Flags: ignoreversion  ; Components: WebApplication
+
+
+
+Source: "setup-iis.cmd"; DestDir:"{app}"; Components: WebApplication
 [Components]
 Name: "Service"; Description: "Browser Stack Integration"; Types: Full browserStackOnly; Flags: checkablealone; Languages: english
 Name: "WebApplication"; Description: "Continous Server"; Types: Full wwwOnly; Flags: checkablealone; Languages: english
@@ -75,3 +81,7 @@ Name: "sut"; Description: "Sample Test Web Application"; Types: Full wwwOnly; Fl
 Name: "Full"; Description: "Full Install"
 Name: "wwwOnly"; Description: "Continous Test Server"
 Name: "browserStackOnly"; Description: "Browser Stack Addon"
+
+
+[Run]
+Filename: "{app}\setup-iis.cmd"; WorkingDir: "{app}"; Flags: postinstall runascurrentuser shellexec; Description: "Configure IIS"; Components: WebApplication sut
