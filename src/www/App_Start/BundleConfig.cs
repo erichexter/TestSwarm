@@ -10,8 +10,10 @@ namespace nTestSwarm
         {
 #if RELEASE
             BundleTable.EnableOptimizations = true;
+            bundles.UseCdn = true;
 #else
             BundleTable.EnableOptimizations = false;
+            bundles.UseCdn = false;
 #endif
 
             bundles.RegisterStyles();
