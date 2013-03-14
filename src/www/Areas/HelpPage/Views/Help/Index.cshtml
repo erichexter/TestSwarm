@@ -8,7 +8,7 @@
     ViewBag.Title = "ASP.NET Web API Help Page";
 
     // Group APIs by controller
-    ILookup<string, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor.ControllerName);
+    var apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor.ControllerName);
 }
 
 <header>
@@ -28,8 +28,7 @@
         </div>
     </section>
     <section class="content-wrapper main-content clear-fix">
-        @foreach (var group in apiGroups)
-        {
+        @foreach (var group in apiGroups) {
             @Html.DisplayFor(m => group, "ApiGroup")
         }
     </section>
