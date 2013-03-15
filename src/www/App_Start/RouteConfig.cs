@@ -34,11 +34,11 @@ namespace nTestSwarm
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
                 .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null));
 
-            routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index());
+            routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index(), "Client");
 
             routes.MapNavigationRoute<RunDiagnosticsController>("Diagnostics", c => c.Nullo())
-                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index(), "utils")
-                .AddChildRoute<ClientDetectionController>("Client", c => c.Index(), "utils");
+                .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index(), "Diagnostics")
+                .AddChildRoute<ClientDetectionController>("Client", c => c.Index(), "Diagnostics");
         }
     }
 }
