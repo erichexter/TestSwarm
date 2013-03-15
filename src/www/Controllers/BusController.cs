@@ -30,7 +30,7 @@ namespace nTestSwarm.Controllers
                 successAction = View;
 
             if (failureAction == null)
-                failureAction = ex => View();
+                failureAction = ex => View("Error");
 
             var result = _bus.Send(message);
 
@@ -49,7 +49,7 @@ namespace nTestSwarm.Controllers
                 successAction = data => View(data);
 
             if (failureAction == null)
-                failureAction = ex => View();
+                failureAction = ex => View("Error");
 
             var result = _bus.Request(message);
 
