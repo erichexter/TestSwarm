@@ -19,6 +19,10 @@ namespace nTestSwarm.Controllers
             return Query(query, null, ex => View("NoJob", ex));
         }
 
+        /// <summary>
+        /// Determines the last job that was run (or is running) and redirects 
+        /// to the Details action for the given job.
+        /// </summary>
         public ActionResult Latest()
         {
             return Query(new LatestJobStatusQuery(), 
@@ -37,6 +41,10 @@ namespace nTestSwarm.Controllers
             return Query(input);
         }
 
+        /// <summary>
+        /// Allows a job to be created by using a job description url 
+        /// that describes the structure of the job.
+        /// </summary>
         public ViewResult DescribeNew()
         {
             return View();
