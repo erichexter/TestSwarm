@@ -7,26 +7,21 @@ namespace nTestSwarm
     public static class WebApiConfig
     {
         public const string DefaultRoute = "DefaultApi";
-        public const string NextRunRoute = "NextRun";
 
         public static void Register(HttpConfiguration config)
         {
             config.ConfigureRoutes();
             config.ConfigureFilters();
+            config.ConfigureFormatters();
+            config.EnableSystemDiagnosticsTracing();
         }
 
         private static void ConfigureRoutes(this HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
                 name: DefaultRoute,
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: NextRunRoute,
-                routeTemplate: "api/clients/{id}/nextrun",
-                defaults: new { controller = "Clients", action = "NextRun" }
+                routeTemplate: "api/{controller}/{id}/{action}",
+                defaults: new { action = RouteParameter.Optional, id = RouteParameter.Optional }
             );
         }
 

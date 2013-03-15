@@ -15,10 +15,10 @@ namespace nTestSwarm
         protected void Application_Start()
         {   
             AreaRegistration.RegisterAllAreas();
+            WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)
