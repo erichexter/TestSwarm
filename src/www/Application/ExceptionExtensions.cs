@@ -30,7 +30,7 @@ namespace nTestSwarm.Application
         public static string GetAllMessages(this Exception exception)
         {
             IEnumerable<string> messages = exception.FromHierarchy(ex => ex.InnerException)
-                                                    .Select(ex => ex.Message);
+                                                    .Select(ex => ex.ToString());
             return String.Join(Environment.NewLine, messages);
         }
     }

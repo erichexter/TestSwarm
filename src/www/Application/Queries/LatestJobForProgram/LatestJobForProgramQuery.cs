@@ -3,7 +3,7 @@ using nTestSwarm.Models;
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
-    public class LatestJobForProgramQuery : IRequest<ProgramLatestJobViewModel>
+    public class LatestJobForProgramQuery : IRequest<JobDetailsViewModel>
     {
         public LatestJobForProgramQuery(int programId)
         {

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
-    public class LatestJobForProgramQueryHandler : IHandler<LatestJobForProgramQuery, ProgramLatestJobViewModel>
+    public class LatestJobForProgramQueryHandler : IHandler<LatestJobForProgramQuery, JobDetailsViewModel>
     {
         private readonly IDataBase _db;
 
@@ -15,12 +15,12 @@ namespace nTestSwarm.Application.Queries.LatestJobForProgram
             _db = db;
         }
 
-        public ProgramLatestJobViewModel Handle(LatestJobForProgramQuery request)
+        public JobDetailsViewModel Handle(LatestJobForProgramQuery request)
         {
             return (from j in _db.All<Job>()
                     where j.Program.Id == request.ProgramId
                     orderby j.Created descending
-                    select new ProgramLatestJobViewModel
+                    select new JobDetailsViewModel
                     {
                         ProgramId = j.Program.Id,
                         JobId = j.Id

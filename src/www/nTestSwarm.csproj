@@ -280,6 +280,8 @@
     <Compile Include="Application\Queries\GetProgram\ProgramQuery.cs" />
     <Compile Include="Application\Queries\GetProgram\ProgramQueryHandler.cs" />
     <Compile Include="Application\Queries\GetProgram\ProgramViewModel.cs" />
+    <Compile Include="Application\Queries\JobDetails\JobDetailsQuery.cs" />
+    <Compile Include="Application\Queries\JobDetails\JobDetailsQueryHandler.cs" />
     <Compile Include="Application\Queries\JobList\JobListQuery.cs" />
     <Compile Include="Application\Queries\JobStatus\BrowserComparer.cs" />
     <Compile Include="Application\Queries\JobStatus\JobStatusQuery.cs" />
@@ -342,7 +344,7 @@
     <Compile Include="Models\JobCopyInputModel.cs" />
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
-    <Compile Include="Models\ProgramLatestJobViewModel.cs" />
+    <Compile Include="Models\JobDetailsViewModel.cs" />
     <Compile Include="Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\RunController.cs" />

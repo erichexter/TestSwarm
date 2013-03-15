@@ -1,6 +1,7 @@
 ﻿using nTestSwarm.Application.Commands.JobCreation;
 using nTestSwarm.Application.Commands.JobCreation.Described;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Queries.JobDetails;
 using nTestSwarm.Application.Queries.JobStatus;
 using nTestSwarm.Models;
 using System.Web.Mvc;
@@ -13,9 +14,9 @@ namespace nTestSwarm.Controllers
         public JobController(IBus bus) : base(bus) { }
 
         [OutputCache(CacheProfile = "jobstatus", Location = OutputCacheLocation.Server)]
-        public ActionResult Details(long id)
+        public ActionResult Details(JobDetailsQuery query)
         {
-            return Query(new JobStatusQuery(id), null, ex => View("NoJob", ex));
+            return Query(query, null, ex => View("NoJob", ex));
         }
 
         public ActionResult Latest()
