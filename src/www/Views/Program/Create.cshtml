@@ -6,7 +6,7 @@
 
 <h2>Create Program</h2>
 
-@Html.Partial("_validationSummary.cshtml")
+@Html.Partial("~/Views/Shared/_validationSummary.cshtml")
 
 @using (Html.BeginForm("Create", "Program", FormMethod.Post, new { @class = "form-horizontal" })) {
     @Html.EditorFor(x => x)
