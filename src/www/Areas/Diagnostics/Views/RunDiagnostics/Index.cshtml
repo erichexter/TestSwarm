@@ -1,5 +1,4 @@
-﻿@using nTestSwarm.Application.Infrastructure.BusInfrastructure
-@model Result<IEnumerable<RunDiagnosticsResult>>
+﻿@model IEnumerable<nTestSwarm.Application.Queries.RunDiagnostics.RunDiagnosticsResult>
 
 @{
     Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";    
@@ -39,7 +38,7 @@ table.rundiag td {
 
 
 
-@if (!Model.Data.Any())
+@if (!Model.Any())
 {
     <h3>No active runs</h3>
 }
@@ -61,7 +60,7 @@ else
         </thead>
 
         <tbody>
-            @foreach (var result in Model.Data) {
+            @foreach (var result in Model) {
              <tr>
                 <td>@result.Updated</td>
                 <td>@result.JobName</td>
