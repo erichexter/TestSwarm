@@ -338,8 +338,6 @@
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
-    <Compile Include="Models\JobCopyModel.cs" />
-    <Compile Include="Models\JobCopyInputModel.cs" />
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
     <Compile Include="Models\JobDetailsViewModel.cs" />
@@ -403,7 +401,6 @@
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
     <Compile Include="Models\ClientModelBinder.cs" />
-    <Compile Include="Models\CreateRunStatus.cs" />
     <Compile Include="Application\Commands\ClientCreation\ClientViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />

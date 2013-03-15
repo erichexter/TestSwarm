@@ -1,23 +1,16 @@
 ﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-//using nTestSwarm.Areas.Admin.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace nTestSwarm.Application.Commands.JobCreation.Copy
 {
-    //public class CopyJob : IRequest<CreateJobResult>
-    //{
-    //    public CopyJob()
-    //    {
-    //    }
+    public class CopyJob : IRequest<CreateJobResult>
+    {
+        [Required]
+        public long JobId { get; set; }
+        
+        [Required]
+        public string JobNameFormat { get; set; }
 
-    //    public CopyJob(JobCopyInputModel input)
-    //    {
-    //        JobId = input.JobId;
-    //        JobNameFormat = input.JobNameFormat;
-    //        JobNameParams = new[] {input.Correlation ?? string.Empty};
-    //    }
-
-    //    public long JobId { get; set; }
-    //    public string JobNameFormat { get; set; }
-    //    public object[] JobNameParams { get; set; }
-    //}
+        public object[] JobNameParams { get; set; }
+    }
 }
