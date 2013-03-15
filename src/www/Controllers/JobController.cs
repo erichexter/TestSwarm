@@ -32,7 +32,7 @@ namespace nTestSwarm.Controllers
 
         public ViewResult Create()
         {
-            return View(new CreateJobInput());
+            return View();
         }
 
         [HttpPost]
