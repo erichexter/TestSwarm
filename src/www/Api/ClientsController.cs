@@ -11,11 +11,6 @@ namespace nTestSwarm.Api
     {
         public ClientsController(IBus bus) : base(bus) { }
 
-        public void Post([ModelBinder(typeof(ClientModelBinder))] CreateClient input)
-        {
-            Send(input);
-        }
-
         [HttpGet]
         public NextRunResult NextRun(long id)
         {

@@ -400,7 +400,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\nTestSwarmDbMigration.cs" />
     <Compile Include="Migrations\nTestSwarmMigrationCodeGenerator.cs" />
-    <Compile Include="Models\ClientModelBinder.cs" />
     <Compile Include="Application\Commands\ClientCreation\ClientViewModel.cs" />
     <Compile Include="NavigationRoutes\INavigationRouteFilter.cs" />
     <Compile Include="NavigationRoutes\NamedRoute.cs" />
