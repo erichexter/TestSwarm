@@ -15,7 +15,8 @@ namespace nTestSwarm.Api
             var response = new NeededClientResults
             {
                 UserAgents = result
-                                .Where(d => string.IsNullOrWhiteSpace(d.IpAddress))
+                                //TODO: what is this filter for?
+                                //.Where(d => string.IsNullOrWhiteSpace(d.IpAddress))
                                 .Select(r => new NeededClient
                                 {
                                     Browser = r.UserAgent,
@@ -24,7 +25,8 @@ namespace nTestSwarm.Api
 
                 Jobs = result.Select(e => e.JobId).Distinct().ToList(),
 
-                ClientUrl = Url.Link(WebApiConfig.DefaultRoute, new { controller = "clients" })
+                //TODO: we can't get access to the MVC routes from Web API. need to figure this out.
+                //ClientUrl = 
             };
 
             return response;

@@ -55,7 +55,7 @@ namespace nTestSwarm.Application.Queries.RunDiagnostics
                 UserAgentVersion = x.UserAgentVersion,
                 OperatingSystem = x.OperatingSystem,
                 Updated = x.Updated,
-            });
+            }).ToArray();
         }
     }
 

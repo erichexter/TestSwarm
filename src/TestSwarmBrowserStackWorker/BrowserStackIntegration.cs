@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using BrowserStack;
+using Newtonsoft.Json;
 
 namespace TestSwarmBrowserStackWorker
 {
@@ -26,7 +27,7 @@ namespace TestSwarmBrowserStackWorker
             var client = new HttpClient();
             Task<JobClientsNeeded> result =
                 await
-                client.GetAsync(_testSwarmUrl + @"Api/neededclients/index")
+                client.GetAsync (_testSwarmUrl + @"api/neededclients")
                       .ContinueWith(t => t.Result.Content.ReadAsAsync<JobClientsNeeded>());
 
             var bs = new BrowserStack.BrowserStack(_username, _password);
@@ -42,7 +43,7 @@ namespace TestSwarmBrowserStackWorker
                 Browser browser =
                     bs.Browsers()
                       .First(f => f.BrowserName == b.Browser && f.BrowserVersion == b.Version && f.OsName == "windows");
-                _workers.Add(bs.CreateWorker(browser, result.Result.ClientUrl));
+                _workers.Add(bs.CreateWorker(browser, _testSwarmUrl + "client/run"));
             }
         }
 
