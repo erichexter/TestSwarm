@@ -7,7 +7,13 @@ namespace nTestSwarm.Api
 {
     public class NeededClientsController : BusApiController
     {
-        public NeededClientsController(IBus bus) : base(bus) { }
+        private readonly IUrlHelperWrapper _urlHelper;
+
+        public NeededClientsController(IBus bus, IUrlHelperWrapper urlHelper)
+            : base(bus)
+        {
+            _urlHelper = urlHelper;
+        }
         
         public NeededClientResults Get()
         {
@@ -24,8 +30,7 @@ namespace nTestSwarm.Api
 
                 Jobs = result.Select(e => e.JobId).Distinct().ToList(),
 
-                //TODO: we can't get access to the MVC routes from Web API. need to figure this out.
-                //ClientUrl = 
+                ClientUrl = _urlHelper.Action("index", "run", new { Area = "client" })
             };
 
             return response;
