@@ -15,8 +15,7 @@ namespace nTestSwarm.Api
             var response = new NeededClientResults
             {
                 UserAgents = result
-                                //TODO: what is this filter for?
-                                //.Where(d => string.IsNullOrWhiteSpace(d.IpAddress))
+                                .Where(d => string.IsNullOrWhiteSpace(d.IpAddress))
                                 .Select(r => new NeededClient
                                 {
                                     Browser = r.UserAgent,
