@@ -43,7 +43,7 @@ namespace TestSwarmBrowserStackWorker
                 Browser browser =
                     bs.Browsers()
                       .First(f => f.BrowserName == b.Browser && f.BrowserVersion == b.Version && f.OsName == "windows");
-                _workers.Add(bs.CreateWorker(browser, _testSwarmUrl + "client/run"));
+                _workers.Add(bs.CreateWorker(browser, result.Result.ClientUrl));
             }
         }
 
