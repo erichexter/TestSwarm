@@ -339,7 +339,7 @@
     <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
-    <Compile Include="Models\JobDetailsViewModel.cs" />
+    <Compile Include="Application\Queries\JobDetails\JobDetailsViewModel.cs" />
     <Compile Include="Models\QueueJobForProgramViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\RunController.cs" />

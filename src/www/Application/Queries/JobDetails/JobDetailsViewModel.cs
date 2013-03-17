@@ -1,4 +1,4 @@
-﻿namespace nTestSwarm.Models
+﻿namespace nTestSwarm.Application.Queries.JobDetails
 {
     public class JobDetailsViewModel
     {

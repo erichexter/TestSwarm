@@ -1,7 +1,6 @@
 ﻿using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
-using nTestSwarm.Models;
 using System.Linq;
 
 namespace nTestSwarm.Application.Queries.JobDetails
