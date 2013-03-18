@@ -17,11 +17,9 @@ namespace nTestSwarm.Application.Queries.RunDiagnostics
 
         public IEnumerable<RunDiagnosticsResult> Handle(RunDiagnosticsQuery request)
         {
+            // left join RunUserAgents to Clients to obtain the running runs
             var query = from r in _db.RunUserAgents
-                        join c in _db.Clients on r.ActiveClientId equals c.Id into clients
-                        let client = clients.FirstOrDefault()
-                        let ip = client == null ? string.Empty : client.IpAddress
-                        let os = client == null ? string.Empty : client.OperatingSystem
+                        from c in _db.Clients.Where(c => c.Id == r.ActiveClientId).DefaultIfEmpty()
                         where r.RunStatus == RunStatusType.Running
                         orderby r.Updated descending
                         select new RunDiagnosticsResult
@@ -29,10 +27,10 @@ namespace nTestSwarm.Application.Queries.RunDiagnostics
                             RunName = r.Run.Name,
                             JobName = r.Run.Job.Name,
                             JobId = r.Run.Job.Id,
-                            IpAddress = ip,
+                            IpAddress = c == null ? string.Empty : c.IpAddress,
                             UserAgent = r.UserAgent.Name,
                             UserAgentVersion = r.UserAgent.Version,
-                            OperatingSystem = os,
+                            OperatingSystem = c == null ? string.Empty : c.OperatingSystem,
                             Updated = r.Updated
                         };
 
