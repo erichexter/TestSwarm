@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
-    public class LatestJobForProgramQueryHandler : IHandler<LatestJobForProgramQuery, long?>
+    public class LatestJobForProgramQueryHandler : IHandler<LatestJobForProgramQuery, long>
     {
         private readonly IDataBase _db;
 
@@ -14,7 +14,7 @@ namespace nTestSwarm.Application.Queries.LatestJobForProgram
             _db = db;
         }
 
-        public long? Handle(LatestJobForProgramQuery request)
+        public long Handle(LatestJobForProgramQuery request)
         {
             return (from j in _db.All<Job>()
                     where j.Program.Id == request.ProgramId

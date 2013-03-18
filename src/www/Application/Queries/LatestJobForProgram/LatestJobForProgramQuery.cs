@@ -2,7 +2,7 @@
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
-    public class LatestJobForProgramQuery : IRequest<long?>
+    public class LatestJobForProgramQuery : IRequest<long>
     {
         public LatestJobForProgramQuery(int programId)
         {

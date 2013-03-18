@@ -89,8 +89,8 @@ namespace nTestSwarm.Controllers
         {
             return Query(new LatestJobForProgramQuery(id), 
                          jobId => {
-                             if (jobId.HasValue)
-                                 return RedirectToAction("Details", "Job", new { id = jobId.Value });
+                             if (jobId > 0)
+                                 return RedirectToAction("Details", "Job", new { id = jobId });
                              else 
                                 return View("NoJob"); 
                          });
