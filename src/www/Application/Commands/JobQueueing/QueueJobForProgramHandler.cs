@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNet.SignalR;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
+using nTestSwarm.Application.Events;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using System;
-using nTestSwarm.Hubs;
 
 namespace nTestSwarm.Application.Commands.JobQueueing
 {
@@ -13,12 +13,14 @@ namespace nTestSwarm.Application.Commands.JobQueueing
         private readonly IDataBase _db;
         private readonly IUserAgentCache _userAgentCache;
         private readonly IJobDescriptionClient _descriptionClient;
+        private readonly IEventPublisher _eventPublisher;
 
-        public QueueJobForProgramHandler(IDataBase db, IUserAgentCache userAgentCache, IJobDescriptionClient descriptionClient)
+        public QueueJobForProgramHandler(IDataBase db, IUserAgentCache userAgentCache, IJobDescriptionClient descriptionClient, IEventPublisher eventPublisher)
         {
             _db = db;
             _userAgentCache = userAgentCache;
             _descriptionClient = descriptionClient;
+            _eventPublisher = eventPublisher;
         }
 
         public QueueJobForProgramResult Handle(QueueJobForProgram request)
@@ -34,25 +36,26 @@ namespace nTestSwarm.Application.Commands.JobQueueing
 
                 if (jobDescriptor == null || string.IsNullOrWhiteSpace(jobDescriptor.Name))
                 {
-                    result.Errors.Add("url", "Url does not return expected data.");
+                    result.Errors.Add("url", "Job description url does not return the expected data.");
                     return result;
                 }
 
-                var allUserAgents = program.UserAgentsToTest;
                 var job = program.AddJob(jobDescriptor.Name, correlation);
 
+                // create a run for each run (test url) specified by the job description url
                 foreach (var runDescriptor in jobDescriptor.Runs)
                 {
                     var run = new Run(job, runDescriptor.Name, runDescriptor.Url);
                     job.Runs.Add(run);
 
-                    if (allUserAgents != null)
-                        foreach (var userAgent in allUserAgents)
+                    // create a RunUserAgent for each user agent specified by the run's program
+                    if (program.UserAgentsToTest != null)
+                        foreach (var userAgent in program.UserAgentsToTest)
                             run.RunUserAgents.Add(new RunUserAgent(run, userAgent, request.MaxRuns ?? program.DefaultMaxRuns));
                 }
 
                 _db.SaveChanges();
-                GlobalHost.ConnectionManager.GetHubContext<JobStatusHub>().Clients.All.started(job.Id);
+                _eventPublisher.Publish(new JobCreated(job.Id));
             }
             else
             {
