@@ -140,7 +140,7 @@ namespace nTestSwarm.Application.Queries.NextRun
                                  join rua in dataBase.RunUserAgents.AsNoTracking() on runs.Id equals rua.RunId
                                  where rua.RemainingRuns > 0
                                        && rua.UserAgentId == id
-                                 orderby rua.Status, runs.Name, runs.Created
+                                 orderby rua.RunStatus, runs.Name, runs.Created
                                  select runs).Take(10);
 
                     Run[] array = runss.ToArray();

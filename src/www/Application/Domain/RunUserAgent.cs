@@ -27,16 +27,9 @@ namespace nTestSwarm.Application.Domain
         public int MaxRuns { get; protected set; }
         public int RemainingRuns { get; protected set; }
         public long? ActiveClientId { get; protected set; }
-        public int Status { get; protected set; }
-
-        
         public RunUserAgentResult Result { get; protected set; }
 
-        public RunStatusType RunStatus
-        {
-            get { return (RunStatusType) Status; }
-            private set { Status = (int) value; }
-        }
+        public RunStatusType RunStatus { get; protected set; }
 
         public void Pass(ClientRun clientRun)
         {

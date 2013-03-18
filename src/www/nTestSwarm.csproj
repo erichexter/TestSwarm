@@ -332,6 +332,10 @@
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.cs" />
+    <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.Designer.cs">
+      <DependentUpon>201303181527267_RemoveRunUserAgentStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
     <Compile Include="Application\Queries\JobDetails\JobDetailsViewModel.cs" />
@@ -868,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201302072119451_AddJobCorrelation.resx">
       <DependentUpon>201302072119451_AddJobCorrelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303181527267_RemoveRunUserAgentStatus.resx">
+      <DependentUpon>201303181527267_RemoveRunUserAgentStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
