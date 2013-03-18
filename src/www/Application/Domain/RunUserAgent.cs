@@ -49,6 +49,9 @@ namespace nTestSwarm.Application.Domain
 
         public void Fail(ClientRun clientRun)
         {
+            if (HasPassed())
+                return;
+
             RemainingRuns--;
             ActiveClientId = null;
             RunStatus = RemainingRuns > 0 ? RunStatusType.Running : RunStatusType.Finished;
@@ -62,6 +65,14 @@ namespace nTestSwarm.Application.Domain
             RunStatus = RunStatusType.NotStarted;
             RemainingRuns = MaxRuns;
             Result = new RunUserAgentResult();
+        }
+
+        public bool HasPassed()
+        {
+            return RunStatus == RunStatusType.Finished 
+                   && Result != null
+                   && Result.TotalTests.HasValue && Result.TotalTests > 0
+                   && (!Result.FailedTests.HasValue || Result.FailedTests == 0);
         }
 
         public bool IsFinished()
