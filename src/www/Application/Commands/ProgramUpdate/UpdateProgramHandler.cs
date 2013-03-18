@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using nTestSwarm.Application.Domain;
+﻿using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using System;
+using System.Linq;
 
 namespace nTestSwarm.Application.Commands.ProgramUpdate
 {
@@ -21,19 +21,17 @@ namespace nTestSwarm.Application.Commands.ProgramUpdate
             var program = _db.Find<Program>(message.ProgramId);
 
             if (program == null)
-            {
-                //TODO: handle
-            }
+                throw new Exception("program does not exist");
 
             program.Name = message.Name;
             program.JobDescriptionUrl = message.JobDescriptionUrl;
-            program.DefaultMaxRuns = message.DefaultMaxRuns;
+            program.DefaultMaxRuns = message.DefaultMaxRuns ?? 10;
             program.UserAgentsToTest.Clear();
-            var agents = _db.All<UserAgent>().Where(f => message.UserAgentIds.Any(t=>t==f.Id));
-            foreach (var userAgent in agents)
-            {
-                program.UserAgentsToTest.Add(userAgent);
-            } 
+
+            _db.All<UserAgent>()
+                .Where(f => message.UserAgentIds.Any(t => t == f.Id))
+                .Each(program.UserAgentsToTest.Add);
+
             _db.SaveChanges();
         }
 

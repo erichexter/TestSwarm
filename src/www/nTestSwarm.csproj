@@ -201,6 +201,7 @@
     <Compile Include="Application\Commands\JobQueueing\QueueJobForProgramResult.cs" />
     <Compile Include="Application\Commands\JobResetting\ResetJob.cs" />
     <Compile Include="Application\Commands\JobResetting\ResetJobHandler.cs" />
+    <Compile Include="Application\Commands\ProgramCommand.cs" />
     <Compile Include="Application\Commands\ProgramCreation\CreateProgram.cs" />
     <Compile Include="Application\Commands\ProgramCreation\CreateProgramHandler.cs" />
     <Compile Include="Application\Commands\ProgramUpdate\UpdateProgram.cs" />
