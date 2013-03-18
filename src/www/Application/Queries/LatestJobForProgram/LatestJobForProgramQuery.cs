@@ -1,9 +1,8 @@
 ﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Application.Queries.JobDetails;
 
 namespace nTestSwarm.Application.Queries.LatestJobForProgram
 {
-    public class LatestJobForProgramQuery : IRequest<JobDetailsViewModel>
+    public class LatestJobForProgramQuery : IRequest<long?>
     {
         public LatestJobForProgramQuery(int programId)
         {

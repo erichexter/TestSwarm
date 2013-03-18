@@ -4,7 +4,6 @@
     var viewModel = function () {
 
         var
-            programId,
             jobId,
             hub,
             imagesPath = $('#imagesPath').val(),
@@ -26,10 +25,9 @@
             },
 
             parseIds = function () {
-                programId = parseValueFromInput('programId');
                 jobId = parseValueFromInput('jobId');
 
-                return !isNaN(jobId) && !isNaN(programId);
+                return !isNaN(jobId);
             },
 
             parseValueFromInput = function (id) {

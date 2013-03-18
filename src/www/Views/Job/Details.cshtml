@@ -1,4 +1,4 @@
-﻿@model nTestSwarm.Application.Queries.JobDetails.JobDetailsViewModel
+﻿@model long
 @{
     ViewBag.Title = "Job Details";
 }
@@ -6,8 +6,7 @@
 <h3 data-bind="text: jobName">&nbsp;</h3>
 
 <input type="hidden" id="imagesPath" value="~/Content/images/" />
-<input type="hidden" id="programId" value="@Model.ProgramId" />
-<input type="hidden" id="jobId" value="@Model.JobId" />
+<input type="hidden" id="jobId" value="@Model" />
 
 <table class="job-results">
     <thead>
