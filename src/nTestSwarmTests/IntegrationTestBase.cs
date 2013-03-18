@@ -39,7 +39,6 @@ namespace nTestSwarmTests
             {
                 context.Database.ExecuteSqlCommand("delete from events");
                 context.Database.ExecuteSqlCommand("delete from RunUserAgentCompareResults");
-                context.Database.ExecuteSqlCommand("delete from users");
                 context.Database.ExecuteSqlCommand("delete from runuseragents");
                 context.Database.ExecuteSqlCommand("delete from clientruns");
                 context.Database.ExecuteSqlCommand("delete from clients");

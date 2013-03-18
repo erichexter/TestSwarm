@@ -125,7 +125,6 @@
     <Compile Include="Application\LatestJobStatus\LatestJobStatusQueryHandlerTest.cs" />
     <Compile Include="Application\PercentExtensionTests.cs" />
     <Compile Include="Application\RunCompletion\RunCompletedHandlerTest.cs" />
-    <Compile Include="Application\UpdateUser\UpdateUserHandlerTest.cs" />
     <Compile Include="AssertionHelper.cs" />
     <Compile Include="IntegrationTestBase.cs" />
     <Compile Include="Application\JobStatus\JobStatusQueryHandlerTests.cs" />

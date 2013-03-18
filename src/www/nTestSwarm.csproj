@@ -207,10 +207,6 @@
     <Compile Include="Application\Commands\ProgramUpdate\UpdateProgramHandler.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRun.cs" />
     <Compile Include="Application\Commands\RunResetting\ResetRunHandler.cs" />
-    <Compile Include="Application\Commands\UpdateUser\UpdateUser.cs" />
-    <Compile Include="Application\Commands\UpdateUser\UpdateUserHandler.cs" />
-    <Compile Include="Application\Commands\ValidateLogin\ValidateLoginHandler.cs" />
-    <Compile Include="Application\Commands\ValidateLogin\ValidateLoginMessage.cs" />
     <Compile Include="Application\Data\nTestSwarmContext.cs" />
     <Compile Include="Application\Domain\Client.cs" />
     <Compile Include="Application\Domain\ClientRun.cs" />
@@ -225,7 +221,6 @@
     <Compile Include="Application\Domain\RunUserAgent.cs" />
     <Compile Include="Application\Domain\RunUserAgentCompareResult.cs" />
     <Compile Include="Application\Domain\RunUserAgentResult.cs" />
-    <Compile Include="Application\Domain\User.cs" />
     <Compile Include="Application\Domain\UserAgent.cs" />
     <Compile Include="Application\EnumerableExtensions.cs" />
     <Compile Include="Application\Enumeration.cs" />
@@ -308,18 +303,9 @@
     <Compile Include="Application\Queries\UserAgentInfo\UserAgentInfoResult.cs" />
     <Compile Include="Application\Queries\UserAgentList\UserAgentQuery.cs" />
     <Compile Include="Application\Queries\UserAgentList\UserAgentQueryHandler.cs" />
-    <Compile Include="Application\Queries\UserExists\UserExistsQuery.cs" />
-    <Compile Include="Application\Queries\UserExists\UserExistsQueryHandler.cs" />
-    <Compile Include="Application\Queries\UserExists\UserExistsResult.cs" />
-    <Compile Include="Application\Queries\UserLookup\UserQuery.cs" />
-    <Compile Include="Application\Queries\UserLookup\UserQueryHandler.cs" />
     <Compile Include="Application\Repositories\IRepository.cs" />
     <Compile Include="Application\Repositories\IUserAgentCache.cs" />
     <Compile Include="Application\Repositories\Repository.cs" />
-    <Compile Include="Application\Services\AuthenticationService.cs" />
-    <Compile Include="Application\Services\Cryptographer.cs" />
-    <Compile Include="Application\Services\IAuthenticationService.cs" />
-    <Compile Include="Application\Services\ICryptographer.cs" />
     <Compile Include="Application\Services\IDataBase.cs" />
     <Compile Include="Application\Services\ISystemTime.cs" />
     <Compile Include="Application\Services\JobDescriptionClient.cs" />
@@ -334,6 +320,10 @@
     <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.cs" />
     <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.Designer.cs">
       <DependentUpon>201303181527267_RemoveRunUserAgentStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201303181911571_RemoveUser.cs" />
+    <Compile Include="Migrations\201303181911571_RemoveUser.Designer.cs">
+      <DependentUpon>201303181911571_RemoveUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\NeededClient.cs" />
     <Compile Include="Models\NeededClientResults.cs" />
@@ -873,6 +863,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201303181527267_RemoveRunUserAgentStatus.resx">
       <DependentUpon>201303181527267_RemoveRunUserAgentStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303181911571_RemoveUser.resx">
+      <DependentUpon>201303181911571_RemoveUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
