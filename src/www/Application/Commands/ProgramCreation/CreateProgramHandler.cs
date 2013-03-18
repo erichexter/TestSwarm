@@ -19,7 +19,7 @@ namespace nTestSwarm.Application.Commands.ProgramCreation
             var program = new Program(message.Name, message.JobDescriptionUrl, message.DefaultMaxRuns ?? 10);
 
             _db.All<UserAgent>()
-                .Where(f => message.UserAgentIds.Any(t => t == f.Id))
+                .Where(ua => message.UserAgentIds.Any(id => id == ua.Id))
                 .Each(program.UserAgentsToTest.Add);
 
             _db.Add(program);
