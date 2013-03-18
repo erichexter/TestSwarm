@@ -249,6 +249,8 @@
     <Compile Include="Application\Events\JobCompletion\RunInProgress.cs" />
     <Compile Include="Application\Events\JobCompletion\RunInProgressHandler.cs" />
     <Compile Include="Application\Events\JobCompletion\RunResult.cs" />
+    <Compile Include="Application\Events\JobCreated.cs" />
+    <Compile Include="Application\Events\JobCreatedStatusNotifier.cs" />
     <Compile Include="Application\ExceptionExtensions.cs" />
     <Compile Include="Application\HtmlExtensions.cs" />
     <Compile Include="Application\Infrastructure\BusInfrastructure\Bus.cs" />
