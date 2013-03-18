@@ -44,16 +44,11 @@ namespace nTestSwarm.Application.Commands.CompletedRun
                 FailCount = message.Fail,
                 ErrorCount = message.Error,
                 TotalCount = message.Total,
-                JobId=clientRun.Run.JobId
+                JobId = clientRun.Run.JobId
             });
 
             if (clientRun.Run.Job.IsComplete())
-            {
-                _eventPublisher.Publish(new JobCompleted()
-                    {
-                        JobId = clientRun.Run.JobId
-                    });     
-            }
+                _eventPublisher.Publish(new JobCompleted(clientRun.Run.JobId));
         }
     }
 }

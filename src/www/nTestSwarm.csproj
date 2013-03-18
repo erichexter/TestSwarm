@@ -240,9 +240,9 @@
     <Compile Include="Application\Events\JobCompletion\IJobCompletedEventDistributor.cs" />
     <Compile Include="Application\Events\JobCompletion\IPreviousJobQuerier.cs" />
     <Compile Include="Application\Events\JobCompletion\IResultsJoiner.cs" />
+    <Compile Include="Application\Events\JobCompletion\JobResultsDiffer.cs" />
     <Compile Include="Application\Events\JobCompletion\JobCompleted.cs" />
-    <Compile Include="Application\Events\JobCompletion\JobCompletedEvent.cs" />
-    <Compile Include="Application\Events\JobCompletion\JobCompletedHandler.cs" />
+    <Compile Include="Application\Events\JobCompletion\JobCompletedHandlerNotifier.cs" />
     <Compile Include="Application\Events\JobCompletion\ResultsCorrelator.cs" />
     <Compile Include="Application\Events\JobCompletion\RunCompleted.cs" />
     <Compile Include="Application\Events\JobCompletion\RunCompletedHandler.cs" />

@@ -1,40 +1,20 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.SignalR;
 using nTestSwarm.Application.Domain;
-using nTestSwarm.Application.Infrastructure.BusInfrastructure;
-using nTestSwarm.Application.Services;
-using nTestSwarm.Hubs;
+using nTestSwarm.Application.Infrastructure.DomainEventing;
 
 namespace nTestSwarm.Application.Events.JobCompletion
 {
-    public class JobResultsDiffer : IHandler<JobCompleted>
+    public class JobCompleted : IDomainEvent
     {
-        readonly IDataBase _db;
-        readonly IPreviousJobQuerier _previousJobQuerier;
-        readonly IResultsCorrelator _resultsCorrelator;
-
-        public JobResultsDiffer(IPreviousJobQuerier previousJobQuerier,
-                                IResultsCorrelator resultsCorrelator,
-                                IDataBase db)
+        public JobCompleted(Job job)
         {
-            _previousJobQuerier = previousJobQuerier;
-            _resultsCorrelator = resultsCorrelator;
-            _db = db;
+            JobId = job.Id;
         }
 
-        public void Handle(JobCompleted message)
+        public JobCompleted(long jobId)
         {
-            var target = _db.Find<Job>(message.JobId);
-
-            var source = _previousJobQuerier.GetPreviousCompleteJob(target);
-
-            if (source == null) return;
-
-            IEnumerable<RunUserAgentCompareResult> compareResults = _resultsCorrelator.GetForJobs(source, target);
-            
-            compareResults.Each(_db.Add);
-
-            _db.SaveChanges();
+            JobId = jobId;
         }
+
+        public long JobId { get; set; }
     }
 }
