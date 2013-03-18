@@ -24,7 +24,7 @@ namespace nTestSwarm.Application.Queries.RunDiagnostics
                         let ua = r.UserAgent.Name
                         let uv = r.UserAgent.Version
                         let os = client == null ? string.Empty : client.OperatingSystem
-                        where r.Status == (int)RunStatusType.Running
+                        where r.RunStatus == RunStatusType.Running
                         orderby r.Updated descending
                         select new RunDiagnosticsResult
                         {
