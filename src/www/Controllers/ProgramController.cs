@@ -1,7 +1,9 @@
-﻿using nTestSwarm.Application.Commands.JobQueueing;
+﻿using nTestSwarm.Application;
+using nTestSwarm.Application.Commands.JobQueueing;
 using nTestSwarm.Application.Commands.ProgramCreation;
 using nTestSwarm.Application.Commands.ProgramUpdate;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+using nTestSwarm.Application.Queries;
 using nTestSwarm.Application.Queries.GetProgram;
 using nTestSwarm.Application.Queries.GetProgramDescriptors;
 using nTestSwarm.Application.Queries.GetProgramDetails;
@@ -9,6 +11,7 @@ using nTestSwarm.Application.Queries.LatestJobForProgram;
 using nTestSwarm.Application.Queries.ProgramList;
 using nTestSwarm.Application.Queries.UserAgentList;
 using nTestSwarm.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -26,14 +29,16 @@ namespace nTestSwarm.Controllers
 
         public ActionResult Create()
         {
-            return Query(new UserAgentQuery(), r => View(new ProgramViewModel { UserAgents = r }));
+            return Query(new UserAgentQuery(), userAgents => View(new ProgramViewModel(userAgents)));
         }
 
         [HttpPost]
         public ActionResult Create(CreateProgram command)
         {
-            //TODO: check for invalid state
-            return Send(command, () => RedirectToAction("Index"));
+            if (ModelState.IsValid)
+                return Send(command, () => RedirectToAction("Index"));
+            else
+                return Query(new UserAgentQuery(), userAgents => View(ToViewModel(command, userAgents)));
         }
 
         public ActionResult Details(long id)
@@ -41,16 +46,18 @@ namespace nTestSwarm.Controllers
             return Query(new ProgramDetailsQuery { ProgramId = id });
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(long id)
         {
-            return Query(new ProgramQuery { ProgramId = id });
+            return Query(new ProgramQuery(id));
         }
 
         [HttpPost]
         public ActionResult Edit(UpdateProgram command)
         {
-            //TODO: check for invalid state
-            return Send(command, () => RedirectToAction("Index"));
+            if (ModelState.IsValid)
+                return Send(command, () => RedirectToAction("Index"));
+            else
+                return Query(new ProgramQuery(command.ProgramId), viewModel => View(ToViewModel(command, viewModel)));
         }
 
         public ActionResult QueueJob(long? id)
@@ -74,7 +81,6 @@ namespace nTestSwarm.Controllers
                     }
                     else
                     {
-                        //TODO: verify redirect
                         return RedirectToAction("Index");
                     }
                 });
@@ -94,6 +100,33 @@ namespace nTestSwarm.Controllers
                              else 
                                 return View("NoJob"); 
                          });
+        }
+
+
+        private ProgramViewModel ToViewModel(CreateProgram command, IEnumerable<Descriptor> userAgents)
+        {
+            userAgents.SelectedBy(command.UserAgentIds);
+
+            var viewModel = new ProgramViewModel(userAgents)
+            {
+                Name = command.Name,
+                JobDescriptionUrl = command.JobDescriptionUrl,
+                DefaultMaxRuns = command.DefaultMaxRuns
+            };
+
+            return viewModel;
+        }
+
+        private ProgramViewModel ToViewModel(UpdateProgram command, ProgramViewModel viewModel)
+        {
+            viewModel.Name = command.Name;
+            viewModel.JobDescriptionUrl = command.JobDescriptionUrl;
+            viewModel.DefaultMaxRuns = command.DefaultMaxRuns;
+            viewModel.UserAgentListItems
+                        .ClearSelections()
+                        .SelectedBy(command.UserAgentIds);
+
+            return viewModel;
         }
     }
 }

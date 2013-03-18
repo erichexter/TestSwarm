@@ -19,7 +19,7 @@ namespace nTestSwarm.Application.Queries.UserAgentList
         public IEnumerable<Descriptor> Handle(UserAgentQuery request)
         {
             return _db.All<UserAgent>().AsNoTracking()
-                        .Select(x => new Descriptor { Id = x.Id, Name = x.Name })
+                        .ToDescriptors()
                         .ToArray();
         }
     }

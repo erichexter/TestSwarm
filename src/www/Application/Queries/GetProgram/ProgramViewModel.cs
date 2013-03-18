@@ -7,6 +7,11 @@ namespace nTestSwarm.Application.Queries.GetProgram
 {
     public class ProgramViewModel
     {
+        public ProgramViewModel(IEnumerable<Descriptor> userAgents)
+        {
+            UserAgentListItems = userAgents.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = ua.Selected });
+        }
+
         public long ProgramId { get; set; }
 
         [Required]
@@ -20,15 +25,7 @@ namespace nTestSwarm.Application.Queries.GetProgram
         [Display(Name = "Default Max Runs")]
         public int? DefaultMaxRuns { get; set; }
 
-        public IEnumerable<Descriptor> UserAgents 
-        {   
-            set 
-            {
-                UserAgentListItems = value.Select(ua => new SelectListItem { Value = ua.Id.ToString(), Text = ua.Name, Selected = ua.Selected });
-            } 
-        }
-
         [Display(Name= "User Agents")]
-        public IEnumerable<SelectListItem> UserAgentListItems { get; set; }
+        public IEnumerable<SelectListItem> UserAgentListItems { get; private set; }
     }
 }
