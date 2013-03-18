@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using nTestSwarm.Application.Services;
+using System.Collections.Generic;
 using System.Linq;
-using nTestSwarm.Application.Services;
 
 namespace nTestSwarm.Application.Domain
 {
-    public class Run : Entity
+    public class Run : Entity, INamedEntity
     {
         public Run(Job job, string name, string url)
         {

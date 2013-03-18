@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using nTestSwarm.Application.Events;
-using nTestSwarm.Application.Events.JobCompletion;
+﻿using nTestSwarm.Application.Events.JobCompletion;
 using nTestSwarm.Application.Infrastructure.DomainEventing;
 using nTestSwarm.Application.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace nTestSwarm.Application.Domain
 {
-    public class Job : Entity
+    public class Job : Entity, INamedEntity
     {
         public Job(string name)
         {

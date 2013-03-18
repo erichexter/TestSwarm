@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace nTestSwarm.Application.Domain
 {
-    public class Program : Entity
+    public class Program : Entity, INamedEntity
     {
         public Program(string name, string jobDescriptionUrl, int defaultMaxRuns)
         {

@@ -1,6 +1,6 @@
 ﻿namespace nTestSwarm.Application.Domain
 {
-    public class UserAgent : Entity
+    public class UserAgent : Entity, INamedEntity
     {
         public UserAgent() : this(null, null, null)
         {
