@@ -194,13 +194,6 @@
     <Compile Include="Application\Commands\CompletedRun\CompleteRunHandler.cs" />
     <Compile Include="Application\Commands\DataCleanup\Wipe.cs" />
     <Compile Include="Application\Commands\DataCleanup\WipeHandler.cs" />
-    <Compile Include="Application\Commands\JobCreation\Copy\CopyJob.cs" />
-    <Compile Include="Application\Commands\JobCreation\Copy\JobCopier.cs" />
-    <Compile Include="Application\Commands\JobCreation\CreateJob.cs" />
-    <Compile Include="Application\Commands\JobCreation\CreateJobHandler.cs" />
-    <Compile Include="Application\Commands\JobCreation\CreateJobResult.cs" />
-    <Compile Include="Application\Commands\JobCreation\Described\CreateJobFromDescription.cs" />
-    <Compile Include="Application\Commands\JobCreation\Described\CreateJobFromDescriptionHandler.cs" />
     <Compile Include="Application\Commands\JobDeletion\DeleteJob.cs" />
     <Compile Include="Application\Commands\JobDeletion\DeleteJobHandler.cs" />
     <Compile Include="Application\Commands\JobQueueing\QueueJobForProgram.cs" />

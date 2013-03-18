@@ -1,6 +1,4 @@
-﻿using nTestSwarm.Application.Commands.JobCreation;
-using nTestSwarm.Application.Commands.JobCreation.Described;
-using nTestSwarm.Application.Infrastructure.BusInfrastructure;
+﻿using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Queries.JobDetails;
 using nTestSwarm.Application.Queries.JobStatus;
 using nTestSwarm.Models;
@@ -30,33 +28,7 @@ namespace nTestSwarm.Controllers
                          ex => View("NoJob"));
         }
 
-        public ViewResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(CreateJob input)
-        {
-            return Query(input);
-        }
-
-        /// <summary>
-        /// Allows a job to be created by using a job description url 
-        /// that describes the structure of the job.
-        /// </summary>
-        public ViewResult DescribeNew()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult DescribeNew(CreateJobFromDescription input)
-        {
-            return Query(input);
-        }
-
-        // empty route used for nav routes
+        // placeholder for named routes
         public ActionResult Nullo()
         {
             return View();
