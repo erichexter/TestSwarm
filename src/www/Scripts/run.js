@@ -1,6 +1,6 @@
 var nts_defaults = {
-  getRunsUrl: "run/getrun",
-  saveRunsUrl: "/run/saverun"
+  nextRunUrl: "/api/clients/{id}/nextrun",
+  saveRunsUrl: "/api/runstatuses"
 };
 jQuery.extend(nts_defaults, window.ntestswarmDefaults);
 
@@ -37,7 +37,7 @@ function getTests() {
 	run_url = "";
 
 	msg("Querying for more tests to run...");
-	retrySend(nts_defaults.getRunsUrl, "client_id=" + client_id, getTests, runTests );
+	retrySend(nts_defaults.nextRunUrl.replace('{id}', client_id), "GET", getTests, runTests );
 }
 
 function runTests(data) {
@@ -125,20 +125,19 @@ function testTimedout() {
 }
 
 function handleMessage(e) {
-	retrySend(nts_defaults.saveRunsUrl, e.data, function(){
+	retrySend(nts_defaults.saveRunsUrl, "POST", e.data, function(){
 		handleMessage(e);
 	}, done );
 }
 
 var errorOut = 0;
 
-function retrySend(url, data, retry, success ) {
+function retrySend(url, method, retry, success ) {
 	jQuery.ajax({
-		type: "POST",
+		type: method,
 		url: url,
 		timeout: 30000,
 		cache: false,
-		data: data,
 		error: function() {
 			if ( errorOut++ > 4 ) {
 				cmds.reload();
