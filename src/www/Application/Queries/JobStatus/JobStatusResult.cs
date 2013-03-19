@@ -17,13 +17,16 @@ namespace nTestSwarm.Application.Queries.JobStatus
             
             var array = results.ToArray();
 
-            Browsers = from browser in OrderByBrowser(array).Distinct(new BrowserComparer()) select new UserAgentDto(browser);
+            Browsers = (from browser in OrderByBrowser(array).Distinct(new BrowserComparer())
+                        select new UserAgentDto(browser))
+                        .ToArray();
 
-            RunResults = from result in array
-                         orderby result.RunName , result.RunUrl , result.RunId
-                         group result by result.RunId
-                         into grouping
-                         select new RunDto(grouping.First(), OrderByBrowser(grouping));
+            RunResults = (from result in array
+                          orderby result.RunName , result.RunUrl , result.RunId
+                          group result by result.RunId
+                          into grouping
+                          select new RunDto(grouping.First(), OrderByBrowser(grouping)))
+                          .ToArray();
 
             JobId = array.First().JobId;
             JobName = array.First().JobName;

@@ -11,7 +11,7 @@ namespace nTestSwarm.Application.Queries.JobStatus
             RunId = key.RunId;
             RunUrl = key.RunUrl;
 
-            Cells = cells.Select(x => new ResultCellDto(x));
+            Cells = cells.Select(x => new ResultCellDto(x)).ToArray();
         }
 
         public string RunName { get; set; }

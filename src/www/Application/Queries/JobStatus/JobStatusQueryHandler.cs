@@ -39,7 +39,7 @@ namespace nTestSwarm.Application.Queries.JobStatus
 
             Debug.WriteLine(results.ToString());
 
-            return new JobStatusResult(results);
+            return new JobStatusResult(results.ToArray());
         }
     }
 }
