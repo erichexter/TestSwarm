@@ -70,7 +70,7 @@ function runTests(data) {
 
 		log("Running " + (data.desc || "") + " tests...");
 
-		var params = "run_id=" + run_id + "&client_id=" + client_id;
+		var params = "runId=" + run_id + "&clientId=" + client_id;
 		var iframe = document.createElement("iframe");
 		iframe.width = 1000;
 		iframe.height = 600;
@@ -119,8 +119,8 @@ function cancelTest() {
 
 function testTimedout() {
 	cancelTest();
-	retrySend( nts_defaults.saveRunsUrl, "fail=-1&total=-1&results=Test%20Timed%20Out.&run_id="
-		+ run_id + "&client_id=" + client_id,
+	retrySend( nts_defaults.saveRunsUrl, "fail=-1&total=-1&results=Test%20Timed%20Out.&runId="
+		+ run_id + "&clientId=" + client_id,
 		testTimedout, getTests );
 }
 
