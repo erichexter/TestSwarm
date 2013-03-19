@@ -24,10 +24,7 @@ namespace nTestSwarm.Application.Queries.RunStatus
             if (status == null)
                 return new RunStatusResult { Results = string.Format("no run status for client {0} and run {1}", request.ClientId, request.RunId) };
             else
-                return new RunStatusResult
-                {
-                    Results = status.Results ?? status.ToString()
-                };
+                return new RunStatusResult { Results = status.Results ?? status.ToString() };
         }
     }
 }
