@@ -31,24 +31,22 @@ namespace nTestSwarm.Application.Commands.CompletedRun
             if (clientRun != null)
             {
                 clientRun.Apply(message);
+
+                _db.SaveChanges();
+
+                _eventPublisher.Publish(new RunCompleted
+                {
+                    ClientId = message.ClientId,
+                    RunId = message.RunId,
+                    FailCount = message.Fail,
+                    ErrorCount = message.Error,
+                    TotalCount = message.Total,
+                    JobId = clientRun.Run.JobId
+                });
+
+                if (clientRun.Run.Job.IsComplete())
+                    _eventPublisher.Publish(new JobCompleted(clientRun.Run.JobId));
             }
-            
-
-            _db.SaveChanges();
-
-            //TODO: fill in the blanks
-            _eventPublisher.Publish(new RunCompleted
-            {
-                ClientId = message.ClientId,
-                RunId = message.RunId,
-                FailCount = message.Fail,
-                ErrorCount = message.Error,
-                TotalCount = message.Total,
-                JobId = clientRun.Run.JobId
-            });
-
-            if (clientRun.Run.Job.IsComplete())
-                _eventPublisher.Publish(new JobCompleted(clientRun.Run.JobId));
         }
     }
 }
