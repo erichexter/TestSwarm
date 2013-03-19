@@ -8,10 +8,11 @@ namespace nTestSwarm.Application.Domain
 
         public static ClientRunStatus NotStarted = new ClientRunStatus(0, "Not Started", StringEmpty, "notstarted notdone", RunStatusType.NotStarted);
         public static ClientRunStatus InProgress = new ClientRunStatus(1, "In Progress", StringEmpty, "progress notdone", RunStatusType.Running);
-        public static ClientRunStatus Pass = new ClientRunStatus(2, "Pass", (f, e, t) => t.ToString());
+        public static ClientRunStatus Pass = new ClientRunStatus(2, "Pass", (f, e, t) => string.Format("{0}/{0}", t));
         public static ClientRunStatus Fail = new ClientRunStatus(3, "Fail", (f, e, t) => string.Format("{0}/{1}", f, t));
         public static ClientRunStatus Error = new ClientRunStatus(4, "Error");
         public static ClientRunStatus Timeout = new ClientRunStatus(5, "Timeout");
+        public static ClientRunStatus Warning = new ClientRunStatus(6, "Warning", (f, e, t) => string.Format("{0}/{1}", f, t));
 
         public ClientRunStatus()
         {
@@ -37,22 +38,17 @@ namespace nTestSwarm.Application.Domain
         static ClientRunStatus FromData(RunStatusType type, int failed, int errors, int total)
         {
             if (type == RunStatusType.NotStarted)
-            {
                 return NotStarted;
-            }
             if (type == RunStatusType.Running)
-            {
                 return InProgress;
-            }
             if (type == RunStatusType.Finished && failed == -1)
-            {
                 return Timeout;
-            }
             if (type == RunStatusType.Finished && (errors > 0 || total == 0))
-            {
                 return Error;
-            }
-            return failed > 0 ? Fail : Pass;
+            if (failed == total)
+                return Fail;
+            
+            return failed > 0 ? Warning : Pass;
         }
 
         public static ClientRunStatus FromClientRun(ClientRun clientRun)
