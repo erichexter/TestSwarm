@@ -21,10 +21,9 @@
                 browsers.removeAll();
                 runResults.removeAll();
                 mapJobStatusData(status);
-            
             },
 
-            parseIds = function () {
+            parseHiddens = function () {
                 jobId = parseValueFromInput('jobId');
 
                 return !isNaN(jobId);
@@ -33,12 +32,10 @@
             parseValueFromInput = function (id) {
                 var $input = $('#' + id);
 
-                if ($input.length > 0) {
+                if ($input.length > 0)
                     return parseInt($input.val(), 10);
-                }
-                else {
+                else
                     return NaN;
-                }
             },
 
             hubCallbacks = {
@@ -105,7 +102,7 @@
             },
 
             startHubFailed = function (msg) {
-                //logger.error(data);
+                logger.error(data);
 
                 //TODO: show msg to user
                 jobName('not working'); // temp
@@ -124,9 +121,8 @@
             },
 
             init = function () {
-                if (parseIds()) {
+                if (parseHiddens())
                     startHub();
-                }
             };
 
         init();
