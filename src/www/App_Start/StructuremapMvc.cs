@@ -20,6 +20,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.SignalR;
 using StructureMap;
 using nTestSwarm.DependencyResolution;
+using System.Diagnostics;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(nTestSwarm.App_Start.StructuremapMvc), "Start")]
 
@@ -30,6 +31,12 @@ namespace nTestSwarm.App_Start {
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
             GlobalHost.DependencyResolver=new SignalRDependencyResolver(container);
+
+#if DEBUG
+            var registrations = container.WhatDoIHave();
+
+            Debug.Write(registrations);
+#endif
         }
     }
 }
