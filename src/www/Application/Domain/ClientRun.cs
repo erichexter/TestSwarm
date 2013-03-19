@@ -90,5 +90,10 @@ namespace nTestSwarm.Application.Domain
             Run = null;
             RunId = 0;
         }
+
+        public override string ToString()
+        {
+            return string.Format("status: {0}; failed: {1}; errored: {2}; total: {3}", GetStatus().DisplayName, FailCount, ErrorCount, TotalCount);
+        }
     }
 }
