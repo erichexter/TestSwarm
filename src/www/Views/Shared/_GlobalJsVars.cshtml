@@ -5,6 +5,6 @@
         var root = this;
         var nTestSwarm = root.nTestSwarm = typeof root.nTestSwarm === 'object' ? root.nTestSwarm : {};
 
-        nTestSwarm.rootPath = "~/";
+        nTestSwarm.rootPath = '@Url.Content("~/")';
     }).call(this);
 </script>
