@@ -56,7 +56,7 @@
                                     clientId: cell.ClientId,
                                     statusText: ko.observable(cell.CellContents),
                                     statusClass: ko.observable(cell.Status.Css),
-                                    statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId),
+                                    statusUrl: ko.observable('/Run/Status?RunId=' + run.RunId + '&ClientId=' + cell.ClientId),
                                     userAgentBrowser:cell.userAgentBrowser
                                 });
                             });
