@@ -231,7 +231,7 @@
     <Compile Include="Application\Events\JobCompletion\IResultsJoiner.cs" />
     <Compile Include="Application\Events\JobCompletion\JobResultsDiffer.cs" />
     <Compile Include="Application\Events\JobCompletion\JobCompleted.cs" />
-    <Compile Include="Application\Events\JobCompletion\JobCompletedHandlerNotifier.cs" />
+    <Compile Include="Application\Events\JobCompletion\JobCompletedNotifier.cs" />
     <Compile Include="Application\Events\JobCompletion\ResultsCorrelator.cs" />
     <Compile Include="Application\Events\JobCompletion\RunCompleted.cs" />
     <Compile Include="Application\Events\JobCompletion\RunCompletedHandler.cs" />

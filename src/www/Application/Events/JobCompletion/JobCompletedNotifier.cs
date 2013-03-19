@@ -3,7 +3,7 @@ using nTestSwarm.Hubs;
 
 namespace nTestSwarm.Application.Events.JobCompletion
 {
-    public class JobComleteHandlerNotifier : IHandler<JobCompleted>
+    public class JobCompletedNotifier : IHandler<JobCompleted>
     {
         public void Handle(JobCompleted message)
         {
