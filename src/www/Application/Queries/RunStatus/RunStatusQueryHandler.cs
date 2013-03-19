@@ -1,7 +1,8 @@
-using System.Linq;
 using nTestSwarm.Application.Domain;
 using nTestSwarm.Application.Infrastructure.BusInfrastructure;
 using nTestSwarm.Application.Services;
+using System.Data.Entity;
+using System.Linq;
 
 namespace nTestSwarm.Application.Queries.RunStatus
 {
@@ -16,15 +17,16 @@ namespace nTestSwarm.Application.Queries.RunStatus
 
         public RunStatusResult Handle(RunStatusQuery request)
         {
-            var status = from run in _dataBase.All<ClientRun>()
-                         where run.Client.Id == request.ClientId && run.Run.Id == request.RunId
-                         select run.Results;
+            var status = (from run in _dataBase.All<ClientRun>().AsNoTracking()
+                          where run.Client.Id == request.ClientId && run.Run.Id == request.RunId
+                          select run).FirstOrDefault();
 
-            return new RunStatusResult
+            if (status == null)
+                return new RunStatusResult { Results = string.Format("no run status for client {0} and run {1}", request.ClientId, request.RunId) };
+            else
+                return new RunStatusResult
                 {
-                    Results =
-                        status.FirstOrDefault() ??
-                        string.Format("no run status for client {0} and run {1}", request.ClientId, request.RunId)
+                    Results = status.Results ?? status.ToString()
                 };
         }
     }
