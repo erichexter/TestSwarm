@@ -4,6 +4,7 @@ using nTestSwarm.Areas.Diagnostics.Controllers;
 using nTestSwarm.Controllers;
 using System.Web.Mvc;
 using System.Web.Routing;
+using ClientRunController = nTestSwarm.Areas.Client.Controllers.RunController;
 
 namespace nTestSwarm
 {
@@ -20,7 +21,8 @@ namespace nTestSwarm
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { typeof(HomeController).Namespace }
             );
 
             routes.MapNavigationRoutes();
@@ -34,7 +36,7 @@ namespace nTestSwarm
                 .AddChildRoute<JobController>("Latest", c => c.Latest())
                 .AddChildRoute<ProgramController>("Queue New", c => c.QueueJob((long?)null));
 
-            routes.MapNavigationRoute<RunController>("Join the Swarm", c => c.Index(), "Client");
+            routes.MapNavigationRoute<ClientRunController>("Join the Swarm", c => c.Index(), "Client");
 
             routes.MapNavigationRoute<RunDiagnosticsController>("Diagnostics", c => c.Nullo())
                 .AddChildRoute<RunDiagnosticsController>("Runs", c => c.Index(), "Diagnostics")

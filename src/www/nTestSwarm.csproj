@@ -317,6 +317,7 @@
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\RunController.cs" />
     <Compile Include="INamedItem.cs" />
     <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.cs" />
     <Compile Include="Migrations\201303181527267_RemoveRunUserAgentStatus.Designer.cs">
