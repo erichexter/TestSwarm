@@ -6,7 +6,6 @@ using nTestSwarm.Application.Repositories;
 using nTestSwarm.Application.Services;
 using StructureMap;
 using System;
-using System.Data.Entity;
 using System.Web;
 
 namespace nTestSwarm
@@ -27,12 +26,7 @@ namespace nTestSwarm
                 });
 
                 x.For(typeof(IRepository<>)).Use(typeof(Repository<>));
-
-                x.For<nTestSwarmContext>().HybridHttpOrThreadLocalScoped()
-                    .Use(() => new nTestSwarmContext());
-
-                x.For<Database>().Use(c => c.GetInstance<nTestSwarmContext>().Database);
-
+                x.For<nTestSwarmContext>().Use(() => new nTestSwarmContext());
                 x.Forward<nTestSwarmContext, IDataBase>();
 
                 x.ForSingletonOf<IUserAgentCache>().Use<UserAgentCache>();
