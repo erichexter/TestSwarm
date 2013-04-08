@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>nTestSwarm.Interface</id>
+        <version>1.0</version>
+        <authors>nTestSwarm</authors>
+        <owners>Matt Hinze</owners>
+        <projectUrl>https://github.com/erichexter/testswarm</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Interface and code samples for integration with nTestSwarm.</description>
+        <releaseNotes />
+        <copyright />
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Microsoft.AspNet.WebApi.Core" version="4.0.20710.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Debug\nTestSwarm.Interface.dll" target="lib\nTestSwarm.Interface.dll" />
+    </files>
+</package>
